@@ -7,3 +7,6 @@
 .idea
 
 .firebaserc
+.firebase
+firebase-debug.log
+package-lock.json

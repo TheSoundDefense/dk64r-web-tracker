@@ -1,4 +1,4 @@
-
+/* 
 var trackerOptions = {
   showchests: true,
   showbigkeys: false,
@@ -25,7 +25,7 @@ var trackerData = {
   prizes: prizesInit,
   medallions: medallionsInit,
   chestsopened: chestsopenedInit
-};
+}; */
 
 function setCookie(obj) {
     window.localStorage.setItem(roomid, JSON.stringify(obj));
@@ -37,7 +37,7 @@ function getCookie() {
     return JSON.parse(str);
 }
 
-var cookiekeys = ['ts', 'map', 'iZoom', 'mZoom', 'mOrien', 'mPos', 'mapLogic', 'chest', 'prize', 'medal', 'label', 'items'];
+/* var cookiekeys = ['ts', 'map', 'iZoom', 'mZoom', 'mOrien', 'mPos', 'mapLogic', 'chest', 'prize', 'medal', 'label', 'items'];
 var cookieDefault = {
     ts:94,
     map:1,
@@ -51,7 +51,7 @@ var cookieDefault = {
     medal:1,
     label:1,
     items:defaultItemGrid
-};
+}; */
 
 var cookielock = false;
 function loadCookie() {
@@ -123,7 +123,7 @@ function saveCookie() {
     cookielock = false;
 }
 
-function getConfigObjectFromCookie() {
+/* function getConfigObjectFromCookie() {
     configobj = getCookie();
 
     cookiekeys.forEach(function (key) {
@@ -156,9 +156,9 @@ function getConfigObject() {
     configobj.items = window.vm.itemRows;
 
     return configobj;
-}
+} */
 
-// Event of clicking a chest on the map
+/* // Event of clicking a chest on the map
 function toggleChest(x){
     rootRef.child('chestsopened').child(x).set(!trackerData.chestsopened[x]);
 }
@@ -172,9 +172,9 @@ function highlight(x){
 function unhighlight(x){
     document.getElementById(x).style.backgroundImage = "url(/images/poi.png)";
     document.getElementById("caption").innerHTML = "&nbsp;";
-}
+} */
 
-// Highlights a chest location and shows the name as caption (but for dungeons)
+/* // Highlights a chest location and shows the name as caption (but for dungeons)
 function highlightDungeon(x){
     document.getElementById("dungeon"+x).style.backgroundImage = "url(/images/highlighted.png)";
     document.getElementById("caption").innerHTML = dungeons[x].name;
@@ -219,7 +219,7 @@ function showLabel(sender) {
     trackerOptions.showlabels = sender.checked;
     refreshMap();
     saveCookie();
-}
+} */
 
 function setOrder(H) {
     if (H) {
