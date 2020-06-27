@@ -77,7 +77,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 }
 
 .forestmed, .firemed, .watermed, .shadowmed, .spiritmed, .lightmed, .atrade0, .atrade1, .atrade2, .atrade3, .atrade4, .atrade5, .atrade6, .atrade7, .atrade8, .atrade9, 
-.atrade10, .gst, .bottle, .bottleletter, .scale0, .scale1, .scale2, .slingshot, .bombbag, .boomerang, .str0, .str1, .str2, .str3, .magic, .nospells, .dins, .farores, .dinsfarores,
+.atrade10, .gst, .nobottle, .bottle, .bottleletter, .scale0, .scale1, .scale2, .slingshot, .bombbag, .boomerang, .str0, .str1, .str2, .str3, .magic, .nospells, .dins, .farores, .dinsfarores,
 .nohook, .hookshot, .longshot, .bow, .nomagicarrows, .firearrows, .lightarrows, .magicarrows, .hammer, .noboots, .ironboots, .hoverboots, .boots, .mirrorshield, .ctrade0, .ctrade1, .ctrade2, .ctrade3,
 .ctrade4, .ocarina, .beans, .noswordcard, .koksword, .gerudocard, .swordcard, .notunics, .gorontunic, .zoratunic, .tunics, .triforce, .zl, .epona, .saria, .sunsong, .songoftime, .storms, .minuet,
 .bolero, .serenade, .nocturne, .requiem, .prelude {
@@ -151,8 +151,9 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 .atrade9 { background-image: url(images/eye_drops.png) }
 .atrade10 { background-image: url(images/claim_check.png) }
 .gst { background-image: url(images/golden_skulltula.png) }
+.nobottle { background-image: url(images/bottle.png) }
 .bottle { background-image: url(images/bottle.png) }
-.bottleletter { background-image: url(images/ruto_letter.png) }
+.bottleletter { background-image: url(images/bottle_letter.png) }
 .scale0 { background-image: url(images/silver_scale.png) }
 .scale1 { background-image: url(images/silver_scale.png) }
 .scale2 { background-image: url(images/gold_scale.png) }
@@ -215,7 +216,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 
 /* Dungeon names for keys */
 .forestn { background-image: url(images/forest_normal.png) }
-.forestmq { background-image: url(images/foresT_mq.png) }
+.forestmq { background-image: url(images/forest_mq.png) }
 .firen { background-image: url(images/fire_normal.png) }
 .firemq { background-image: url(images/fire_mq.png) }
 .watern { background-image: url(images/water_normal.png) }
@@ -377,7 +378,11 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="emerald false toggle"></div>
     <div class="ruby false toggle"></div>
     <div class="sapphire false toggle"></div>
-    <div class="bottle false toggle"></div>
+    <div class="bottlecycle cycle noloop">
+      <div class="nobottle false "></div>
+      <div class="bottle hidden"></div>
+      <div class="bottleletter hidden"></div>
+    </div>
     <div class="scalecycle cycle noloop">
       <div class="scale0 false"></div>
       <div class="scale1 hidden"></div>
