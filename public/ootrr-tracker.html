@@ -29,11 +29,22 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 }
 
 .counter_text {
-  background-color: black;
-  color: white;
   display: inline-block;
-  text-align: right;
   visibility: hidden;
+  text-shadow: -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000, 2px 2px 2px #000;
+  color: white;
+  width: 100%;
+  text-align: right;
+}
+
+.big_counter_font {
+  font: 24px Impact, sans-serif;
+  opacity: 0.75;
+}
+
+.small_counter_font {
+  font: 16px Impact, sans-serif;
+  opacity: 1;
 }
 
 .room-controls {
@@ -349,7 +360,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 
   <!-- Next Row: Atrade, Skulls, Stones, Bottle, Scale -->
   <div class="row">
-    <div class="atrade cycle">
+    <div class="atrade cycle noloop">
       <div class="atrade0 false"></div>
       <div class="atrade1 hidden"></div>
       <div class="atrade2 hidden"></div>
@@ -362,12 +373,12 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
       <div class="atrade9 hidden"></div>
       <div class="atrade10 hidden"></div>
     </div>
-    <div class="gst counters false"><div class="counter_text">0</div></div>
+    <div class="gst counters false"><div class="counter_text big_counter_font">0</div></div>
     <div class="emerald false toggle"></div>
     <div class="ruby false toggle"></div>
     <div class="sapphire false toggle"></div>
     <div class="bottle false toggle"></div>
-    <div class="scalecycle cycle">
+    <div class="scalecycle cycle noloop">
       <div class="scale0 false"></div>
       <div class="scale1 hidden"></div>
       <div class="scale2 hidden"></div>
@@ -379,14 +390,14 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="slingshot false toggle"></div>
     <div class="bombbag false toggle"></div>
     <div class="boomerang false toggle"></div>
-    <div class="strcycle cycle">
+    <div class="strcycle cycle noloop">
       <div class="str0 false"></div>
       <div class="str1 hidden"></div>
       <div class="str2 hidden"></div>
       <div class="str3 hidden"></div>
     </div>
     <div class="magic false toggle"></div>
-    <div class="spellcycle cycle">
+    <div class="spellcycle cycle noloop">
       <div class="nospells false"></div>
       <div class="dins hidden"></div>
       <div class="farores hidden"></div>
@@ -396,20 +407,20 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 
   <!-- Next Row: Hookshot, Bow, Arrows, Hammer, Boots, Mirror Shield -->
   <div class="row">
-    <div class="hslscycle cycle">
+    <div class="hslscycle cycle noloop">
       <div class="nohook false"></div>
       <div class="hookshot hidden"></div>
       <div class="longshot hidden"></div>
     </div>
     <div class="bow false toggle"></div>
-    <div class="compositearrows cycle">
+    <div class="compositearrows cycle noloop">
       <div class="nomagicarrows false"></div>
       <div class="firearrows hidden"></div>
       <div class="lightarrows hidden"></div>
       <div class="magicarrows hidden"></div>
     </div>
     <div class="hammer false toggle"></div>
-    <div class="bootcycle cycle">
+    <div class="bootcycle cycle noloop">
       <div class="noboots false"></div>
       <div class="ironboots hidden"></div>
       <div class="hoverboots hidden"></div>
@@ -420,7 +431,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 
   <!-- Next Row: Child Trade, Ocarina, Beans, Ksword/Gcard, Tunics, Triforce -->
   <div class="row">
-    <div class="ctrade cycle">
+    <div class="ctrade cycle noloop">
       <div class="ctrade0 false"></div>
       <div class="ctrade1 hidden"></div>
       <div class="ctrade2 hidden"></div>
@@ -429,19 +440,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     </div>
     <div class="ocarina false toggle"></div>
     <div class="beans false toggle"></div>
-    <div class="dungeonopeners cycle">
+    <div class="dungeonopeners cycle noloop">
       <div class="noswordcard false"></div>
       <div class="koksword hidden"></div>
       <div class="gerudocard hidden"></div>
       <div class="swordcard hidden"></div>
     </div>
-    <div class="tuniccycle cycle">
+    <div class="tuniccycle cycle noloop">
       <div class="notunics false"></div>
       <div class="gorontunic hidden"></div>
       <div class="zoratunic hidden"></div>
       <div class="tunics hidden"></div>
     </div>
-    <div class="triforce counters false"><div class="counter_text">0</div></div>
+    <div class="triforce counters false"><div class="counter_text big_counter_font">0</div></div>
   </div>
 
   <!-- Next Row: Child song tracking -->
@@ -470,19 +481,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="forestn true"></div>
     <div class="forestmq hidden"></div>
   </div>
-  <div class="forestsk counters false"><div class="counter_text">0</div></div>
+  <div class="forestsk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="forestbk toggle false"></div>
   <div class="shadowcycle cycle">
     <div class="shadown true"></div>
     <div class="shadowmq hidden"></div>
   </div>
-  <div class="shadowsk counters false"><div class="counter_text">0</div></div>
+  <div class="shadowsk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="shadowbk toggle false"></div>
   <div class="wellcycle cycle">
     <div class="welln true"></div>
     <div class="wellmq hidden"></div>
   </div>
-  <div class="wellsk counters false"><div class="counter_text">0</div></div>
+  <div class="wellsk counters false"><div class="counter_text small_counter_font">0</div></div>
 </div>
 
 <!-- Second Row of Keys: Fire, Spirit, Fort -->
@@ -491,19 +502,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="firen true"></div>
     <div class="firemq hidden"></div>
   </div>
-  <div class="firesk counters false"><div class="counter_text">0</div></div>
+  <div class="firesk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="firebk toggle false"></div>
   <div class="spiritcycle cycle">
     <div class="spiritn true"></div>
     <div class="spiritmq hidden"></div>
   </div>
-  <div class="spiritsk counters false"><div class="counter_text">0</div></div>
+  <div class="spiritsk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="spiritbk toggle false"></div>
   <div class="fortcycle cycle">
     <div class="fort1 true"></div>
     <div class="fort4 hidden"></div>
   </div>
-  <div class="fortsk counters false"><div class="counter_text">0</div></div>
+  <div class="fortsk counters false"><div class="counter_text small_counter_font">0</div></div>
 </div>
 
 <!-- Last Row of Keys: Water, Ganon, GTG -->
@@ -512,19 +523,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="watern true"></div>
     <div class="watermq hidden"></div>
   </div>
-  <div class="watersk counters false"><div class="counter_text">0</div></div>
+  <div class="watersk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="waterbk toggle false"></div>
   <div class="ganoncycle cycle">
     <div class="ganonn true"></div>
     <div class="ganonmq hidden"></div>
   </div>
-  <div class="ganonsk counters false"><div class="counter_text">0</div></div>
+  <div class="ganonsk counters false"><div class="counter_text small_counter_font">0</div></div>
   <div class="ganonbk toggle false"></div>
   <div class="gtgcycle cycle">
     <div class="gtgn true"></div>
     <div class="gtgmq hidden"></div>
   </div>
-  <div class="gtgsk counters false"><div class="counter_text">0</div></div>>
+  <div class="gtgsk counters false"><div class="counter_text small_counter_font">0</div></div>
 </div>
 
 
