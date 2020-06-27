@@ -55,7 +55,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   background-size: contain;
   width: 33px;
   height: 33px;
-  margin: 1.5px;
+  margin: 11.5px 1.5px 11.5px 1.5px;
 }
 
 .forestmed, .firemed, .watermed, .shadowmed, .spiritmed, .lightmed, .atrade0, .atrade1, .atrade2, .atrade3, .atrade4, .atrade5, .atrade6, .atrade7, .atrade8, .atrade9, 
@@ -92,9 +92,17 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   margin-left: 15px;
 }
 .forestsk, .forestbk, .firesk, .firebk, .watersk, .waterbk, .shadowsk, .shadowbk, .spiritsk, .spiritbk, .ganonsk, .ganonbk, .wellsk, .fortsk, .gtgsk {
+/* .forestbk, .firebk, .waterbk, .shadowbk, .spiritbk, .ganonbk { */
   display: inline-block;
   background-size: contain;
   width: 20px;
+  height: 20px;
+}
+
+.sk0, .sk1, .sk2, .sk3, .sk4, .sk5, .sk6, .sk7, .sk8, .sk9 {
+  display: inline-block;
+  background-size: contain;
+  width: 35px;
   height: 20px;
 }
 
@@ -105,6 +113,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   width: 50px;
   height: 50px;
   overflow: hidden;
+  font: 32px Arial, sans-serif;
 }
 
 /* Dungeon Labels */
@@ -240,6 +249,17 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 .fortsk { background-image: url(images/smallkey.png) }
 .gtgsk { background-image: url(images/smallkey.png) }
 
+.sk0 { background-image: url(images/smallkey0.png) }
+.sk1 { background-image: url(images/smallkey1.png) }
+.sk2 { background-image: url(images/smallkey2.png) }
+.sk3 { background-image: url(images/smallkey3.png) }
+.sk4 { background-image: url(images/smallkey4.png) }
+.sk5 { background-image: url(images/smallkey5.png) }
+.sk6 { background-image: url(images/smallkey6.png) }
+.sk7 { background-image: url(images/smallkey7.png) }
+.sk8 { background-image: url(images/smallkey8.png) }
+.sk9 { background-image: url(images/smallkey9.png) }
+
 </style>
 </head>
 
@@ -352,7 +372,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
       <div class="atrade9 hidden"></div>
       <div class="atrade10 hidden"></div>
     </div>
-    <div class="gst counters gstnumber"><p id='gst_counter' class="counter_text">0</p></div>
+    <div class="gst counters">0</div>
     <div class="emerald false toggle"></div>
     <div class="ruby false toggle"></div>
     <div class="sapphire false toggle"></div>
@@ -460,19 +480,41 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="forestn true"></div>
     <div class="forestmq hidden"></div>
   </div>
-  <div class="forestsk false"></div>
+  <!-- <div class="forestsk false"></div> -->
+  <div class="forestskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+  </div>
   <div class="forestbk toggle false"></div>
   <div class="shadowcycle cycle">
     <div class="shadown true"></div>
     <div class="shadowmq hidden"></div>
   </div>
-  <div class="shadowsk false"></div>
+  <div class="shadowskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+  </div>
   <div class="shadowbk toggle false"></div>
   <div class="wellcycle cycle">
     <div class="welln true"></div>
     <div class="wellmq hidden"></div>
   </div>
-  <div class="wellsk false"></div>
+  <div class="wellskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+  </div>
 </div>
 
 <!-- Second Row of Keys: Fire, Spirit, Fort -->
@@ -481,19 +523,44 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="firen true"></div>
     <div class="firemq hidden"></div>
   </div>
-  <div class="firesk false"></div>
+  <div class="fireskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+    <div class="sk7 hidden"></div>
+    <div class="sk8 hidden"></div>
+  </div>
   <div class="firebk toggle false"></div>
   <div class="spiritcycle cycle">
     <div class="spiritn true"></div>
     <div class="spiritmq hidden"></div>
   </div>
-  <div class="spiritsk false"></div>
+  <div class="spiritskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+    <div class="sk7 hidden"></div>
+  </div>
   <div class="spiritbk toggle false"></div>
   <div class="fortcycle cycle">
     <div class="fort1 true"></div>
     <div class="fort4 hidden"></div>
   </div>
-  <div class="fortsk false"></div>
+  <div class="fortskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+  </div>
 </div>
 
 <!-- Last Row of Keys: Water, Ganon, GTG -->
@@ -502,19 +569,43 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="watern true"></div>
     <div class="watermq hidden"></div>
   </div>
-  <div class="watersk false"></div>
+  <div class="waterskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+  </div>
   <div class="waterbk toggle false"></div>
   <div class="ganoncycle cycle">
     <div class="ganonn true"></div>
     <div class="ganonmq hidden"></div>
   </div>
-  <div class="ganonsk false"></div>
+  <div class="ganonskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+  </div>
   <div class="ganonbk toggle false"></div>
   <div class="gtgcycle cycle">
     <div class="gtgn true"></div>
     <div class="gtgmq hidden"></div>
   </div>
-  <div class="gtgsk false"></div>
+  <div class="gtgskcycle cycle noloop">
+    <div class="sk0 false"></div>
+    <div class="sk1 hidden"></div>
+    <div class="sk2 hidden"></div>
+    <div class="sk3 hidden"></div>
+    <div class="sk4 hidden"></div>
+    <div class="sk5 hidden"></div>
+    <div class="sk6 hidden"></div>
+    <div class="sk7 hidden"></div>
+    <div class="sk8 hidden"></div>
+    <div class="sk9 hidden"></div>
+  </div>
 </div>
 
 
@@ -546,9 +637,19 @@ dome.ready(function() {
   dome.get('#resetRoom').on('touchstart', resetFirebase);
   dome.get('#destroyRoom').on('click', destroyFirebase);
   dome.get('#destroyRoom').on('touchstart', destroyFirebase);
+  dome.get('.counters').on('click', increment_counter);
   dome.get('.gstnumber').on('click', increment_gst);
   dome.get('.gstnumber').on('contextmenu', decrement_gst);
 });
+
+function increment_counter() {
+  var curItem = this.classList.item(0); // Identify the counter class, e.g. gst
+  var curObj = document.getElementsByClassName(curItem)[0];
+  var curNum = curObj.innerHTML;
+  var newNum = curNum++;
+  // console.log(curNum++);
+  curObj.innerHTML = curNum++;
+}
 
 function increment_gst() {
   var gst_counter = document.getElementById('gst_counter');
@@ -574,6 +675,9 @@ function cycle(e) {
       var elToSet = children[i + 1];
       if(!elToSet) {
         elToSet = children[0];
+        if(this.classList.contains('noloop')) {
+          elToSet = children[i];
+        }
       }
       rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
       return;
@@ -591,6 +695,9 @@ function cycle_reverse(e) {
       var elToSet = children[i - 1];
       if(!elToSet) {
         elToSet = children[children.length-1];
+        if(this.classList.contains('noloop')) {
+          elToSet = children[0];
+        }
       }
       rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
       return;
