@@ -22,11 +22,18 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   color: white;
 }
 
+.counters {
+  display: inline-block;
+  color: white;
+  overflow: hidden;
+}
+
 .counter_text {
   background-color: black;
   color: white;
-  width: 20px;
+  display: inline-block;
   text-align: right;
+  visibility: hidden;
 }
 
 .room-controls {
@@ -96,15 +103,6 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   background-size: contain;
   width: 20px;
   height: 20px;
-}
-
-.counters {
-  display: inline-block;
-  color: white;
-  opacity: 1;
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
 }
 
 /* Dungeon Labels */
@@ -352,7 +350,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
       <div class="atrade9 hidden"></div>
       <div class="atrade10 hidden"></div>
     </div>
-    <div class="gst counters gstnumber"><p id='gst_counter' class="counter_text">0</p></div>
+    <div class="gst counters false"><div class="counter_text">0</div></div>
     <div class="emerald false toggle"></div>
     <div class="ruby false toggle"></div>
     <div class="sapphire false toggle"></div>
@@ -431,7 +429,7 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
       <div class="zoratunic hidden"></div>
       <div class="tunics hidden"></div>
     </div>
-    <div class="triforce false toggle"></div>
+    <div class="triforce counters false"><div class="counter_text">0</div></div>
   </div>
 
   <!-- Next Row: Child song tracking -->
@@ -460,19 +458,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="forestn true"></div>
     <div class="forestmq hidden"></div>
   </div>
-  <div class="forestsk false"></div>
+  <div class="forestsk counters false"><div class="counter_text">0</div></div>
   <div class="forestbk toggle false"></div>
   <div class="shadowcycle cycle">
     <div class="shadown true"></div>
     <div class="shadowmq hidden"></div>
   </div>
-  <div class="shadowsk false"></div>
+  <div class="shadowsk counters false"><div class="counter_text">0</div></div>
   <div class="shadowbk toggle false"></div>
   <div class="wellcycle cycle">
     <div class="welln true"></div>
     <div class="wellmq hidden"></div>
   </div>
-  <div class="wellsk false"></div>
+  <div class="wellsk counters false"><div class="counter_text">0</div></div>
 </div>
 
 <!-- Second Row of Keys: Fire, Spirit, Fort -->
@@ -481,19 +479,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="firen true"></div>
     <div class="firemq hidden"></div>
   </div>
-  <div class="firesk false"></div>
+  <div class="firesk counters false"><div class="counter_text">0</div></div>
   <div class="firebk toggle false"></div>
   <div class="spiritcycle cycle">
     <div class="spiritn true"></div>
     <div class="spiritmq hidden"></div>
   </div>
-  <div class="spiritsk false"></div>
+  <div class="spiritsk counters false"><div class="counter_text">0</div></div>
   <div class="spiritbk toggle false"></div>
   <div class="fortcycle cycle">
     <div class="fort1 true"></div>
     <div class="fort4 hidden"></div>
   </div>
-  <div class="fortsk false"></div>
+  <div class="fortsk counters false"><div class="counter_text">0</div></div>
 </div>
 
 <!-- Last Row of Keys: Water, Ganon, GTG -->
@@ -502,19 +500,19 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
     <div class="watern true"></div>
     <div class="watermq hidden"></div>
   </div>
-  <div class="watersk false"></div>
+  <div class="watersk counters false"><div class="counter_text">0</div></div>
   <div class="waterbk toggle false"></div>
   <div class="ganoncycle cycle">
     <div class="ganonn true"></div>
     <div class="ganonmq hidden"></div>
   </div>
-  <div class="ganonsk false"></div>
+  <div class="ganonsk counters false"><div class="counter_text">0</div></div>
   <div class="ganonbk toggle false"></div>
   <div class="gtgcycle cycle">
     <div class="gtgn true"></div>
     <div class="gtgmq hidden"></div>
   </div>
-  <div class="gtgsk false"></div>
+  <div class="gtgsk counters false"><div class="counter_text">0</div></div>>
 </div>
 
 
@@ -540,28 +538,31 @@ dome.ready(function() {
   dome.get('.cycle').on('click', cycle);
   dome.get('.toggle').on('contextmenu', toggle)
   dome.get('.cycle').on('contextmenu', cycle_reverse);
+  dome.get('.counters').on('click', count_up);
+  dome.get('.counters').on('contextmenu', count_down);
   dome.get('#setPasscode').on('click', setPasscode);
   dome.get('#setPasscode').on('touchstart', setPasscode);
   dome.get('#resetRoom').on('click', resetFirebase);
   dome.get('#resetRoom').on('touchstart', resetFirebase);
   dome.get('#destroyRoom').on('click', destroyFirebase);
   dome.get('#destroyRoom').on('touchstart', destroyFirebase);
-  dome.get('.gstnumber').on('click', increment_gst);
-  dome.get('.gstnumber').on('contextmenu', decrement_gst);
 });
 
-function increment_gst() {
-  var gst_counter = document.getElementById('gst_counter');
-  var number = gst_counter.innerHTML;
-  number++;
-  gst_counter.innerHTML = number;
+function count_up(e) {
+  e.preventDefault();
+  var curItem = this.classList.item(0);
+  var curCount = this.children[0].innerHTML;
+  curCount++;
+  rootRef.child('items').child(curItem).set(curCount);
 }
 
-function decrement_gst() {
-  var gst_counter = document.getElementById('gst_counter');
-  var number = gst_counter.innerHTML;
-  number--;
-  gst_counter.innerHTML = number;
+function count_down(e) {
+  e.preventDefault();
+  var curItem = this.classList.item(0);
+  var curCount = this.children[0].innerHTML
+  if (curCount == 0) return;
+  curCount--;
+  rootRef.child('items').child(curItem).set(curCount);
 }
 
 function cycle(e) {
@@ -620,12 +621,24 @@ function setItemState(item, state) {
       el.children[0].classList.remove('hidden');
     }
   }
-  else {
+  else if (el.classList.contains('toggle')){
     if(state) {
       el.classList.remove('false');
     } else {
       el.classList.add('false');
     }
+  }
+  else { // Counters
+	if (state) {
+      el.classList.remove('false');
+	  el.children[0].innerHTML = state;
+	  el.children[0].style.visibility = 'visible';
+	}
+	else {
+	  el.classList.add('false');
+	  el.children[0].innerHTML = 0;
+	  el.children[0].style.visibility = 'hidden';
+	}
   }
 }
 
