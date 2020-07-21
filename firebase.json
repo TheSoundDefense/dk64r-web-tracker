@@ -6,8 +6,12 @@
     "public": "public",
     "rewrites": [
       {
+        "source": "/horiz/**",
+        "destination": "/horiz-ootrr-tracker.html"
+      },
+      {
         "source": "/**",
-        "destination": "/ootrr-tracker.html"
+        "destination": "ootrr-tracker.html"
       }
     ],
     "ignore": [

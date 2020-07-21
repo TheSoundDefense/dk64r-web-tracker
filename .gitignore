@@ -10,3 +10,4 @@
 .firebase
 firebase-debug.log
 package-lock.json
+functions/
