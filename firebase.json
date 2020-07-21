@@ -11,7 +11,7 @@
       },
       {
         "source": "/**",
-        "destination": "ootrr-tracker.html"
+        "destination": "/ootrr-tracker.html"
       }
     ],
     "ignore": [
