@@ -16,6 +16,10 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
   opacity: 0.15;
 }
 
+.uicontent {
+  display:none;
+}
+
 #notInitialized {
   position: absolute;
   background: red;
@@ -548,13 +552,16 @@ body {margin:0;padding:0;border:0;background-color:rgb(16,16,16);-webkit-user-se
 </div>
 
 
-<div class="room-controls">
+<!-- Room controls -->
+<div id="room-controls-id", class="room-controls uicontent">
     <input id="passcode" type="text" placeholder="Passcode" />
     <button id="setPasscode">Initialize room w/passcode</button>
     <button id="resetRoom">Reset room</button>
-    <div id="ownerControls"><button id="destroyRoom">Destroy room</button></div>
-<script>
+    <div id="ownerControls"><button id="destroyRoom">Destroy room</button>
+</div>
 
+
+<script>
 // Custom "framework" to handle addClass and removeClass
 "function"!==typeof Array.prototype.indexOf&&(Array.prototype.indexOf=function(d){for(var a=0;a<this.length;a++)if(this[a]===d)return a;return-1});
 window.dome=function(){function d(a){for(var b=0;b<a.length;b++)this[b]=a[b];this.length=a.length}d.prototype.forEach=function(a){this.map(a);return this};d.prototype.map=function(a){for(var b=[],c=0;c<this.length;c++)b.push(a.call(this,this[c],c));return b};d.prototype.mapOne=function(a){a=this.map(a);return 1<a.length?a:a[0]};d.prototype.hasClass=function(a){return this.mapOne(function(b){return b.classList?b.classList.contains(a):!!b.className.match(new RegExp("(\\s|^)"+a+"(\\s|$)"))})};d.prototype.addClass=
