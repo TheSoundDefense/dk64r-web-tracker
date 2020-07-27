@@ -53,6 +53,7 @@ var cookieDefault = {
     items:defaultItemGrid
 }; */
 
+var roomCreated = false;
 var cookielock = false;
 function loadCookie() {
     if (cookielock)
@@ -589,6 +590,7 @@ function initTracker() {
       trackerData.items = snapshot.val();
         updateAll();
         document.getElementById('createRoomPanel').hidden = !!trackerData.items;
+        roomCreated = !!trackerData.items;
     });
     rootRef.child('dungeonchests').on('value', function(snapshot) {
         trackerData.dungeonchests = snapshot.val();
@@ -621,6 +623,41 @@ function initTracker() {
     rootRef.child('config').on('value', function(snapshot) {
        if(snapshot.val()) updateConfigFromFirebase(snapshot.val());
     });
+    setTimeout(() => {
+        if (g_password === "")
+            return;
+         console.log("Override password set, handle it");
+         if (roomCreated == false) //create room
+        {
+            console.log("attempt to create room");
+             var editors = {};
+            editors[uid] = true;
+             rootRef.set({
+                owner: uid,
+                editors: editors,
+                passcode: g_password,
+                items: itemsInit,
+                itemsMin: itemsMin,
+                itemsMax: itemsMax,
+                dungeonchests: dungeonchestsInit,
+                medallions: medallionsInit,
+                chestsopened: chestsopenedInit
+            });
+             console.log("Created new room due password set in url");
+        }
+        else //add to editors if room already exists
+        {
+            rootRef.child('editors').child(uid).set(g_password, function(error) {
+                if(error) {
+                    console.log("Did not add to editors on page load");
+                    console.log(error);
+                }
+                else {
+                    console.log("Added to editors successfully due password set in url");
+                }
+            });
+        }
+    }, 6000);
 }
 
 function updateAll() {
