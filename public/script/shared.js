@@ -3,7 +3,7 @@ var uid = undefined;
 var roomid = location.pathname.replace(/\/$/, "").split("/").pop().toLowerCase();
 var g_password = location.search.replace(/\/$/, "").split("?").pop().toLowerCase();
 
-if (g_password && g_password.length > 9 && g_password.includes("password=")) {
+if (g_password && g_password.length > 4 && g_password.includes("password=")) {
     g_password = g_password.substr(g_password.indexOf('=') + 1);
     console.log("Password override: ", g_password);
 } else 
