@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: rgb(16, 16, 16);
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Control hidden items */
+  .hidden {
+    display: none !important;
+  }
+
+  /* Opacity when an item is not collected */
+  .false {
+    opacity: 0.15;
+  }
+
+  /* Style for the room not initialized status message */
+  #notInitialized {
+    position: absolute;
+    background: red;
+    color: white;
+  }
+
+  /* Mark an item as a counter */
+  .counters {
+    display: inline-block;
+    color: white;
+    overflow: hidden;
+  }
+
+  /* Generic counter text style */
+  .counter_text {
+    display: inline-block;
+    visibility: hidden;
+    text-shadow: -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000, 2px 2px 2px #000;
+    color: white;
+    width: 100%;
+    text-align: right;
+  }
+
+  .room-controls {
+    margin: 20px;
+  }
+
+  .room-controls button {
+    margin: 10px 0;
+    display: block;
+  }
+
+  .tracker, .cycle, .toggle, .cycle div {
+    display: inline-block;
+  }

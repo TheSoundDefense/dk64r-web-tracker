@@ -7,47 +7,10 @@
   <script src="/__/firebase/4.2.0/firebase-database.js"></script>
   <script src="/__/firebase/init.js"></script>
   <script src="/script/shared.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/items.css">
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background-color: rgb(16, 16, 16);
-      -webkit-user-select: none;
-      -moz-user-select: -moz-none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .false {
-      opacity: 0.15;
-    }
-
-    #notInitialized {
-      position: absolute;
-      background: red;
-      color: white;
-    }
-
-    .counters {
-      display: inline-block;
-      color: white;
-      overflow: hidden;
-    }
-
-    .counter_text {
-      display: inline-block;
-      visibility: hidden;
-      text-shadow: -2px -2px 2px #000, 2px -2px 2px #000, -2px 2px 2px #000, 2px 2px 2px #000;
-      color: white;
-      width: 100%;
-      text-align: right;
-    }
-
     .big_counter_font {
       font: 24px Impact, sans-serif;
       opacity: 0.75;
@@ -58,32 +21,7 @@
       opacity: 1;
     }
 
-    .room-controls {
-      margin: 20px;
-    }
-
-    .room-controls button {
-      margin: 10px 0;
-      display: block;
-    }
-
-    .tracker,
-    .cycle,
-    .toggle,
-    .cycle div {
-      display: inline-block;
-    }
-
-    .unknowntext,
-    .freetext,
-    .dekutext,
-    .dctext,
-    .jabutext,
-    .foresttext,
-    .firetext,
-    .watertext,
-    .shadowtext,
-    .spirittext {
+    .rewardtext {
       display: inline-block;
       background-size: contain;
       width: 50px;
@@ -91,9 +29,7 @@
       margin: 3px;
     }
 
-    .emerald,
-    .ruby,
-    .sapphire {
+    .stones {
       display: inline-block;
       background-size: contain;
       width: 33px;
@@ -101,84 +37,7 @@
       margin: 11.5px 1.5px 11.5px 1.5px;
     }
 
-    .forestmed,
-    .firemed,
-    .watermed,
-    .shadowmed,
-    .spiritmed,
-    .lightmed,
-    .atrade0,
-    .atrade1,
-    .atrade2,
-    .atrade3,
-    .atrade4,
-    .atrade5,
-    .atrade6,
-    .atrade7,
-    .atrade8,
-    .atrade9,
-    .atrade10,
-    .gst,
-    .nobottle,
-    .bottle,
-    .bottleletter,
-    .scale0,
-    .scale1,
-    .scale2,
-    .slingshot,
-    .bombbag,
-    .boomerang,
-    .str0,
-    .str1,
-    .str2,
-    .str3,
-    .lens,
-    .nospells,
-    .dins,
-    .farores,
-    .dinsfarores,
-    .nohook,
-    .hookshot,
-    .longshot,
-    .bow,
-    .nomagicarrows,
-    .firearrows,
-    .lightarrows,
-    .magicarrows,
-    .hammer,
-    .noboots,
-    .ironboots,
-    .hoverboots,
-    .boots,
-    .mirrorshield,
-    .ctrade0,
-    .ctrade1,
-    .ctrade2,
-    .ctrade3,
-    .ctrade4,
-    .ocarina,
-    .beans,
-    .noswordcard,
-    .koksword,
-    .gerudocard,
-    .swordcard,
-    .notunics,
-    .gorontunic,
-    .zoratunic,
-    .tunics,
-    .triforce,
-    .zl,
-    .epona,
-    .saria,
-    .sunsong,
-    .songoftime,
-    .storms,
-    .minuet,
-    .bolero,
-    .serenade,
-    .nocturne,
-    .requiem,
-    .prelude {
+    .majoritem {
       display: inline-block;
       background-size: contain;
       width: 50px;
@@ -186,12 +45,7 @@
       margin: 3px;
     }
 
-    .forestn,
-    .forestmq,
-    .firen,
-    .firemq,
-    .watern,
-    .watermq {
+    .dungname-col1 {
       display: inline-block;
       background-size: contain;
       width: 60px;
@@ -199,12 +53,7 @@
       margin-left: 15px;
     }
 
-    .shadown,
-    .shadowmq,
-    .spiritn,
-    .spiritmq,
-    .ganonn,
-    .ganonmq {
+    .dungname-col2 {
       display: inline-block;
       background-size: contain;
       width: 75px;
@@ -212,12 +61,7 @@
       margin-left: 15px;
     }
 
-    .welln,
-    .wellmq,
-    .fort1,
-    .fort4,
-    .gtgn,
-    .gtgmq {
+    .dungname-col3 {
       display: inline-block;
       background-size: contain;
       width: 45px;
@@ -225,1108 +69,514 @@
       margin-left: 15px;
     }
 
-    .forestsk,
-    .forestbk,
-    .firesk,
-    .firebk,
-    .watersk,
-    .waterbk,
-    .shadowsk,
-    .shadowbk,
-    .spiritsk,
-    .spiritbk,
-    .ganonsk,
-    .ganonbk,
-    .wellsk,
-    .fortsk,
-    .gtgsk {
-      /* .forestbk, .firebk, .waterbk, .shadowbk, .spiritbk, .ganonbk { */
+    .keys {
       display: inline-block;
       background-size: contain;
       width: 20px;
       height: 20px;
     }
 
-    /* Dungeon Labels */
-    .unknowntext {
-      background-image: url(images/unknown_text.png)
-    }
-
-    .freetext {
-      background-image: url(images/free_text.png)
-    }
-
-    .dekutext {
-      background-image: url(images/deku_text.png)
-    }
-
-    .dctext {
-      background-image: url(images/dc_text.png)
-    }
-
-    .jabutext {
-      background-image: url(images/jabu_text.png)
-    }
-
-    .foresttext {
-      background-image: url(images/forest_text.png)
-    }
-
-    .firetext {
-      background-image: url(images/fire_text.png)
-    }
-
-    .watertext {
-      background-image: url(images/water_text.png)
-    }
-
-    .shadowtext {
-      background-image: url(images/shadow_text.png)
-    }
-
-    .spirittext {
-      background-image: url(images/spirit_text.png)
-    }
-
-    /* Tracker Items */
-    .emerald {
-      background-image: url(images/kokiri_emerald.png)
-    }
-
-    .ruby {
-      background-image: url(images/goron_ruby.png)
-    }
-
-    .sapphire {
-      background-image: url(images/zora_sapphire.png)
-    }
-
-    .forestmed {
-      background-image: url(images/forest_medallion.png)
-    }
-
-    .firemed {
-      background-image: url(images/fire_medallion.png)
-    }
-
-    .watermed {
-      background-image: url(images/water_medallion.png)
-    }
-
-    .shadowmed {
-      background-image: url(images/shadow_medallion.png)
-    }
-
-    .spiritmed {
-      background-image: url(images/spirit_medallion.png)
-    }
-
-    .lightmed {
-      background-image: url(images/light_medallion.png)
-    }
-
-    .atrade0 {
-      background-image: url(images/blue_egg.png)
-    }
-
-    .atrade1 {
-      background-image: url(images/blue_egg.png)
-    }
-
-    .atrade2 {
-      background-image: url(images/cojiro.png)
-    }
-
-    .atrade3 {
-      background-image: url(images/odd_mushroom.png)
-    }
-
-    .atrade4 {
-      background-image: url(images/odd_poultice.png)
-    }
-
-    .atrade5 {
-      background-image: url(images/poachers_saw.png)
-    }
-
-    .atrade6 {
-      background-image: url(images/broken_sword.png)
-    }
-
-    .atrade7 {
-      background-image: url(images/prescription.png)
-    }
-
-    .atrade8 {
-      background-image: url(images/eyeball_frog.png)
-    }
-
-    .atrade9 {
-      background-image: url(images/eye_drops.png)
-    }
-
-    .atrade10 {
-      background-image: url(images/claim_check.png)
-    }
-
-    .gst {
-      background-image: url(images/golden_skulltula.png)
-    }
-
-    .nobottle {
-      background-image: url(images/bottle.png)
-    }
-
-    .bottle {
-      background-image: url(images/bottle.png)
-    }
-
-    .bottleletter {
-      background-image: url(images/bottle_letter.png)
-    }
-
-    .scale0 {
-      background-image: url(images/silver_scale.png)
-    }
-
-    .scale1 {
-      background-image: url(images/silver_scale.png)
-    }
-
-    .scale2 {
-      background-image: url(images/gold_scale.png)
-    }
-
-    .slingshot {
-      background-image: url(images/slingshot.png)
-    }
-
-    .bombbag {
-      background-image: url(images/bomb_bag.png)
-    }
-
-    .boomerang {
-      background-image: url(images/boomerang.png)
-    }
-
-    .str0 {
-      background-image: url(images/goron_bracelet.png)
-    }
-
-    .str1 {
-      background-image: url(images/goron_bracelet.png)
-    }
-
-    .str2 {
-      background-image: url(images/silver_gauntlets.png)
-    }
-
-    .str3 {
-      background-image: url(images/gold_gauntlets.png)
-    }
-
-    .lens {
-      background-image: url(images/lens.png)
-    }
-
-    .nospells {
-      background-image: url(images/composite_magic.png)
-    }
-
-    .dins {
-      background-image: url(images/dins_fire.png)
-    }
-
-    .farores {
-      background-image: url(images/faores_wind.png)
-    }
-
-    .dinsfarores {
-      background-image: url(images/composite_magic.png)
-    }
-
-    .nohook {
-      background-image: url(images/hookshot.png)
-    }
-
-    .hookshot {
-      background-image: url(images/hookshot.png)
-    }
-
-    .longshot {
-      background-image: url(images/longshot.png)
-    }
-
-    .bow {
-      background-image: url(images/bow.png)
-    }
-
-    .nomagicarrows {
-      background-image: url(images/composite_arrows.png)
-    }
-
-    .firearrows {
-      background-image: url(images/fire_arrows.png)
-    }
-
-    .lightarrows {
-      background-image: url(images/light_arrows.png)
-    }
-
-    .magicarrows {
-      background-image: url(images/composite_arrows.png)
-    }
-
-    .hammer {
-      background-image: url(images/hammer.png)
-    }
-
-    .noboots {
-      background-image: url(images/composite_boots.png)
-    }
-
-    .ironboots {
-      background-image: url(images/iron_boots.png)
-    }
-
-    .hoverboots {
-      background-image: url(images/hover_boots.png)
-    }
-
-    .boots {
-      background-image: url(images/composite_boots.png)
-    }
-
-    .mirrorshield {
-      background-image: url(images/mirror_shield.png)
-    }
-
-    .ctrade0 {
-      background-image: url(images/white_egg.png)
-    }
-
-    .ctrade1 {
-      background-image: url(images/white_egg.png)
-    }
-
-    .ctrade2 {
-      background-image: url(images/zelda_letter.png)
-    }
-
-    .ctrade3 {
-      background-image: url(images/keaton_mask.png)
-    }
-
-    .ctrade4 {
-      background-image: url(images/skull_mask.png)
-    }
-
-    .ocarina {
-      background-image: url(images/ocarina.png)
-    }
-
-    .beans {
-      background-image: url(images/beans.png)
-    }
-
-    .noswordcard {
-      background-image: url(images/composite_ksword_gcard.png)
-    }
-
-    .koksword {
-      background-image: url(images/kokiri_sword.png)
-    }
-
-    .gerudocard {
-      background-image: url(images/gerudo_card.png)
-    }
-
-    .swordcard {
-      background-image: url(images/composite_ksword_gcard.png)
-    }
-
-    .notunics {
-      background-image: url(images/composite_tunics.png)
-    }
-
-    .gorontunic {
-      background-image: url(images/goron_tunic.png)
-    }
-
-    .zoratunic {
-      background-image: url(images/zora_tunic.png)
-    }
-
-    .tunics {
-      background-image: url(images/composite_tunics.png)
-    }
-
-    .triforce {
-      background-image: url(images/triforce.png)
-    }
-
-    /* Song Tracking */
-    .zl {
-      background-image: url(images/lullaby.png)
-    }
-
-    .epona {
-      background-image: url(images/epona.png)
-    }
-
-    .saria {
-      background-image: url(images/saria.png)
-    }
-
-    .sunsong {
-      background-image: url(images/sun.png)
-    }
-
-    .songoftime {
-      background-image: url(images/time.png)
-    }
-
-    .storms {
-      background-image: url(images/storms.png)
-    }
-
-    .minuet {
-      background-image: url(images/minuet.png)
-    }
-
-    .bolero {
-      background-image: url(images/bolero.png)
-    }
-
-    .serenade {
-      background-image: url(images/serenade.png)
-    }
-
-    .nocturne {
-      background-image: url(images/nocturne.png)
-    }
-
-    .requiem {
-      background-image: url(images/requiem.png)
-    }
-
-    .prelude {
-      background-image: url(images/prelude.png)
-    }
-
-    /* Dungeon names for keys */
-    .forestn {
-      background-image: url(images/forest_normal.png)
-    }
-
-    .forestmq {
-      background-image: url(images/forest_mq.png)
-    }
-
-    .firen {
-      background-image: url(images/fire_normal.png)
-    }
-
-    .firemq {
-      background-image: url(images/fire_mq.png)
-    }
-
-    .watern {
-      background-image: url(images/water_normal.png)
-    }
-
-    .watermq {
-      background-image: url(images/water_mq.png)
-    }
-
-    .shadown {
-      background-image: url(images/shadow_normal.png)
-    }
-
-    .shadowmq {
-      background-image: url(images/shadow_mq.png)
-    }
-
-    .spiritn {
-      background-image: url(images/spirit_normal.png)
-    }
-
-    .spiritmq {
-      background-image: url(images/spirit_mq.png)
-    }
-
-    .ganonn {
-      background-image: url(images/ganon_normal.png)
-    }
-
-    .ganonmq {
-      background-image: url(images/ganon_mq.png)
-    }
-
-    .welln {
-      background-image: url(images/well_normal.png)
-    }
-
-    .wellmq {
-      background-image: url(images/well_mq.png)
-    }
-
-    .fort1 {
-      background-image: url(images/fortress_quick.png)
-    }
-
-    .fort4 {
-      background-image: url(images/fortress_full.png)
-    }
-
-    .gtgn {
-      background-image: url(images/gtg_normal.png)
-    }
-
-    .gtgmq {
-      background-image: url(images/gtg_mq.png)
-    }
-
-    /* Dungeon Keys */
-    .forestsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .forestbk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .firesk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .firebk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .watersk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .waterbk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .shadowsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .shadowbk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .spiritsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .spiritbk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .ganonsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .ganonbk {
-      background-image: url(images/bosskey.png)
-    }
-
-    .wellsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .fortsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .gtgsk {
-      background-image: url(images/smallkey.png)
-    }
-
-    .sk0 {
-      background-image: url(images/smallkey0.png)
-    }
-
-    .sk1 {
-      background-image: url(images/smallkey1.png)
-    }
-
-    .sk2 {
-      background-image: url(images/smallkey2.png)
-    }
-
-    .sk3 {
-      background-image: url(images/smallkey3.png)
-    }
-
-    .sk4 {
-      background-image: url(images/smallkey4.png)
-    }
-
-    .sk5 {
-      background-image: url(images/smallkey5.png)
-    }
-
-    .sk6 {
-      background-image: url(images/smallkey6.png)
-    }
-
-    .sk7 {
-      background-image: url(images/smallkey7.png)
-    }
-
-    .sk8 {
-      background-image: url(images/smallkey8.png)
-    }
-
-    .sk9 {
-      background-image: url(images/smallkey9.png)
-    }
+  .hookshot { background-image: url(../images/hookshot.png) }
+  .longshot { background-image: url(../images/longshot.png) }
   </style>
 </head>
 
 <body>
 
-  <body>
-    <div id="notInitialized">
-      <h2>Room not initialized</h2>
+  <div id="notInitialized">
+    <h2>Room not initialized</h2>
+  </div>
+  <div class="tracker">
+
+    <!-- Next Row: Medallion Labels -->
+    <div class="row">
+      <div class="formedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
+      <div class="firemedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
+      <div class="watmedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
+      <div class="shamedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
+      <div class="spmedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
+      <div class="limedlabel cycle">
+        <div class="unknowntext rewardtext true"></div>
+        <div class="dekutext rewardtext hidden"></div>
+        <div class="dctext rewardtext hidden"></div>
+        <div class="jabutext rewardtext hidden"></div>
+        <div class="foresttext rewardtext hidden"></div>
+        <div class="firetext rewardtext hidden"></div>
+        <div class="watertext rewardtext hidden"></div>
+        <div class="shadowtext rewardtext hidden"></div>
+        <div class="spirittext rewardtext hidden"></div>
+        <div class="freetext rewardtext hidden"></div>
+      </div>
     </div>
-    <div class="tracker">
-
-      <!-- Next Row: Medallion Labels -->
-      <div class="row">
-        <div class="formedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-        <div class="firemedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-        <div class="watmedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-        <div class="shamedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-        <div class="spmedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-        <div class="limedlabel cycle">
-          <div class="unknowntext true"></div>
-          <div class="dekutext hidden"></div>
-          <div class="dctext hidden"></div>
-          <div class="jabutext hidden"></div>
-          <div class="foresttext hidden"></div>
-          <div class="firetext hidden"></div>
-          <div class="watertext hidden"></div>
-          <div class="shadowtext hidden"></div>
-          <div class="spirittext hidden"></div>
-          <div class="freetext hidden"></div>
-        </div>
-      </div>
 
 
-      <!-- Next Row: Medallions -->
-      <div class="row">
-        <div class="forestmed false toggle"></div>
-        <div class="firemed false toggle"></div>
-        <div class="watermed false toggle"></div>
-        <div class="shadowmed false toggle"></div>
-        <div class="spiritmed false toggle"></div>
-        <div class="lightmed false toggle"></div>
-      </div>
-
-      <!-- Next Row: Atrade, Skulls, Stones, Bottle, Scale -->
-      <div class="row">
-        <div class="atrade cycle noloop">
-          <div class="atrade0 false"></div>
-          <div class="atrade1 hidden"></div>
-          <div class="atrade2 hidden"></div>
-          <div class="atrade3 hidden"></div>
-          <div class="atrade4 hidden"></div>
-          <div class="atrade5 hidden"></div>
-          <div class="atrade6 hidden"></div>
-          <div class="atrade7 hidden"></div>
-          <div class="atrade8 hidden"></div>
-          <div class="atrade9 hidden"></div>
-          <div class="atrade10 hidden"></div>
-        </div>
-        <div class="gst counters false">
-          <div class="counter_text big_counter_font">0</div>
-        </div>
-        <div class="emerald false toggle"></div>
-        <div class="ruby false toggle"></div>
-        <div class="sapphire false toggle"></div>
-        <div class="bottlecycle cycle noloop">
-          <div class="nobottle false "></div>
-          <div class="bottle hidden"></div>
-          <div class="bottleletter hidden"></div>
-        </div>
-        <div class="scalecycle cycle noloop">
-          <div class="scale0 false"></div>
-          <div class="scale1 hidden"></div>
-          <div class="scale2 hidden"></div>
-        </div>
-      </div>
-
-      <!-- Next Row: Slingshot, Bombs, Rang, Str, Lens, Spells -->
-      <div class="row">
-        <div class="slingshot false toggle"></div>
-        <div class="bombbag false toggle"></div>
-        <div class="boomerang false toggle"></div>
-        <div class="strcycle cycle noloop">
-          <div class="str0 false"></div>
-          <div class="str1 hidden"></div>
-          <div class="str2 hidden"></div>
-          <div class="str3 hidden"></div>
-        </div>
-        <div class="lens false toggle"></div>
-        <div class="spellcycle cycle noloop">
-          <div class="nospells false"></div>
-          <div class="dins hidden"></div>
-          <div class="farores hidden"></div>
-          <div class="dinsfarores hidden"></div>
-        </div>
-      </div>
-
-      <!-- Next Row: Hookshot, Bow, Arrows, Hammer, Boots, Mirror Shield -->
-      <div class="row">
-        <div class="hslscycle cycle noloop">
-          <div class="nohook false"></div>
-          <div class="hookshot hidden"></div>
-          <div class="longshot hidden"></div>
-        </div>
-        <div class="bow false toggle"></div>
-        <div class="compositearrows cycle noloop">
-          <div class="nomagicarrows false"></div>
-          <div class="firearrows hidden"></div>
-          <div class="lightarrows hidden"></div>
-          <div class="magicarrows hidden"></div>
-        </div>
-        <div class="hammer false toggle"></div>
-        <div class="bootcycle cycle noloop">
-          <div class="noboots false"></div>
-          <div class="ironboots hidden"></div>
-          <div class="hoverboots hidden"></div>
-          <div class="boots hidden"></div>
-        </div>
-        <div class="mirrorshield false toggle"></div>
-      </div>
-
-      <!-- Next Row: Child Trade, Ocarina, Beans, Ksword/Gcard, Tunics, Triforce -->
-      <div class="row">
-        <div class="ctrade cycle noloop">
-          <div class="ctrade0 false"></div>
-          <div class="ctrade1 hidden"></div>
-          <div class="ctrade2 hidden"></div>
-          <div class="ctrade3 hidden"></div>
-          <div class="ctrade4 hidden"></div>
-        </div>
-        <div class="ocarina false toggle"></div>
-        <div class="beans false toggle"></div>
-        <div class="dungeonopeners cycle noloop">
-          <div class="noswordcard false"></div>
-          <div class="koksword hidden"></div>
-          <div class="gerudocard hidden"></div>
-          <div class="swordcard hidden"></div>
-        </div>
-        <div class="tuniccycle cycle noloop">
-          <div class="notunics false"></div>
-          <div class="gorontunic hidden"></div>
-          <div class="zoratunic hidden"></div>
-          <div class="tunics hidden"></div>
-        </div>
-        <div class="triforce counters false">
-          <div class="counter_text big_counter_font">0</div>
-        </div>
-      </div>
-
-      <!-- Next Row: Child song tracking -->
-      <div class="row">
-        <div class="zl toggle false"></div>
-        <div class="epona toggle false"></div>
-        <div class="saria toggle false"></div>
-        <div class="sunsong toggle false"></div>
-        <div class="songoftime toggle false"></div>
-        <div class="storms toggle false"></div>
-      </div>
-
-      <!-- Next Row: Warp Songs -->
-      <div class="row">
-        <div class="minuet toggle false"></div>
-        <div class="bolero toggle false"></div>
-        <div class="serenade toggle false"></div>
-        <div class="nocturne toggle false"></div>
-        <div class="requiem toggle false"></div>
-        <div class="prelude toggle false"></div>
-      </div>
-
-      <!-- First Row of Keys: Forest, Shadow, Well -->
-      <div class="row">
-        <div class="forestcycle cycle">
-          <div class="forestn true"></div>
-          <div class="forestmq hidden"></div>
-        </div>
-        <div class="forestsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="forestbk toggle false"></div>
-        <div class="shadowcycle cycle">
-          <div class="shadown true"></div>
-          <div class="shadowmq hidden"></div>
-        </div>
-        <div class="shadowsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="shadowbk toggle false"></div>
-        <div class="wellcycle cycle">
-          <div class="welln true"></div>
-          <div class="wellmq hidden"></div>
-        </div>
-        <div class="wellsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-      </div>
-
-      <!-- Second Row of Keys: Fire, Spirit, Fort -->
-      <div class="row">
-        <div class="firecycle cycle">
-          <div class="firen true"></div>
-          <div class="firemq hidden"></div>
-        </div>
-        <div class="firesk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="firebk toggle false"></div>
-        <div class="spiritcycle cycle">
-          <div class="spiritn true"></div>
-          <div class="spiritmq hidden"></div>
-        </div>
-        <div class="spiritsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="spiritbk toggle false"></div>
-        <div class="fortcycle cycle">
-          <div class="fort1 true"></div>
-          <div class="fort4 hidden"></div>
-        </div>
-        <div class="fortsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-      </div>
-
-      <!-- Last Row of Keys: Water, Ganon, GTG -->
-      <div class="row">
-        <div class="watercycle cycle">
-          <div class="watern true"></div>
-          <div class="watermq hidden"></div>
-        </div>
-        <div class="watersk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="waterbk toggle false"></div>
-        <div class="ganoncycle cycle">
-          <div class="ganonn true"></div>
-          <div class="ganonmq hidden"></div>
-        </div>
-        <div class="ganonsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-        <div class="ganonbk toggle false"></div>
-        <div class="gtgcycle cycle">
-          <div class="gtgn true"></div>
-          <div class="gtgmq hidden"></div>
-        </div>
-        <div class="gtgsk counters false">
-          <div class="counter_text small_counter_font">0</div>
-        </div>
-      </div>
-
-
+    <!-- Next Row: Medallions -->
+    <div class="row">
+      <div class="forestmed majoritem false toggle"></div>
+      <div class="firemed majoritem false toggle"></div>
+      <div class="watermed majoritem false toggle"></div>
+      <div class="shadowmed majoritem false toggle"></div>
+      <div class="spiritmed majoritem false toggle"></div>
+      <div class="lightmed majoritem false toggle"></div>
     </div>
-    <div class="room-controls">
-      <input id="passcode" type="text" placeholder="Passcode" />
-      <button id="setPasscode">Initialize room w/passcode</button>
-      <button id="resetRoom">Reset room</button>
-      <div id="ownerControls"><button id="destroyRoom">Destroy room</button></div>
-      <script>
 
-        // Custom "framework" to handle addClass and removeClass
-        "function" !== typeof Array.prototype.indexOf && (Array.prototype.indexOf = function (d) { for (var a = 0; a < this.length; a++)if (this[a] === d) return a; return -1 });
-        window.dome = function () {
-          function d(a) { for (var b = 0; b < a.length; b++)this[b] = a[b]; this.length = a.length } d.prototype.forEach = function (a) { this.map(a); return this }; d.prototype.map = function (a) { for (var b = [], c = 0; c < this.length; c++)b.push(a.call(this, this[c], c)); return b }; d.prototype.mapOne = function (a) { a = this.map(a); return 1 < a.length ? a : a[0] }; d.prototype.hasClass = function (a) { return this.mapOne(function (b) { return b.classList ? b.classList.contains(a) : !!b.className.match(new RegExp("(\\s|^)" + a + "(\\s|$)")) }) }; d.prototype.addClass =
-            function (a) { var b = ""; if ("string" !== typeof a) for (var c = 0; c < a.length; c++)b += " " + a[c]; else b = " " + a; return this.forEach(function (a) { a.className += b }) }; d.prototype.removeClass = function (a) { return this.forEach(function (b) { for (var c = b.className.split(" "), d; -1 < (d = c.indexOf(a));)c = c.slice(0, d).concat(c.slice(++d)); b.className = c.join(" ") }) }; d.prototype.attr = function (a, b) { return "undefined" !== typeof b ? this.forEach(function (c) { c.setAttribute(a, b) }) : this.mapOne(function (b) { return b.getAttribute(a) }) }; d.prototype.on =
-              function () { return document.addEventListener ? function (a, b) { return this.forEach(function (c) { c.addEventListener(a, b, !1) }) } : document.attachEvent ? function (a, b) { return this.forEach(function (c) { c.attachEvent("on" + a, b) }) } : function (a, b) { return this.forEach(function (c) { c["on" + a] = b }) } }(); d.prototype.off = function () {
-                return document.removeEventListener ? function (a, b) { return this.forEach(function (c) { c.removeEventListener(a, b, !1) }) } : document.detachEvent ? function (a, b) {
-                  return this.forEach(function (c) {
-                    c.detachEvent("on" +
-                      a, b)
-                  })
-                } : function (a, b) { return this.forEach(function (b) { b["on" + a] = null }) }
-              }(); return { get: function (a) { a = "string" === typeof a ? document.querySelectorAll(a) : a.length ? a : [a]; return new d(a) }, ready: function (a) { "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a) } }
-        }();
+    <!-- Next Row: Atrade, Skulls, Stones, Bottle, Scale -->
+    <div class="row">
+      <div class="atrade cycle noloop">
+        <div class="atrade0 majoritem false"></div>
+        <div class="atrade1 majoritem hidden"></div>
+        <div class="atrade2 majoritem hidden"></div>
+        <div class="atrade3 majoritem hidden"></div>
+        <div class="atrade4 majoritem hidden"></div>
+        <div class="atrade5 majoritem hidden"></div>
+        <div class="atrade6 majoritem hidden"></div>
+        <div class="atrade7 majoritem hidden"></div>
+        <div class="atrade8 majoritem hidden"></div>
+        <div class="atrade9 majoritem hidden"></div>
+        <div class="atrade10 majoritem hidden"></div>
+      </div>
+      <div class="gst majoritem counters false">
+        <div class="counter_text big_counter_font">0</div>
+      </div>
+      <div class="emerald stones false toggle"></div>
+      <div class="ruby stones false toggle"></div>
+      <div class="sapphire stones false toggle"></div>
+      <div class="bottlecycle cycle noloop">
+        <div class="nobottle majoritem false "></div>
+        <div class="bottle majoritem hidden"></div>
+        <div class="bottleletter majoritem hidden"></div>
+      </div>
+      <div class="scalecycle cycle noloop">
+        <div class="scale0 majoritem false"></div>
+        <div class="scale1 majoritem hidden"></div>
+        <div class="scale2 majoritem hidden"></div>
+      </div>
+    </div>
+
+    <!-- Next Row: Slingshot, Bombs, Rang, Str, Lens, Spells -->
+    <div class="row">
+      <div class="slingshot majoritem false toggle"></div>
+      <div class="bombbag majoritem false toggle"></div>
+      <div class="boomerang majoritem false toggle"></div>
+      <div class="strcycle cycle noloop">
+        <div class="str0 majoritem false"></div>
+        <div class="str1 majoritem hidden"></div>
+        <div class="str2 majoritem hidden"></div>
+        <div class="str3 majoritem hidden"></div>
+      </div>
+      <div class="lens majoritem false toggle"></div>
+      <div class="spellcycle cycle noloop">
+        <div class="nospells majoritem false"></div>
+        <div class="dins majoritem hidden"></div>
+        <div class="farores majoritem hidden"></div>
+        <div class="dinsfarores majoritem hidden"></div>
+      </div>
+    </div>
+
+    <!-- Next Row: Hookshot, Bow, Arrows, Hammer, Boots, Mirror Shield -->
+    <div class="row">
+      <div class="hslscycle cycle noloop">
+        <div class="nohook majoritem false"></div>
+        <div class="hookshot majoritem hidden"></div>
+        <div class="longshot majoritem hidden"></div>
+      </div>
+      <div class="bow majoritem false toggle"></div>
+      <div class="compositearrows cycle noloop">
+        <div class="nomagicarrows majoritem false"></div>
+        <div class="firearrows majoritem hidden"></div>
+        <div class="lightarrows majoritem hidden"></div>
+        <div class="magicarrows majoritem hidden"></div>
+      </div>
+      <div class="hammer majoritem false toggle"></div>
+      <div class="bootcycle cycle noloop">
+        <div class="noboots majoritem false"></div>
+        <div class="ironboots majoritem hidden"></div>
+        <div class="hoverboots majoritem hidden"></div>
+        <div class="boots majoritem hidden"></div>
+      </div>
+      <div class="mirrorshield majoritem false toggle"></div>
+    </div>
+
+    <!-- Next Row: Child Trade, Ocarina, Beans, Ksword/Gcard, Tunics, Triforce -->
+    <div class="row">
+      <div class="ctrade cycle noloop">
+        <div class="ctrade0 majoritem false"></div>
+        <div class="ctrade1 majoritem hidden"></div>
+        <div class="ctrade2 majoritem hidden"></div>
+        <div class="ctrade3 majoritem hidden"></div>
+        <div class="ctrade4 majoritem hidden"></div>
+      </div>
+      <div class="ocarina majoritem false toggle"></div>
+      <div class="beans majoritem false toggle"></div>
+      <div class="dungeonopeners cycle noloop">
+        <div class="noswordcard majoritem false"></div>
+        <div class="koksword majoritem hidden"></div>
+        <div class="gerudocard majoritem hidden"></div>
+        <div class="swordcard majoritem hidden"></div>
+      </div>
+      <div class="tuniccycle cycle noloop">
+        <div class="notunics majoritem false"></div>
+        <div class="gorontunic majoritem hidden"></div>
+        <div class="zoratunic majoritem hidden"></div>
+        <div class="tunics majoritem hidden"></div>
+      </div>
+      <div class="triforce majoritem counters false">
+        <div class="counter_text big_counter_font">0</div>
+      </div>
+    </div>
+
+    <!-- Next Row: Child song tracking -->
+    <div class="row">
+      <div class="zl majoritem toggle false"></div>
+      <div class="epona majoritem toggle false"></div>
+      <div class="saria majoritem toggle false"></div>
+      <div class="sunsong majoritem toggle false"></div>
+      <div class="songoftime majoritem toggle false"></div>
+      <div class="storms majoritem toggle false"></div>
+    </div>
+
+    <!-- Next Row: Warp Songs -->
+    <div class="row">
+      <div class="minuet majoritem toggle false"></div>
+      <div class="bolero majoritem toggle false"></div>
+      <div class="serenade majoritem toggle false"></div>
+      <div class="nocturne majoritem toggle false"></div>
+      <div class="requiem majoritem toggle false"></div>
+      <div class="prelude majoritem toggle false"></div>
+    </div>
+
+    <!-- First Row of Keys: Forest, Shadow, Well -->
+    <div class="row">
+      <div class="forestcycle cycle"><div class="forestn dungname-col1 true"></div><div class="forestmq dungname-col1 hidden"></div></div>
+      <div class="forestsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="forestbk keys toggle false"></div>
+
+      <div class="shadowcycle cycle"><div class="shadown dungname-col2 true"></div><div class="shadowmq dungname-col2 hidden"></div></div>
+      <div class="shadowsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="shadowbk keys toggle false"></div>
+
+      <div class="wellcycle cycle"><div class="welln dungname-col3 true"></div><div class="wellmq dungname-col3 hidden"></div></div>
+      <div class="wellsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+    </div>
+
+    <!-- Second Row of Keys: Fire, Spirit, Fort -->
+    <div class="row">
+      <div class="firecycle cycle"><div class="firen dungname-col1 true"></div><div class="firemq dungname-col1 hidden"></div></div>
+      <div class="firesk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="firebk keys toggle false"></div>
+
+      <div class="spiritcycle cycle"><div class="spiritn dungname-col2 true"></div><div class="spiritmq dungname-col2 hidden"></div></div>
+      <div class="spiritsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="spiritbk keys toggle false"></div>
+
+      <div class="fortcycle cycle"><div class="fort1 dungname-col3 true"></div><div class="fort4 dungname-col3 hidden"></div></div>
+      <div class="fortsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+    </div>
+
+    <!-- Last Row of Keys: Water, Ganon, GTG -->
+    <div class="row">
+      <div class="watercycle cycle"><div class="watern dungname-col1 true"></div><div class="watermq dungname-col1 hidden"></div></div>
+      <div class="watersk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="waterbk keys toggle false"></div>
+
+      <div class="ganoncycle cycle"><div class="ganonn dungname-col2 true"></div><div class="ganonmq dungname-col2 hidden"></div></div>
+      <div class="ganonsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+      <div class="ganonbk keys toggle false"></div>
+
+      <div class="gtgcycle cycle"><div class="gtgn dungname-col3 true"></div><div class="gtgmq dungname-col3 hidden"></div></div>
+      <div class="gtgsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
+    </div>
 
 
-        dome.ready(function () {
-          dome.get('.toggle').on('touchstart', toggle);
-          dome.get('.cycle').on('touchstart', cycle);
-          dome.get('.toggle').on('click', toggle);
-          dome.get('.cycle').on('click', cycle);
-          dome.get('.toggle').on('contextmenu', toggle)
-          dome.get('.cycle').on('contextmenu', cycle_reverse);
-          dome.get('.counters').on('click', count_up);
-          dome.get('.counters').on('contextmenu', count_down);
-          dome.get('#setPasscode').on('click', setPasscode);
-          dome.get('#setPasscode').on('touchstart', setPasscode);
-          dome.get('#resetRoom').on('click', resetFirebase);
-          dome.get('#resetRoom').on('touchstart', resetFirebase);
-          dome.get('#destroyRoom').on('click', destroyFirebase);
-          dome.get('#destroyRoom').on('touchstart', destroyFirebase);
+  </div>
+  <div class="room-controls">
+    <input id="passcode" type="text" placeholder="Passcode" />
+    <button id="setPasscode">Initialize room w/passcode</button>
+    <button id="resetRoom">Reset room</button>
+    <div id="ownerControls"><button id="destroyRoom">Destroy room</button></div>
+    <script>
+
+      // Custom "framework" to handle addClass and removeClass
+      "function" !== typeof Array.prototype.indexOf && (Array.prototype.indexOf = function (d) { for (var a = 0; a < this.length; a++)if (this[a] === d) return a; return -1 });
+      window.dome = function () {
+        function d(a) { for (var b = 0; b < a.length; b++)this[b] = a[b]; this.length = a.length } d.prototype.forEach = function (a) { this.map(a); return this }; d.prototype.map = function (a) { for (var b = [], c = 0; c < this.length; c++)b.push(a.call(this, this[c], c)); return b }; d.prototype.mapOne = function (a) { a = this.map(a); return 1 < a.length ? a : a[0] }; d.prototype.hasClass = function (a) { return this.mapOne(function (b) { return b.classList ? b.classList.contains(a) : !!b.className.match(new RegExp("(\\s|^)" + a + "(\\s|$)")) }) }; d.prototype.addClass =
+          function (a) { var b = ""; if ("string" !== typeof a) for (var c = 0; c < a.length; c++)b += " " + a[c]; else b = " " + a; return this.forEach(function (a) { a.className += b }) }; d.prototype.removeClass = function (a) { return this.forEach(function (b) { for (var c = b.className.split(" "), d; -1 < (d = c.indexOf(a));)c = c.slice(0, d).concat(c.slice(++d)); b.className = c.join(" ") }) }; d.prototype.attr = function (a, b) { return "undefined" !== typeof b ? this.forEach(function (c) { c.setAttribute(a, b) }) : this.mapOne(function (b) { return b.getAttribute(a) }) }; d.prototype.on =
+            function () { return document.addEventListener ? function (a, b) { return this.forEach(function (c) { c.addEventListener(a, b, !1) }) } : document.attachEvent ? function (a, b) { return this.forEach(function (c) { c.attachEvent("on" + a, b) }) } : function (a, b) { return this.forEach(function (c) { c["on" + a] = b }) } }(); d.prototype.off = function () {
+              return document.removeEventListener ? function (a, b) { return this.forEach(function (c) { c.removeEventListener(a, b, !1) }) } : document.detachEvent ? function (a, b) {
+                return this.forEach(function (c) {
+                  c.detachEvent("on" +
+                    a, b)
+                })
+              } : function (a, b) { return this.forEach(function (b) { b["on" + a] = null }) }
+            }(); return { get: function (a) { a = "string" === typeof a ? document.querySelectorAll(a) : a.length ? a : [a]; return new d(a) }, ready: function (a) { "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a) } }
+      }();
+
+
+      dome.ready(function () {
+        dome.get('.toggle').on('touchstart', toggle);
+        dome.get('.cycle').on('touchstart', cycle);
+        dome.get('.toggle').on('click', toggle);
+        dome.get('.cycle').on('click', cycle);
+        dome.get('.toggle').on('contextmenu', toggle)
+        dome.get('.cycle').on('contextmenu', cycle_reverse);
+        dome.get('.counters').on('click', count_up);
+        dome.get('.counters').on('contextmenu', count_down);
+        dome.get('#setPasscode').on('click', setPasscode);
+        dome.get('#setPasscode').on('touchstart', setPasscode);
+        dome.get('#resetRoom').on('click', resetFirebase);
+        dome.get('#resetRoom').on('touchstart', resetFirebase);
+        dome.get('#destroyRoom').on('click', destroyFirebase);
+        dome.get('#destroyRoom').on('touchstart', destroyFirebase);
+      });
+
+      function count_up(e) {
+        e.preventDefault();
+        var curItem = this.classList.item(0);
+        var curCount = this.children[0].innerHTML;
+        curCount++;
+        rootRef.child('items').child(curItem).set(curCount);
+      }
+
+      function count_down(e) {
+        e.preventDefault();
+        var curItem = this.classList.item(0);
+        var curCount = this.children[0].innerHTML
+        if (curCount == 0) return;
+        curCount--;
+        rootRef.child('items').child(curItem).set(curCount);
+      }
+
+      function cycle(e) {
+        e.preventDefault();
+        var curItem = this.classList.item(0);
+        var children = this.children;
+        for (var i = 0; i < children.length; i++) {
+          var el = children[i];
+          if (!el.classList.contains('hidden')) {
+            var elToSet = children[i + 1];
+            if (!elToSet) {
+              elToSet = children[0];
+              if (this.classList.contains('noloop')) {
+                elToSet = children[i];
+              }
+            }
+            rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
+            return;
+          }
+        }
+      }
+
+      function cycle_reverse(e) {
+        e.preventDefault();
+        var curItem = this.classList.item(0);
+        var children = this.children;
+        for (var i = 0; i < children.length; i++) {
+          var el = children[i];
+          if (!el.classList.contains('hidden')) {
+            var elToSet = children[i - 1];
+            if (!elToSet) {
+              elToSet = children[children.length - 1];
+              if (this.classList.contains('noloop')) {
+                elToSet = children[0];
+              }
+            }
+            rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
+            return;
+          }
+        }
+      }
+
+      function toggle(e) {
+        e.preventDefault();
+        var curState = !(this.classList.contains("false"));
+        var curItem = this.classList.item(0);
+        rootRef.child("items").child(curItem).set(!curState);
+      }
+
+      function setItemState(item, state) {
+        var el = document.querySelectorAll('.' + item)[0];
+        if (el.classList.contains('cycle')) {
+          for (var i = 0; i < el.children.length; i++) {
+            var child = el.children[i];
+            if (child.classList.contains(state)) {
+              child.classList.remove('hidden');
+            } else {
+              child.classList.add('hidden');
+            }
+          }
+          if (state === false) {
+            el.children[0].classList.remove('hidden');
+          }
+        }
+        else if (el.classList.contains('toggle')) {
+          if (state) {
+            el.classList.remove('false');
+          } else {
+            el.classList.add('false');
+          }
+        }
+        else { // Counters
+          if (state) {
+            el.classList.remove('false');
+            el.children[0].innerHTML = state;
+            el.children[0].style.visibility = 'visible';
+          }
+          else {
+            el.classList.add('false');
+            el.children[0].innerHTML = 0;
+            el.children[0].style.visibility = 'hidden';
+          }
+        }
+      }
+
+      function initTracker() {
+        var initialized = null;
+        rootRef.child('items').on('child_added', function (data) {
+          setItemState(data.key, data.val());
+        });
+        rootRef.child('items').on('child_changed', function (data) {
+          setItemState(data.key, data.val());
+        });
+        rootRef.child('items').on('child_removed', function (data) {
+          setItemState(data.key, false);
         });
 
-        function count_up(e) {
-          e.preventDefault();
-          var curItem = this.classList.item(0);
-          var curCount = this.children[0].innerHTML;
-          curCount++;
-          rootRef.child('items').child(curItem).set(curCount);
+        rootRef.child('items').on('value', function (snapshot) {
+          roomCreated = !!snapshot.val();
+        });
+        rootRef.child('owner').on('value', function (data) {
+          initialized = !!data.val();
+          document.getElementById('notInitialized').hidden = initialized;
+          document.getElementById('setPasscode').innerText = initialized ? 'Enter passcode' : 'Initialize room w/passcode';
+          document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
+        });
+        if (g_password !== "") {
+          console.log("attempting auto login - please wait a few seconds!");
         }
-
-        function count_down(e) {
-          e.preventDefault();
-          var curItem = this.classList.item(0);
-          var curCount = this.children[0].innerHTML
-          if (curCount == 0) return;
-          curCount--;
-          rootRef.child('items').child(curItem).set(curCount);
-        }
-
-        function cycle(e) {
-          e.preventDefault();
-          var curItem = this.classList.item(0);
-          var children = this.children;
-          for (var i = 0; i < children.length; i++) {
-            var el = children[i];
-            if (!el.classList.contains('hidden')) {
-              var elToSet = children[i + 1];
-              if (!elToSet) {
-                elToSet = children[0];
-                if (this.classList.contains('noloop')) {
-                  elToSet = children[i];
-                }
-              }
-              rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
-              return;
-            }
-          }
-        }
-
-        function cycle_reverse(e) {
-          e.preventDefault();
-          var curItem = this.classList.item(0);
-          var children = this.children;
-          for (var i = 0; i < children.length; i++) {
-            var el = children[i];
-            if (!el.classList.contains('hidden')) {
-              var elToSet = children[i - 1];
-              if (!elToSet) {
-                elToSet = children[children.length - 1];
-                if (this.classList.contains('noloop')) {
-                  elToSet = children[0];
-                }
-              }
-              rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
-              return;
-            }
-          }
-        }
-
-        function toggle(e) {
-          e.preventDefault();
-          var curState = !(this.classList.contains("false"));
-          var curItem = this.classList.item(0);
-          rootRef.child("items").child(curItem).set(!curState);
-        }
-
-        function setItemState(item, state) {
-          var el = document.querySelectorAll('.' + item)[0];
-          if (el.classList.contains('cycle')) {
-            for (var i = 0; i < el.children.length; i++) {
-              var child = el.children[i];
-              if (child.classList.contains(state)) {
-                child.classList.remove('hidden');
-              } else {
-                child.classList.add('hidden');
-              }
-            }
-            if (state === false) {
-              el.children[0].classList.remove('hidden');
-            }
-          }
-          else if (el.classList.contains('toggle')) {
-            if (state) {
-              el.classList.remove('false');
-            } else {
-              el.classList.add('false');
-            }
-          }
-          else { // Counters
-            if (state) {
-              el.classList.remove('false');
-              el.children[0].innerHTML = state;
-              el.children[0].style.visibility = 'visible';
-            }
-            else {
-              el.classList.add('false');
-              el.children[0].innerHTML = 0;
-              el.children[0].style.visibility = 'hidden';
-            }
-          }
-        }
-
-        function initTracker() {
-          var initialized = null;
-          rootRef.child('items').on('child_added', function (data) {
-            setItemState(data.key, data.val());
-          });
-          rootRef.child('items').on('child_changed', function (data) {
-            setItemState(data.key, data.val());
-          });
-          rootRef.child('items').on('child_removed', function (data) {
-            setItemState(data.key, false);
-          });
-
-          rootRef.child('items').on('value', function (snapshot) {
-            roomCreated = !!snapshot.val();
-          });
-          rootRef.child('owner').on('value', function (data) {
-            initialized = !!data.val();
-            document.getElementById('notInitialized').hidden = initialized;
-            document.getElementById('setPasscode').innerText = initialized ? 'Enter passcode' : 'Initialize room w/passcode';
-            document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
-          });
-          if (g_password !== "") {
-            console.log("attempting auto login - please wait a few seconds!");
-          }
-          setTimeout(() => {
-            if (g_password === "")
-              return;
-            if (initialized == false) //create room
-            {
-              console.log("attempt to create room");
-              var editors = {};
-              editors[uid] = true;
-              rootRef.set({
-                owner: uid,
-                passcode: g_password,
-                editors: editors
-              });
-              console.log("Created new due password set in url");
-            }
-            else //add to editors if room already exists
-            {
-              rootRef.child('editors').child(uid).set(g_password, function (error) {
-                if (error) {
-                  console.log("Did not add to editors on page load");
-                  console.log(error);
-                }
-                else {
-                  console.log("Added to editors successfully due password set in url");
-                }
-              });
-            }
-            rootRef.child('owner').on('value', function (data) {
-              document.getElementById('notInitialized').hidden = initialized;
-              document.getElementById('setPasscode').style.visibility = (initialized) ? "hidden" : "visible";
-              document.getElementById('passcode').hidden = initialized
-              document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
-            });
-
-
-          }, 4000);
-        }
-
-        function resetFirebase() {
-          rootRef.child('items').set({});
-        }
-
-        function setPasscode() {
-          var passcode = document.getElementById("passcode").value;
-          if (document.getElementById('notInitialized').hidden) {
-            rootRef.child('editors').child(uid).set(passcode);
-          } else {
+        setTimeout(() => {
+          if (g_password === "")
+            return;
+          if (initialized == false) //create room
+          {
+            console.log("attempt to create room");
             var editors = {};
             editors[uid] = true;
             rootRef.set({
               owner: uid,
-              passcode: passcode,
+              passcode: g_password,
               editors: editors
             });
+            console.log("Created new due password set in url");
           }
-        }
+          else //add to editors if room already exists
+          {
+            rootRef.child('editors').child(uid).set(g_password, function (error) {
+              if (error) {
+                console.log("Did not add to editors on page load");
+                console.log(error);
+              }
+              else {
+                console.log("Added to editors successfully due password set in url");
+              }
+            });
+          }
+          rootRef.child('owner').on('value', function (data) {
+            document.getElementById('notInitialized').hidden = initialized;
+            document.getElementById('setPasscode').style.visibility = (initialized) ? "hidden" : "visible";
+            document.getElementById('passcode').hidden = initialized
+            document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
+          });
 
-        function ready() {
-          init(initTracker);
-        }
 
-        if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-          ready();
+        }, 4000);
+      }
+
+      function resetFirebase() {
+        rootRef.child('items').set({});
+      }
+
+      function setPasscode() {
+        var passcode = document.getElementById("passcode").value;
+        if (document.getElementById('notInitialized').hidden) {
+          rootRef.child('editors').child(uid).set(passcode);
         } else {
-          document.addEventListener('DOMContentLoaded', ready);
+          var editors = {};
+          editors[uid] = true;
+          rootRef.set({
+            owner: uid,
+            passcode: passcode,
+            editors: editors
+          });
         }
+      }
+
+      function ready() {
+        init(initTracker);
+      }
+
+      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        ready();
+      } else {
+        document.addEventListener('DOMContentLoaded', ready);
+      }
 
 
-      </script>
+    </script>
 
-  </body>
-
+</body>
 </html>
