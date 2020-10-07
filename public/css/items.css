@@ -51,6 +51,8 @@
 .str2 { background-image: url(/images/silver_gauntlets.png) }
 .str3 { background-image: url(/images/gold_gauntlets.png) }
 .lens { background-image: url(/images/lens.png) }
+.lensbadge { background-image: url(/images/lens_badge.png) }
+.magic { background-image: url(/images/magic.png) }
 .nospells { background-image: url(/images/composite_magic.png) }
 .dins { background-image: url(/images/dins_fire.png) }
 .farores { background-image: url(/images/faores_wind.png) }
@@ -74,6 +76,9 @@
 .ctrade2 { background-image: url(/images/zelda_letter.png) }
 .ctrade3 { background-image: url(/images/keaton_mask.png) }
 .ctrade4 { background-image: url(/images/skull_mask.png) }
+.ctrade5 { background-image: url(/images/spooky_mask.png) }
+.ctrade6 { background-image: url(/images/bunny_hood.png) }
+.ctrade7 { background-image: url(/images/mask_of_truth.png) }
 .ocarina { background-image: url(/images/ocarina.png) }
 .beans { background-image: url(/images/beans.png) }
 .noswordcard { background-image: url(/images/composite_ksword_gcard.png) }
@@ -136,3 +141,7 @@
 .wellsk { background-image: url(/images/smallkey.png) }
 .fortsk { background-image: url(/images/smallkey.png) }
 .gtgsk { background-image: url(/images/smallkey.png) }
+
+/* Badges */
+.checkmark { background-image: url(/images/check.png) }
+.ruto { background-image: url(/images/ruto_letter.png) }

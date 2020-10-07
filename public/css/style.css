@@ -52,6 +52,19 @@ body {
   display: block;
 }
 
-.tracker, .splititem, .cycle, .toggle, .cycle div {
+.badge-item {
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.splititem {
+  position: relative;
+}
+
+.tracker, .splititem, .badge, .cycle, .toggle, .cycle div {
   display: inline-block;
 }

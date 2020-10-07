@@ -1,5 +1,7 @@
 <html>
-
+<!-- TODO
+1. Clean up divs that hold other dives by putting position-relative in the parents. Then I can just have a generic class for everything inside that sets h/w to 100%
+ -->
 <head>
   <title>OoTRR Item Tracker</title>
   <script src="/__/firebase/4.2.0/firebase-app.js"></script>
@@ -39,6 +41,7 @@
 
     .majoritem {
       display: inline-block;
+      position: relative;
       background-size: contain;
       width: 50px;
       height: 50px;
@@ -76,8 +79,6 @@
       height: 20px;
     }
 
-  .hookshot { background-image: url(../images/hookshot.png) }
-  .longshot { background-image: url(../images/longshot.png) }
   </style>
 </head>
 
@@ -196,11 +197,7 @@
       <div class="emerald stones false toggle"></div>
       <div class="ruby stones false toggle"></div>
       <div class="sapphire stones false toggle"></div>
-      <div class="bottlecycle cycle noloop">
-        <div class="nobottle majoritem false "></div>
-        <div class="bottle majoritem hidden"></div>
-        <div class="bottleletter majoritem hidden"></div>
-      </div>
+      <div class="bottlebundle majoritem badge"><div class="bottle badge-item false"></div><div class="ruto badge-item hidden"></div></div>
       <div class="scalecycle cycle noloop">
         <div class="scale0 majoritem false"></div>
         <div class="scale1 majoritem hidden"></div>
@@ -219,8 +216,7 @@
         <div class="str2 majoritem hidden"></div>
         <div class="str3 majoritem hidden"></div>
       </div>
-      <div class="lens majoritem false toggle"></div>
-      <!-- <div class="spellcycle cycle noloop"> -->
+      <div class="magiclens majoritem badge"><div class="magic badge-item false"></div><div class="lensbadge badge-item hidden"></div></div>
       <div class="spellcycle splititem">
         <div class="nospells majoritem false"></div>
         <div class="dins majoritem hidden"></div>
@@ -261,6 +257,9 @@
         <div class="ctrade2 majoritem hidden"></div>
         <div class="ctrade3 majoritem hidden"></div>
         <div class="ctrade4 majoritem hidden"></div>
+        <div class="ctrade5 majoritem hidden"></div>
+        <div class="ctrade6 majoritem hidden"></div>
+        <div class="ctrade7 majoritem hidden"></div>
       </div>
       <div class="ocarina majoritem false toggle"></div>
       <div class="beans majoritem false toggle"></div>
@@ -283,22 +282,22 @@
 
     <!-- Next Row: Child song tracking -->
     <div class="row">
-      <div class="zl majoritem toggle false"></div>
-      <div class="epona majoritem toggle false"></div>
-      <div class="saria majoritem toggle false"></div>
-      <div class="sunsong majoritem toggle false"></div>
-      <div class="songoftime majoritem toggle false"></div>
-      <div class="storms majoritem toggle false"></div>
+      <div class="zlbundle majoritem badge"><div class="zl badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="eponabundle majoritem badge"><div class="epona badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="sariabundle majoritem badge"><div class="saria badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="sunsongbundle majoritem badge"><div class="sunsong badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="songoftimebundle majoritem badge"><div class="songoftime badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="stormsbundle majoritem badge"><div class="storms badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
     </div>
 
     <!-- Next Row: Warp Songs -->
     <div class="row">
-      <div class="minuet majoritem toggle false"></div>
-      <div class="bolero majoritem toggle false"></div>
-      <div class="serenade majoritem toggle false"></div>
-      <div class="nocturne majoritem toggle false"></div>
-      <div class="requiem majoritem toggle false"></div>
-      <div class="prelude majoritem toggle false"></div>
+      <div class="minuetbundle majoritem badge"><div class="minuet badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="bolerobundle majoritem badge"><div class="bolero badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="serenadebundle majoritem badge"><div class="serenade badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="nocturnebundle majoritem badge"><div class="nocturne badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="requiembundle majoritem badge"><div class="requiem badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
+      <div class="preludebundle majoritem badge"><div class="prelude badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
     </div>
 
     <!-- First Row of Keys: Forest, Shadow, Well -->
@@ -379,6 +378,8 @@
         dome.get('.counters').on('contextmenu', count_down);
         dome.get('.splititem').on('click', split_toggle_left);
         dome.get('.splititem').on('contextmenu', split_toggle_right);
+        dome.get('.badge').on('click', badge_click);
+        dome.get('.badge').on('contextmenu', badge_rightclick);
         dome.get('#setPasscode').on('click', setPasscode);
         dome.get('#setPasscode').on('touchstart', setPasscode);
         dome.get('#resetRoom').on('click', resetFirebase);
@@ -387,19 +388,41 @@
         dome.get('#destroyRoom').on('touchstart', destroyFirebase);
       });
 
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ALSO ADD BADGES
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
-      // ===================================================
+      function badge_click(e) {
+        e.preventDefault();
+        var children = this.children
+        var curItem = this.classList.item(0)
+        var curState = !(children.item(0).classList.contains("false"));
+        var curBadge = !(children.item(1).classList.contains("hidden"));
+        
+        if (!curState && !curBadge)
+          rootRef.child('items').child(curItem).set("item");
+        else if (curState && !curBadge)
+          rootRef.child('items').child(curItem).set("none");
+        else if (!curState && curBadge)
+          rootRef.child('items').child(curItem).set("both");          
+        else if (curState && curBadge)
+          rootRef.child('items').child(curItem).set("badge");
+        return;
+      }
+
+      function badge_rightclick(e) {
+        e.preventDefault();
+        var children = this.children
+        var curItem = this.classList.item(0)
+        var curState = !(children.item(0).classList.contains("false"));
+        var curBadge = !(children.item(1).classList.contains("hidden"));
+        
+        if (!curState && !curBadge)
+          rootRef.child('items').child(curItem).set("badge");
+        else if (curState && !curBadge)
+          rootRef.child('items').child(curItem).set("both");
+        else if (!curState && curBadge)
+          rootRef.child('items').child(curItem).set("none");          
+        else if (curState && curBadge)
+          rootRef.child('items').child(curItem).set("item");
+        return;
+      }
 
       function split_toggle_left(e) {
         e.preventDefault();
@@ -410,16 +433,14 @@
         var rightState = !(children.item(2).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
 
         // Toggle left state and display correct icon
-        for (var i = 0; i < children.length; i++) {
-          if (!leftState && !rightState)
-            rootRef.child('items').child(curItem).set(children[1].classList.item(0));
-          else if (!leftState && rightState)
-            rootRef.child('items').child(curItem).set(children[3].classList.item(0));
-          else if (leftState && !rightState)
-            rootRef.child('items').child(curItem).set(children[0].classList.item(0));
-          else if (leftState && rightState)
-            rootRef.child('items').child(curItem).set(children[2].classList.item(0));
-        }
+        if (!leftState && !rightState)
+          rootRef.child('items').child(curItem).set(children[1].classList.item(0));
+        else if (!leftState && rightState)
+          rootRef.child('items').child(curItem).set(children[3].classList.item(0));
+        else if (leftState && !rightState)
+          rootRef.child('items').child(curItem).set(children[0].classList.item(0));
+        else if (leftState && rightState)
+          rootRef.child('items').child(curItem).set(children[2].classList.item(0));
         return;
       }
 
@@ -432,16 +453,14 @@
         var rightState = !(children.item(2).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
 
         // Toggle left state and display correct icon
-        for (var i = 0; i < children.length; i++) {
-          if (!leftState && !rightState)
-            rootRef.child('items').child(curItem).set(children[2].classList.item(0));
-          else if (!leftState && rightState)
-            rootRef.child('items').child(curItem).set(children[0].classList.item(0));
-          else if (leftState && !rightState)
-            rootRef.child('items').child(curItem).set(children[3].classList.item(0));
-          else if (leftState && rightState)
-            rootRef.child('items').child(curItem).set(children[1].classList.item(0));
-        }
+        if (!leftState && !rightState)
+          rootRef.child('items').child(curItem).set(children[2].classList.item(0));
+        else if (!leftState && rightState)
+          rootRef.child('items').child(curItem).set(children[0].classList.item(0));
+        else if (leftState && !rightState)
+          rootRef.child('items').child(curItem).set(children[3].classList.item(0));
+        else if (leftState && rightState)
+          rootRef.child('items').child(curItem).set(children[1].classList.item(0));
         return;
       }
 
@@ -526,6 +545,27 @@
           }
           // ====================================================
         }
+        else if (el.classList.contains('badge')) {
+          var child1 = el.children[0];
+          var child2 = el.children[1];
+          console.log(state);
+          if (state == "item") {
+            child1.classList.remove('false');
+            child2.classList.add('hidden');
+          }
+          else if (state == "badge") {
+            child1.classList.add('false');
+            child2.classList.remove('hidden');
+          }
+          else if (state == "both") {
+            child1.classList.remove('false');
+            child2.classList.remove('hidden');
+          }
+          else {
+            child1.classList.add('false');
+            child2.classList.add('hidden');
+          }
+        }
         else if (el.classList.contains('toggle')) {
           if (state) {
             el.classList.remove('false');
@@ -533,12 +573,6 @@
             el.classList.add('false');
           }
         }
-        // else if (el.classList.contains('splititem')) {
-        //   for (var i = 0; i < el.children.length; i++) {
-        //     var child = el.children[i];
-        //     if (child.class)
-        //   }
-        // }
         else { // Counters
           if (state) {
             el.classList.remove('false');
