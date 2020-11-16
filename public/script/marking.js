@@ -195,7 +195,6 @@ function setItemState(item, state) {
   else if (el.classList.contains('badge')) {
     var child1 = el.children[0];
     var child2 = el.children[1];
-    console.log(state);
     if (state == "item") {
       child1.classList.remove('false');
       child2.classList.add('hidden');
