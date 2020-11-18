@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>OoTRR Item Tracker</title>
+<script src="/__/firebase/4.2.0/firebase-app.js"></script>
+<script src="/__/firebase/4.2.0/firebase-auth.js"></script>
+<script src="/__/firebase/4.2.0/firebase-database.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script src="/script/shared.js"></script>
+<script src="/script/marking.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/items.css">
+<link rel="stylesheet" href="/css/standard-size.css">
+</head>
+<body>
+
+<div id="notInitialized"><h2>Room not initialized</h2></div>
+
+<div class="tracker">
+    <!-- Top Row: Medallion Labels -->
+    <div class="row">
+        <div class="cycle rewardtext" id="forest_med_text"></div>
+        <div class="cycle rewardtext" id="fire_med_text"></div>
+        <div class="cycle rewardtext" id="water_med_text"></div>
+        <div class="cycle rewardtext" id="shadow_med_text"></div>
+        <div class="cycle rewardtext" id="spirit_med_text"></div>
+        <div class="cycle rewardtext" id="light_med_text"></div>
+    </div>
+
+    <!-- Next Row: Medallion Icons -->
+    <div class="row">
+        <div class="toggle majoritem false" id="forestmed"></div>
+        <div class="toggle majoritem false" id="firemed"></div>
+        <div class="toggle majoritem false" id="watermed"></div>
+        <div class="toggle majoritem false" id="shadowmed"></div>
+        <div class="toggle majoritem false" id="spiritmed"></div>
+        <div class="toggle majoritem false" id="lightmed"></div>
+    </div>
+
+    <!-- Next Row: Atrade, Skulls, Stones, Bottle, Scale -->
+    <div class="row">
+        <div class="cycle majoritem noloop" id="atrade_full"></div>
+        <div class="counter majoritem false" id="gst"></div>
+        <div class="toggle stones false" id="kokiri_emerald"></div>
+        <div class="toggle stones false" id="goron_ruby"></div>
+        <div class="toggle stones false" id="zora_sapphire"></div>
+        <div class="badge majoritem" id="bottle_letter"></div>
+        <div class="cycle majoritem noloop" id="scale"></div>
+    </div>
+
+    <!-- Next Row: Slingshot, Bombs, Rang, Str, Lens, Spells -->
+    <div class="row">
+        <div class="toggle majoritem false" id="slingshot"></div>
+        <div class="toggle majoritem false" id="bombbag"></div>
+        <div class="toggle majoritem false" id="boomerang"></div>
+        <div class="cycle majoritem noloop" id="strength"></div>
+        <div class="badge majoritem" id="magic_lens"></div>
+        <div class="split majoritem" id="spells"></div>
+      </div>
+
+    <!-- Next Row: Hookshot, Bow, Arrows, Hammer, Boots, Mirror Shield -->
+    <div class="row">
+        <div class="cycle majoritem noloop" id="hooks"></div>
+        <div class="toggle majoritem false" id="bow"></div>
+        <div class="split majoritem" id="magicarrows"></div>
+        <div class="toggle majoritem false" id="hammer"></div>
+        <div class="split majoritem" id="boots"></div>
+        <div class="toggle majoritem false" id="mirrorshield"></div>
+    </div>
+
+    <!-- Next Row: Child Trade, Ocarina, Beans, Ksword/Gcard, Tunics, Triforce -->
+    <div class="row">
+        <div class="cycle majoritem noloop" id="ctrade_full"></div>
+        <div class="toggle majoritem false" id="ocarina"></div>
+        <div class="toggle majoritem false" id="beans"></div>
+        <div class="split majoritem" id="dungeonopeners"></div>
+        <div class="split majoritem" id="tunics"></div>
+        <div class="counter majoritem false" id="triforce"></div>
+      </div>
+
+    <!-- Next Row: Child song tracking -->
+    <div class="row">
+        <div class="badge majoritem" id="zlsong"></div>
+        <div class="badge majoritem" id="sariasong"></div>
+        <div class="badge majoritem" id="eponasong"></div>
+        <div class="badge majoritem" id="sunsong"></div>
+        <div class="badge majoritem" id="timesong"></div>
+        <div class="badge majoritem" id="stormssong"></div>
+    </div>
+
+    <!-- Next Row: Warp Songs -->
+    <div class="row">
+        <div class="badge majoritem" id="minuetsong"></div>
+        <div class="badge majoritem" id="bolerosong"></div>
+        <div class="badge majoritem" id="serenadesong"></div>
+        <div class="badge majoritem" id="nocturnesong"></div>
+        <div class="badge majoritem" id="requiemsong"></div>
+        <div class="badge majoritem" id="preludesong"></div>
+    </div>
+
+    <!-- First Row of Keys: Forest, Shadow, Well -->
+    <div class="row">
+        <div class="cycle dungname-col1" id="foresttype"></div>
+        <div class="counter keys false" id="forestsk"></div>
+        <div class="toggle keys false" id="forestbk"></div>
+        <div class="cycle dungname-col2" id="shadowtype"></div>
+        <div class="counter keys false" id="shadowsk"></div>
+        <div class="toggle keys false" id="shadowbk"></div>
+        <div class="cycle dungname-col3" id="welltype"></div>
+        <div class="counter keys false" id="wellsk"></div>
+      </div>
+
+    <!-- Second Row of Keys: Fire, Spirit, Fort -->
+    <div class="row">
+        <div class="cycle dungname-col1" id="firetype"></div>
+        <div class="counter keys false" id="firesk"></div>
+        <div class="toggle keys false" id="firebk"></div>
+        <div class="cycle dungname-col2" id="spirittype"></div>
+        <div class="counter keys false" id="spiritsk"></div>
+        <div class="toggle keys false" id="spiritbk"></div>
+        <div class="cycle dungname-col3" id="forttype"></div>
+        <div class="counter keys false" id="fortsk"></div>
+    </div>
+
+    <!-- Last Row of Keys: Water, Ganon, GTG -->
+    <div class="row">
+        <div class="cycle dungname-col1" id="watertype"></div>
+        <div class="counter keys false" id="watersk"></div>
+        <div class="toggle keys false" id="waterbk"></div>
+
+        <div class="cycle dungname-col2" id="ganontype"></div>
+        <div class="counter keys false" id="ganonsk"></div>
+        <div class="toggle keys false" id="ganonbk"></div>
+
+        <div class="cycle dungname-col3" id="gtgtype"></div>
+        <div class="counter keys false" id="gtgsk"></div>
+    </div>
+
+</div>
+
+<div class="room-controls">
+    <input id="passcode" type="text" placeholder="Passcode" />
+    <button id="setPasscode" onclick="set_password()">Initialize room w/passcode</button>
+    <button id="resetRoom" onclick="reset_firebase()">Reset room</button>
+    <div id="ownerControls"><button id="destroyRoom" onclick="destroy_firebase()">Destroy room</button></div>
+</div>
+
+</body>
+</html>

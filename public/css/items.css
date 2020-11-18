@@ -16,15 +16,15 @@
 .spirittext { background-image: url(/images/spirit_text.png) }
 
 /* Tracker Items */
-.emerald { background-image: url(/images/kokiri_emerald.png) }
-.ruby { background-image: url(/images/goron_ruby.png) }
-.sapphire { background-image: url(/images/zora_sapphire.png) }
-.forestmed { background-image: url(/images/forest_medallion.png) }
-.firemed { background-image: url(/images/fire_medallion.png) }
-.watermed { background-image: url(/images/water_medallion.png) }
-.shadowmed { background-image: url(/images/shadow_medallion.png) }
-.spiritmed { background-image: url(/images/spirit_medallion.png) }
-.lightmed { background-image: url(/images/light_medallion.png) }
+#kokiri_emerald { background-image: url(/images/kokiri_emerald.png) }
+#goron_ruby { background-image: url(/images/goron_ruby.png) }
+#zora_sapphire { background-image: url(/images/zora_sapphire.png) }
+#forestmed { background-image: url(/images/forest_medallion.png) }
+#firemed { background-image: url(/images/fire_medallion.png) }
+#watermed { background-image: url(/images/water_medallion.png) }
+#shadowmed { background-image: url(/images/shadow_medallion.png) }
+#spiritmed { background-image: url(/images/spirit_medallion.png) }
+#lightmed { background-image: url(/images/light_medallion.png) }
 .atrade0 { background-image: url(/images/blue_egg.png) }
 .atrade1 { background-image: url(/images/blue_egg.png) }
 .atrade2 { background-image: url(/images/cojiro.png) }
@@ -36,16 +36,16 @@
 .atrade8 { background-image: url(/images/eyeball_frog.png) }
 .atrade9 { background-image: url(/images/eye_drops.png) }
 .atrade10 { background-image: url(/images/claim_check.png) }
-.gst { background-image: url(/images/golden_skulltula.png) }
+#gst { background-image: url(/images/golden_skulltula.png) }
 .nobottle { background-image: url(/images/bottle.png) }
 .bottle { background-image: url(/images/bottle.png) }
 .bottleletter { background-image: url(/images/bottle_letter.png) }
 .scale0 { background-image: url(/images/silver_scale.png) }
 .scale1 { background-image: url(/images/silver_scale.png) }
 .scale2 { background-image: url(/images/gold_scale.png) }
-.slingshot { background-image: url(/images/slingshot.png) }
-.bombbag { background-image: url(/images/bomb_bag.png) }
-.boomerang { background-image: url(/images/boomerang.png) }
+#slingshot { background-image: url(/images/slingshot.png) }
+#bombbag { background-image: url(/images/bomb_bag.png) }
+#boomerang { background-image: url(/images/boomerang.png) }
 .str0 { background-image: url(/images/goron_bracelet.png) }
 .str1 { background-image: url(/images/goron_bracelet.png) }
 .str2 { background-image: url(/images/silver_gauntlets.png) }
@@ -60,17 +60,17 @@
 .nohook { background-image: url(/images/hookshot.png) }
 .hookshot { background-image: url(/images/hookshot_accessible.png) }
 .longshot { background-image: url(/images/longshot_accessible.png) }
-.bow { background-image: url(/images/bow.png) }
+#bow { background-image: url(/images/bow.png) }
 .nomagicarrows { background-image: url(/images/composite_arrows.png) }
 .firearrows { background-image: url(/images/fire_arrows.png) }
 .lightarrows { background-image: url(/images/light_arrows.png) }
 .magicarrows { background-image: url(/images/composite_arrows.png) }
-.hammer { background-image: url(/images/hammer.png) }
+#hammer { background-image: url(/images/hammer.png) }
 .noboots { background-image: url(/images/composite_boots.png) }
 .ironboots { background-image: url(/images/iron_boots.png) }
 .hoverboots { background-image: url(/images/hover_boots.png) }
 .boots { background-image: url(/images/composite_boots.png) }
-.mirrorshield { background-image: url(/images/mirror_shield.png) }
+#mirrorshield { background-image: url(/images/mirror_shield.png) }
 .ctrade0 { background-image: url(/images/white_egg.png) }
 .ctrade1 { background-image: url(/images/white_egg.png) }
 .ctrade2 { background-image: url(/images/zelda_letter.png) }
@@ -79,8 +79,8 @@
 .ctrade5 { background-image: url(/images/spooky_mask.png) }
 .ctrade6 { background-image: url(/images/bunny_hood.png) }
 .ctrade7 { background-image: url(/images/mask_of_truth.png) }
-.ocarina { background-image: url(/images/ocarina.png) }
-.beans { background-image: url(/images/beans.png) }
+#ocarina { background-image: url(/images/ocarina.png) }
+#beans { background-image: url(/images/beans.png) }
 .noswordcard { background-image: url(/images/composite_ksword_gcard.png) }
 .koksword { background-image: url(/images/kokiri_sword.png) }
 .gerudocard { background-image: url(/images/gerudo_card.png) }
@@ -89,7 +89,7 @@
 .gorontunic { background-image: url(/images/goron_tunic.png) }
 .zoratunic { background-image: url(/images/zora_tunic.png) }
 .tunics { background-image: url(/images/composite_tunics.png) }
-.triforce { background-image: url(/images/triforce.png) }
+#triforce { background-image: url(/images/triforce.png) }
 
 /* Song Tracking */
 .zl { background-image: url(/images/lullaby.png) }
@@ -126,21 +126,21 @@
 .gtgmq { background-image: url(/images/gtg_mq.png) }
 
 /* Dungeon Keys */
-.forestsk { background-image: url(/images/smallkey.png) }
-.forestbk { background-image: url(/images/bosskey.png) }
-.firesk { background-image: url(/images/smallkey.png) }
-.firebk { background-image: url(/images/bosskey.png) }
-.watersk { background-image: url(/images/smallkey.png) }
-.waterbk { background-image: url(/images/bosskey.png) }
-.shadowsk { background-image: url(/images/smallkey.png) }
-.shadowbk { background-image: url(/images/bosskey.png) }
-.spiritsk { background-image: url(/images/smallkey.png) }
-.spiritbk { background-image: url(/images/bosskey.png) }
-.ganonsk { background-image: url(/images/smallkey.png) }
-.ganonbk { background-image: url(/images/bosskey.png) }
-.wellsk { background-image: url(/images/smallkey.png) }
-.fortsk { background-image: url(/images/smallkey.png) }
-.gtgsk { background-image: url(/images/smallkey.png) }
+#forestsk { background-image: url(/images/smallkey.png) }
+#forestbk { background-image: url(/images/bosskey.png) }
+#firesk { background-image: url(/images/smallkey.png) }
+#firebk { background-image: url(/images/bosskey.png) }
+#watersk { background-image: url(/images/smallkey.png) }
+#waterbk { background-image: url(/images/bosskey.png) }
+#shadowsk { background-image: url(/images/smallkey.png) }
+#shadowbk { background-image: url(/images/bosskey.png) }
+#spiritsk { background-image: url(/images/smallkey.png) }
+#spiritbk { background-image: url(/images/bosskey.png) }
+#ganonsk { background-image: url(/images/smallkey.png) }
+#ganonbk { background-image: url(/images/bosskey.png) }
+#wellsk { background-image: url(/images/smallkey.png) }
+#fortsk { background-image: url(/images/smallkey.png) }
+#gtgsk { background-image: url(/images/smallkey.png) }
 
 /* Badges */
 .checkmark { background-image: url(/images/check.png) }

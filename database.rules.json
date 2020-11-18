@@ -25,42 +25,6 @@
           ".read": "true",
           ".write": "data.parent().child('editors').child(auth.uid).exists()"
         },
-        "dungeonchests": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "bigkeys": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "smallkeys": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "dungeonbeaten": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "prizes": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "medallions": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "chestsopened": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "timer": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
-        "config": {
-          ".read": "true",
-          ".write": "data.parent().child('editors').child(auth.uid).exists()"
-        },
         "$other": {
           ".read": "false",
           ".write": "false"

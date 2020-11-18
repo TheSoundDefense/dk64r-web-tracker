@@ -1,325 +1,237 @@
-// Custom "framework" to handle addClass and removeClass
-"function" !== typeof Array.prototype.indexOf && (Array.prototype.indexOf = function (d) { for (var a = 0; a < this.length; a++)if (this[a] === d) return a; return -1 });
-window.dome = function () {
-  function d(a) { for (var b = 0; b < a.length; b++)this[b] = a[b]; this.length = a.length } d.prototype.forEach = function (a) { this.map(a); return this }; d.prototype.map = function (a) { for (var b = [], c = 0; c < this.length; c++)b.push(a.call(this, this[c], c)); return b }; d.prototype.mapOne = function (a) { a = this.map(a); return 1 < a.length ? a : a[0] }; d.prototype.hasClass = function (a) { return this.mapOne(function (b) { return b.classList ? b.classList.contains(a) : !!b.className.match(new RegExp("(\\s|^)" + a + "(\\s|$)")) }) }; d.prototype.addClass =
-    function (a) { var b = ""; if ("string" !== typeof a) for (var c = 0; c < a.length; c++)b += " " + a[c]; else b = " " + a; return this.forEach(function (a) { a.className += b }) }; d.prototype.removeClass = function (a) { return this.forEach(function (b) { for (var c = b.className.split(" "), d; -1 < (d = c.indexOf(a));)c = c.slice(0, d).concat(c.slice(++d)); b.className = c.join(" ") }) }; d.prototype.attr = function (a, b) { return "undefined" !== typeof b ? this.forEach(function (c) { c.setAttribute(a, b) }) : this.mapOne(function (b) { return b.getAttribute(a) }) }; d.prototype.on =
-      function () { return document.addEventListener ? function (a, b) { return this.forEach(function (c) { c.addEventListener(a, b, !1) }) } : document.attachEvent ? function (a, b) { return this.forEach(function (c) { c.attachEvent("on" + a, b) }) } : function (a, b) { return this.forEach(function (c) { c["on" + a] = b }) } }(); d.prototype.off = function () {
-        return document.removeEventListener ? function (a, b) { return this.forEach(function (c) { c.removeEventListener(a, b, !1) }) } : document.detachEvent ? function (a, b) {
-          return this.forEach(function (c) {
-            c.detachEvent("on" +
-              a, b)
-          })
-        } : function (a, b) { return this.forEach(function (b) { b["on" + a] = null }) }
-      }(); return { get: function (a) { a = "string" === typeof a ? document.querySelectorAll(a) : a.length ? a : [a]; return new d(a) }, ready: function (a) { "loading" != document.readyState ? a() : document.addEventListener("DOMContentLoaded", a) } }
-}();
-
-
-dome.ready(function () {
-  dome.get('.toggle').on('touchstart', toggle);
-  dome.get('.cycle').on('touchstart', cycle);
-  dome.get('.toggle').on('click', toggle);
-  dome.get('.cycle').on('click', cycle);
-  dome.get('.toggle').on('contextmenu', toggle)
-  dome.get('.cycle').on('contextmenu', cycle_reverse);
-  dome.get('.counters').on('click', count_up);
-  dome.get('.counters').on('contextmenu', count_down);
-  dome.get('.splititem').on('click', split_toggle_left);
-  dome.get('.splititem').on('contextmenu', split_toggle_right);
-  dome.get('.badge').on('click', badge_click);
-  dome.get('.badge').on('contextmenu', badge_rightclick);
-  dome.get('#setPasscode').on('click', setPasscode);
-  dome.get('#setPasscode').on('touchstart', setPasscode);
-  dome.get('#resetRoom').on('click', resetFirebase);
-  dome.get('#resetRoom').on('touchstart', resetFirebase);
-  dome.get('#destroyRoom').on('click', destroyFirebase);
-  dome.get('#destroyRoom').on('touchstart', destroyFirebase);
-});
-
-function badge_click(e) {
-  e.preventDefault();
-  var children = this.children
-  var curItem = this.classList.item(0)
-  var curState = !(children.item(0).classList.contains("false"));
-  var curBadge = !(children.item(1).classList.contains("hidden"));
-  
-  if (!curState && !curBadge)
-    rootRef.child('items').child(curItem).set("item");
-  else if (curState && !curBadge)
-    rootRef.child('items').child(curItem).set("none");
-  else if (!curState && curBadge)
-    rootRef.child('items').child(curItem).set("both");          
-  else if (curState && curBadge)
-    rootRef.child('items').child(curItem).set("badge");
-  return;
+var cycleoptions = {
+    "forest_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "fire_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "water_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "shadow_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "spirit_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "light_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
+    "atrade_full": ["atrade0", "atrade1", "atrade2", "atrade3", "atrade4", "atrade5", "atrade6", "atrade7", "atrade8", "atrade9", "atrade10"],
+    "scale": ["scale0", "scale1", "scale2"],
+    "strength": ["str0", "str1", "str2", "str3"],
+    "spells": ["nospells", "dins", "farores", "dinsfarores"],
+    "hooks": ["nohook", "hookshot", "longshot"],
+    "magicarrows": ["nomagicarrows", "firearrows", "lightarrows", "magicarrows"],
+    "boots": ["noboots", "ironboots", "hoverboots", "boots"],
+    "ctrade_full": ["ctrade0", "ctrade1", "ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
+    "dungeonopeners": ["noswordcard", "koksword", "gerudocard", "swordcard"],
+    "tunics": ["notunics", "gorontunic", "zoratunic", "tunics"],
+    "foresttype": ["forestn", "forestmq"],
+    "shadowtype": ["shadown", "shadowmq"],
+    "welltype": ["welln", "wellmq"],
+    "firetype": ["firen", "firemq"],
+    "spirittype": ["spiritn", "spiritmq"],
+    "forttype": ["fort1", "fort4"],
+    "watertype": ["watern", "watermq"],
+    "ganontype": ["ganonn", "ganonmq"],
+    "gtgtype": ["gtgn", "gtgmq"],
 }
 
-function badge_rightclick(e) {
-  e.preventDefault();
-  var children = this.children
-  var curItem = this.classList.item(0)
-  var curState = !(children.item(0).classList.contains("false"));
-  var curBadge = !(children.item(1).classList.contains("hidden"));
-  
-  if (!curState && !curBadge)
-    rootRef.child('items').child(curItem).set("badge");
-  else if (curState && !curBadge)
-    rootRef.child('items').child(curItem).set("both");
-  else if (!curState && curBadge)
-    rootRef.child('items').child(curItem).set("none");          
-  else if (curState && curBadge)
-    rootRef.child('items').child(curItem).set("item");
-  return;
+var badgecls = {
+    "bottle_letter":    ["bottle", "ruto"],
+    "magic_lens":       ["magic", "lensbadge"],
+    "zlsong":           ["zl", "checkmark"],
+    "sariasong":        ["epona", "checkmark"],
+    "eponasong":        ["saria", "checkmark"],
+    "sunsong":          ["sunsong", "checkmark"],
+    "timesong":         ["songoftime", "checkmark"],
+    "stormssong":       ["storms", "checkmark"],
+    "minuetsong":       ["minuet", "checkmark"],
+    "bolerosong":       ["bolero", "checkmark"],
+    "serenadesong":     ["serenade", "checkmark"],
+    "nocturnesong":     ["nocturne", "checkmark"],
+    "requiemsong":      ["requiem", "checkmark"],
+    "preludesong":      ["prelude", "checkmark"],
 }
 
-function split_toggle_left(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var children = this.children;
-  // Find current state
-  var leftState = !(children.item(1).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
-  var rightState = !(children.item(2).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
-
-  // Toggle left state and display correct icon
-  if (!leftState && !rightState)
-    rootRef.child('items').child(curItem).set(children[1].classList.item(0));
-  else if (!leftState && rightState)
-    rootRef.child('items').child(curItem).set(children[3].classList.item(0));
-  else if (leftState && !rightState)
-    rootRef.child('items').child(curItem).set(children[0].classList.item(0));
-  else if (leftState && rightState)
-    rootRef.child('items').child(curItem).set(children[2].classList.item(0));
-  return;
+var countextrema = {
+    "gst": [0, 100],
+    "triforce": [0, 999],
+    "forestsk": [0, 5],
+    "shadowsk": [0, 5],
+    "wellsk": [0, 3],
+    "firesk": [0, 8],
+    "spiritsk": [0, 5],
+    "fortsk": [0, 4],
+    "watersk": [0, 6],
+    "ganonsk": [0, 2],
+    "gtgsk": [0, 9],
 }
 
-function split_toggle_right(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var children = this.children;
-  // Find current state
-  var leftState = !(children.item(1).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
-  var rightState = !(children.item(2).classList.contains("hidden") && children.item(3).classList.contains("hidden"));
-
-  // Toggle left state and display correct icon
-  if (!leftState && !rightState)
-    rootRef.child('items').child(curItem).set(children[2].classList.item(0));
-  else if (!leftState && rightState)
-    rootRef.child('items').child(curItem).set(children[0].classList.item(0));
-  else if (leftState && !rightState)
-    rootRef.child('items').child(curItem).set(children[3].classList.item(0));
-  else if (leftState && rightState)
-    rootRef.child('items').child(curItem).set(children[1].classList.item(0));
-  return;
-}
-
-function count_up(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var curCount = this.children[0].innerHTML;
-  curCount++;
-  rootRef.child('items').child(curItem).set(curCount);
-}
-
-function count_down(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var curCount = this.children[0].innerHTML
-  if (curCount == 0) return;
-  curCount--;
-  rootRef.child('items').child(curItem).set(curCount);
-}
-
-function cycle(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var children = this.children;
-  for (var i = 0; i < children.length; i++) {
-    var el = children[i];
-    if (!el.classList.contains('hidden')) {
-      var elToSet = children[i + 1];
-      if (!elToSet) {
-        elToSet = children[0];
-        if (this.classList.contains('noloop')) {
-          elToSet = children[i];
+// When the page loads, attach functions to each tag and initialize some icons
+window.onload = function() {
+    var elemlist = document.body.getElementsByTagName("*");
+    for(let i=0; i<elemlist.length; i++) {
+        cllist = elemlist[i].classList;
+        if(cllist.contains("cycle")) {
+            populate_base_images(elemlist[i]);
+            let noloop = elemlist[i].classList.contains("noloop");
+            elemlist[i].addEventListener("click", function(e) { cycle(e, this, false, noloop); });
+            elemlist[i].addEventListener("contextmenu", function(e) { cycle(e, this, true, noloop); })
         }
-      }
-      rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
-      return;
-    }
-  }
-}
-
-function cycle_reverse(e) {
-  e.preventDefault();
-  var curItem = this.classList.item(0);
-  var children = this.children;
-  for (var i = 0; i < children.length; i++) {
-    var el = children[i];
-    if (!el.classList.contains('hidden')) {
-      var elToSet = children[i - 1];
-      if (!elToSet) {
-        elToSet = children[children.length - 1];
-        if (this.classList.contains('noloop')) {
-          elToSet = children[0];
+        if(cllist.contains("toggle")) {
+            elemlist[i].addEventListener("click", function(e) { toggle(e, this); });
+            elemlist[i].addEventListener("contextmenu", function(e) { toggle(e, this); })
         }
-      }
-      rootRef.child('items').child(curItem).set(elToSet.classList.item(0));
-      return;
+        if(cllist.contains("badge")) {
+            populate_base_images(elemlist[i]);
+            elemlist[i].addEventListener("click", function(e) { badge(e, this, "left"); });
+            elemlist[i].addEventListener("contextmenu", function(e) { badge(e, this, "right"); });
+        }
+        if(cllist.contains("counter")) {
+            elemlist[i].addEventListener("click", function(e) { count(e, this, "up", (e.shiftKey) ? 10 : 1); });
+            elemlist[i].addEventListener("contextmenu", function(e) { count(e, this, "down", (e.shiftKey) ? 10 : 1); });
+        }
+        if(cllist.contains("split")) {
+            populate_base_images(elemlist[i]);
+            elemlist[i].addEventListener("click", function(e) { split(e, this, "left"); });
+            elemlist[i].addEventListener("contextmenu", function(e) { split(e, this, "right"); });
+        }
     }
-  }
-}
+    init(init_tracker);
+};
 
-function toggle(e) {
-  e.preventDefault();
-  var curState = !(this.classList.contains("false"));
-  var curItem = this.classList.item(0);
-  rootRef.child("items").child(curItem).set(!curState);
-}
-
-function setItemState(item, state) {
-  var el = document.querySelectorAll('.' + item)[0];
-  if (el.classList.contains('cycle') || el.classList.contains('splititem')) {
-    // ====================================================
-    for (var i = 0; i < el.children.length; i++) {
-      var child = el.children[i];
-      if (child.classList.contains(state)) {
-        child.classList.remove('hidden');
-      } else {
-        child.classList.add('hidden');
-      }
-    }
-    if (state === false) {
-      el.children[0].classList.remove('hidden');
-    }
-    // ====================================================
-  }
-  else if (el.classList.contains('badge')) {
-    var child1 = el.children[0];
-    var child2 = el.children[1];
-    if (state == "item") {
-      child1.classList.remove('false');
-      child2.classList.add('hidden');
-    }
-    else if (state == "badge") {
-      child1.classList.add('false');
-      child2.classList.remove('hidden');
-    }
-    else if (state == "both") {
-      child1.classList.remove('false');
-      child2.classList.remove('hidden');
-    }
-    else {
-      child1.classList.add('false');
-      child2.classList.add('hidden');
-    }
-  }
-  else if (el.classList.contains('toggle')) {
-    if (state) {
-      el.classList.remove('false');
+//  Cycle object handler
+function cycle(e, element, reverse, noloop) {
+    e.preventDefault();
+    var opts = cycleoptions[element.id];
+    var curstate = -1;
+    for(let i=0; i<opts.length; i++)
+        curstate = element.classList.contains(opts[i]) ? i : curstate;
+    if(reverse) {
+        var newstate = noloop ?
+            (curstate-1 < 0 ? 0 : curstate-1) :
+            (curstate-1 < 0 ? opts.length-1 : curstate-1);
     } else {
-      el.classList.add('false');
+        var newstate = noloop ?
+            (curstate+1 >= opts.length ? curstate : curstate+1) :
+            (curstate+1 >= opts.length ? 0 : curstate+1)
     }
-  }
-  else { // Counters
-    if (state) {
-      el.classList.remove('false');
-      el.children[0].innerHTML = state;
-      el.children[0].style.visibility = 'visible';
-    }
-    else {
-      el.classList.add('false');
-      el.children[0].innerHTML = 0;
-      el.children[0].style.visibility = 'hidden';
-    }
-  }
+    rootRef.child("items").child(element.id).set(newstate);
 }
 
-function initTracker() {
-  var initialized = null;
-  rootRef.child('items').on('child_added', function (data) {
-    setItemState(data.key, data.val());
-  });
-  rootRef.child('items').on('child_changed', function (data) {
-    setItemState(data.key, data.val());
-  });
-  rootRef.child('items').on('child_removed', function (data) {
-    setItemState(data.key, false);
-  });
+// Toggle object handler
+function toggle(e, element) {
+    e.preventDefault();
+    var curstate = !element.classList.contains("false");
+    rootRef.child("items").child(element.id).set(!curstate);
+}
 
-  rootRef.child('items').on('value', function (snapshot) {
-    roomCreated = !!snapshot.val();
-  });
-  rootRef.child('owner').on('value', function (data) {
-    initialized = !!data.val();
-    document.getElementById('notInitialized').hidden = initialized;
-    document.getElementById('setPasscode').innerText = initialized ? 'Enter passcode' : 'Initialize room w/passcode';
-    document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
-  });
-  if (g_password !== "") {
-    console.log("attempting auto login - please wait a few seconds!");
-  }
-  setTimeout(() => {
-    if (g_password === "")
-      return;
-    if (initialized == false) //create room
-    {
-      console.log("attempt to create room");
-      var editors = {};
-      editors[uid] = true;
-      rootRef.set({
-        owner: uid,
-        passcode: g_password,
-        editors: editors
-      });
-      console.log("Created new due password set in url");
+// Badge object handler
+function badge(e, element, clicktype) {
+    e.preventDefault();
+    var baseid = element.id + "_base";
+    var badgeid = element.id + "_badge";
+    var curstate_item = !document.getElementById(baseid).classList.contains("false");
+    var curstate_badge = !document.getElementById(badgeid).classList.contains("hidden");
+
+    if(clicktype === "left") {
+        rootRef.child("items").child(baseid).set(!curstate_item);
+        rootRef.child("items").child(badgeid).set(curstate_badge);
+    } else if(clicktype === "right") {
+        rootRef.child("items").child(baseid).set(curstate_item);
+        rootRef.child("items").child(badgeid).set(!curstate_badge);
+    } else {
+        console.log(`Clicktype ${clicktype} not recognized`);
     }
-    else //add to editors if room already exists
-    {
-      rootRef.child('editors').child(uid).set(g_password, function (error) {
-        if (error) {
-          console.log("Did not add to editors on page load");
-          console.log(error);
+}
+
+// Count object handler
+function count(e, element, direction, delta) {
+    e.preventDefault();
+    var curstate = element.innerHTML === "" ? 0 : parseInt(element.innerHTML, 10);
+    var mincount = countextrema[element.id][0];
+    var maxcount = countextrema[element.id][1];
+    if(direction === "up") {
+        var newstate = (curstate+delta > maxcount) ? maxcount : curstate + delta;
+    } else if(direction === "down") {
+        var newstate = (curstate-delta < mincount) ? mincount : curstate-delta;
+    } else {
+        console.log(`Direction of count, ${direction}, must be up or down.`)
+    }
+    rootRef.child("items").child(element.id).set(newstate);
+}
+
+// Split object handler
+function split(e, element, clicktype) {
+    e.preventDefault();
+    var curstate = cycleoptions[element.id].indexOf(element.classList[2]); // Need a better way of handling this
+    var newstate = undefined;
+    if(clicktype === "left") {
+        switch(curstate) {
+            case 0: newstate = 1; break;
+            case 1: newstate = 0; break;
+            case 2: newstate = 3; break;
+            case 3: newstate = 2; break;
         }
-        else {
-          console.log("Added to editors successfully due password set in url");
+    } else if(clicktype === "right") {
+        switch(curstate) {
+            case 0: newstate = 2; break;
+            case 1: newstate = 3; break;
+            case 2: newstate = 0; break;
+            case 3: newstate = 1; break;
         }
-      });
+    } else {
+        console.log(`Clicktype ${clicktype} not recognized`);
     }
-    rootRef.child('owner').on('value', function (data) {
-      document.getElementById('notInitialized').hidden = initialized;
-      document.getElementById('setPasscode').style.visibility = (initialized) ? "hidden" : "visible";
-      document.getElementById('passcode').hidden = initialized
-      document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
-    });
-
-
-  }, 4000);
+    rootRef.child("items").child(element.id).set(newstate);
 }
 
-function resetFirebase() {
-  rootRef.child('items').set({});
+// Function to update tracker state on db changes
+function setItemState(elementid, state) {
+    var element = document.getElementById(elementid);
+    if(element.classList.contains("cycle") || element.classList.contains("split")) {
+        if(state === false) {
+            setItemState(elementid, 0);
+            return;
+        }
+        element.classList.remove("false", ...cycleoptions[elementid]);
+        element.classList.add(cycleoptions[elementid][state]);
+        if(state === 0)
+            element.classList.add("false");
+    }
+    else if(element.classList.contains("toggle")) {
+        toggle_state(element, state, "false");
+    }
+    else if(element.classList.contains("badge-item")) {
+        if(elementid.slice(-4) === "base")
+            toggle_state(element, state, "false");
+        else if(elementid.slice(-5) === "badge")
+            toggle_state(element, state, "hidden");
+    }
+    else if(element.classList.contains("counter")) {
+        element.classList.remove("false");
+        if(state === 0) { 
+            element.innerHTML = "";
+            if(!element.classList.contains("false"))
+                element.classList.add("false")
+        }
+        else if(state === false)
+            setItemState(elementid, 0);
+        else
+            element.innerHTML = state;
+    }
 }
 
-function setPasscode() {
-  var passcode = document.getElementById("passcode").value;
-  if (document.getElementById('notInitialized').hidden) {
-    rootRef.child('editors').child(uid).set(passcode);
-  } else {
-    var editors = {};
-    editors[uid] = true;
-    rootRef.set({
-      owner: uid,
-      passcode: passcode,
-      editors: editors
-    });
-  }
+// Toggle helper function
+function toggle_state(element, state, target) {
+    if(state)
+        element.classList.remove(target);
+    else
+        if(!element.classList.contains(target))
+            element.classList.add(target);
 }
 
-function ready() {
-  init(initTracker);
-}
-
-if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-  ready();
-} else {
-  document.addEventListener('DOMContentLoaded', ready);
+// Initialize specific types of icons.
+function populate_base_images(element) {
+    if(element.classList.contains("split")) {
+        element.classList.add(cycleoptions[element.id][0], "false");
+    }
+    else if(element.classList.contains("badge")) {
+        element.innerHTML = 
+            `<div class="badge-item ${badgecls[element.id][0]} false" id="${element.id.concat("_base")}"></div>
+            <div class="badge-item ${badgecls[element.id][1]} hidden" id="${element.id.concat("_badge")}"></div>`;
+    }
+    else if(element.classList.contains("cycle")) {
+        element.classList.add(cycleoptions[element.id][0], "false");
+    }
 }
