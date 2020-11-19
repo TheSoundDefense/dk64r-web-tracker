@@ -1,8 +1,3 @@
-/* .unknowntext, .freetext, .dekutext, .dctext, .jabutext, .foresttext, .firetext, .watertext, .shadowtext, .spirittext, .emerald, .ruby, .sapphire {
-  display: inline-block;
-  background-size: contain;
-} */
-
 /* Dungeon Labels */
 .unknowntext { background-image: url(/images/unknown_text.png) }
 .freetext { background-image: url(/images/free_text.png) }

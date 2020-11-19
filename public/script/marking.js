@@ -1,69 +1,9 @@
-var cycleoptions = {
-    "forest_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "fire_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "water_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "shadow_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "spirit_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "light_med_text": ["unknowntext", "freetext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext"],
-    "atrade_full": ["atrade0", "atrade1", "atrade2", "atrade3", "atrade4", "atrade5", "atrade6", "atrade7", "atrade8", "atrade9", "atrade10"],
-    "scale": ["scale0", "scale1", "scale2"],
-    "strength": ["str0", "str1", "str2", "str3"],
-    "spells": ["nospells", "dins", "farores", "dinsfarores"],
-    "hooks": ["nohook", "hookshot", "longshot"],
-    "magicarrows": ["nomagicarrows", "firearrows", "lightarrows", "magicarrows"],
-    "boots": ["noboots", "ironboots", "hoverboots", "boots"],
-    "ctrade_full": ["ctrade0", "ctrade1", "ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
-    "dungeonopeners": ["noswordcard", "koksword", "gerudocard", "swordcard"],
-    "tunics": ["notunics", "gorontunic", "zoratunic", "tunics"],
-    "foresttype": ["forestn", "forestmq"],
-    "shadowtype": ["shadown", "shadowmq"],
-    "welltype": ["welln", "wellmq"],
-    "firetype": ["firen", "firemq"],
-    "spirittype": ["spiritn", "spiritmq"],
-    "forttype": ["fort1", "fort4"],
-    "watertype": ["watern", "watermq"],
-    "ganontype": ["ganonn", "ganonmq"],
-    "gtgtype": ["gtgn", "gtgmq"],
-}
-
-var badgecls = {
-    "bottle_letter":    ["bottle", "ruto"],
-    "magic_lens":       ["magic", "lensbadge"],
-    "zlsong":           ["zl", "checkmark"],
-    "sariasong":        ["epona", "checkmark"],
-    "eponasong":        ["saria", "checkmark"],
-    "sunsong":          ["sunsong", "checkmark"],
-    "timesong":         ["songoftime", "checkmark"],
-    "stormssong":       ["storms", "checkmark"],
-    "minuetsong":       ["minuet", "checkmark"],
-    "bolerosong":       ["bolero", "checkmark"],
-    "serenadesong":     ["serenade", "checkmark"],
-    "nocturnesong":     ["nocturne", "checkmark"],
-    "requiemsong":      ["requiem", "checkmark"],
-    "preludesong":      ["prelude", "checkmark"],
-}
-
-var countextrema = {
-    "gst": [0, 100],
-    "triforce": [0, 999],
-    "forestsk": [0, 5],
-    "shadowsk": [0, 5],
-    "wellsk": [0, 3],
-    "firesk": [0, 8],
-    "spiritsk": [0, 5],
-    "fortsk": [0, 4],
-    "watersk": [0, 6],
-    "ganonsk": [0, 2],
-    "gtgsk": [0, 9],
-}
-
 // When the page loads, attach functions to each tag and initialize some icons
 window.onload = function() {
     var elemlist = document.body.getElementsByTagName("*");
     for(let i=0; i<elemlist.length; i++) {
         cllist = elemlist[i].classList;
         if(cllist.contains("cycle")) {
-            populate_base_images(elemlist[i]);
             let noloop = elemlist[i].classList.contains("noloop");
             elemlist[i].addEventListener("click", function(e) { cycle(e, this, false, noloop); });
             elemlist[i].addEventListener("contextmenu", function(e) { cycle(e, this, true, noloop); })
@@ -73,7 +13,6 @@ window.onload = function() {
             elemlist[i].addEventListener("contextmenu", function(e) { toggle(e, this); })
         }
         if(cllist.contains("badge")) {
-            populate_base_images(elemlist[i]);
             elemlist[i].addEventListener("click", function(e) { badge(e, this, "left"); });
             elemlist[i].addEventListener("contextmenu", function(e) { badge(e, this, "right"); });
         }
@@ -82,18 +21,19 @@ window.onload = function() {
             elemlist[i].addEventListener("contextmenu", function(e) { count(e, this, "down", (e.shiftKey) ? 10 : 1); });
         }
         if(cllist.contains("split")) {
-            populate_base_images(elemlist[i]);
             elemlist[i].addEventListener("click", function(e) { split(e, this, "left"); });
             elemlist[i].addEventListener("contextmenu", function(e) { split(e, this, "right"); });
         }
     }
     init(init_tracker);
+    if(hidecontrols)
+        document.getElementById("roomcontrols").hidden = true;
 };
 
 //  Cycle object handler
 function cycle(e, element, reverse, noloop) {
     e.preventDefault();
-    var opts = cycleoptions[element.id];
+    var opts = items[element.id]["opts"];
     var curstate = -1;
     for(let i=0; i<opts.length; i++)
         curstate = element.classList.contains(opts[i]) ? i : curstate;
@@ -139,8 +79,8 @@ function badge(e, element, clicktype) {
 function count(e, element, direction, delta) {
     e.preventDefault();
     var curstate = element.innerHTML === "" ? 0 : parseInt(element.innerHTML, 10);
-    var mincount = countextrema[element.id][0];
-    var maxcount = countextrema[element.id][1];
+    var mincount = items[element.id]["minimum"];
+    var maxcount = items[element.id]["maximum"];
     if(direction === "up") {
         var newstate = (curstate+delta > maxcount) ? maxcount : curstate + delta;
     } else if(direction === "down") {
@@ -154,7 +94,7 @@ function count(e, element, direction, delta) {
 // Split object handler
 function split(e, element, clicktype) {
     e.preventDefault();
-    var curstate = cycleoptions[element.id].indexOf(element.classList[2]); // Need a better way of handling this
+    var curstate = items[element.id]["opts"].indexOf(element.classList[2]); // Need a better way of handling this
     var newstate = undefined;
     if(clicktype === "left") {
         switch(curstate) {
@@ -184,9 +124,9 @@ function setItemState(elementid, state) {
             setItemState(elementid, 0);
             return;
         }
-        element.classList.remove("false", ...cycleoptions[elementid]);
-        element.classList.add(cycleoptions[elementid][state]);
-        if(state === 0)
+        element.classList.remove("false", ...items[elementid]["opts"]);
+        element.classList.add(items[elementid]["opts"][state]);
+        if(state === 0 && items[elementid]["disable_zero"])
             element.classList.add("false");
     }
     else if(element.classList.contains("toggle")) {
@@ -221,17 +161,67 @@ function toggle_state(element, state, target) {
             element.classList.add(target);
 }
 
-// Initialize specific types of icons.
-function populate_base_images(element) {
-    if(element.classList.contains("split")) {
-        element.classList.add(cycleoptions[element.id][0], "false");
+
+
+// ===============================================================
+// Build the cycle objects
+function build_cycle(itemid) {
+    var loop = items[itemid]["loop"] ? "" : " noloop";
+    var disable_zero = items[itemid]["disable_zero"] ? " false" : ""
+    var classes = `cycle ${items[itemid]["size"]}${loop} ${items[itemid]["opts"][0]}${disable_zero}`;
+    return `<div class="${classes}" id="${itemid}"></div> `;
+}
+
+// Build the toggle objects
+function build_toggle(itemid) {
+    var classes = `toggle ${items[itemid]["size"]} false`;
+    return `<div class="${classes}" id="${itemid}"></div> `;
+}
+
+// Build the counter objects
+function build_counter(itemid) {
+    var classes = `counter ${items[itemid]["size"]} false`;
+    return `<div class="${classes}" id="${itemid}"></div> `;
+}
+
+// Build the badge objects
+function build_badge(itemid) {
+    return `<div class="badge ${items[itemid]["size"]}" id="${itemid}">
+        <div class="badge-item ${items[itemid]["opts"][0]} false" id="${itemid.concat("_base")}"></div>
+        <div class="badge-item ${items[itemid]["opts"][1]} hidden" id="${itemid.concat("_badge")}"></div>
+        </div> `;
+}
+
+// Build the split items
+function build_split(itemid) {
+    var classes = `split ${items[itemid]["size"]} ${items[itemid]["opts"][0]} false`;
+    return `<div class="${classes}" id="${itemid}"></div> `;
+}
+
+function build_item(itemid) {
+    if(items[itemid]["type"] === "cycle")
+        return build_cycle(itemid);
+    else if(items[itemid]["type"] === "toggle")
+        return build_toggle(itemid);
+    else if(items[itemid]["type"] === "counter")
+        return build_counter(itemid);
+    else if(items[itemid]["type"] === "badge")
+        return build_badge(itemid);
+    else if(items[itemid]["type"] === "split")
+        return build_split(itemid);
+    else
+        console.log("Couldn't build itemid: ", itemid);
+}
+
+// Build entire tracker from scratch
+function build_tracker(trackerid, itemgrid) {
+    var trackerhtml = "";
+    for(let i=0; i<itemgrid.length; i++) {
+        trackerhtml += `<div class="row">`;
+        for(let j=0; j<itemgrid[i].length; j++) {
+            trackerhtml += build_item(itemgrid[i][j]);
+        }
+        trackerhtml += "</div>";
     }
-    else if(element.classList.contains("badge")) {
-        element.innerHTML = 
-            `<div class="badge-item ${badgecls[element.id][0]} false" id="${element.id.concat("_base")}"></div>
-            <div class="badge-item ${badgecls[element.id][1]} hidden" id="${element.id.concat("_badge")}"></div>`;
-    }
-    else if(element.classList.contains("cycle")) {
-        element.classList.add(cycleoptions[element.id][0], "false");
-    }
+    document.getElementById(trackerid).innerHTML = trackerhtml;
 }

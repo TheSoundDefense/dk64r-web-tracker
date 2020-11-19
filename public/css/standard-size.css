@@ -1,13 +1,6 @@
-/* This used to be .big_counter_font */
 #gst, #triforce {
   font: 24px Impact, sans-serif;
   color: rgba(255, 255, 255, 0.75);
-}
-
-/* .small_counter_font { */
-.keys {
-  font: 16px Impact, sans-serif;
-  /* color: rgba(255, 255, 255, 1.0); */
 }
 
 .rewardtext {
@@ -64,4 +57,5 @@
   background-size: contain;
   width: 20px;
   height: 20px;
+  font: 16px Impact, sans-serif;
 }
