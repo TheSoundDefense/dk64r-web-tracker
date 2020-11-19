@@ -62,3 +62,11 @@ body {
 .tracker, .splititem, .badge, .cycle, .toggle, .cycle div {
   display: inline-block;
 }
+
+.box1 {
+  order: 1;
+}
+
+.box2 {
+  order: 2;
+}

@@ -11,7 +11,6 @@ var roomid = location.pathname.replace(/\/$/, "").split("/").pop().toLowerCase()
 var urlquery = location.search.replace(/\/$/, "").split("?").pop().toLowerCase().split("&");
 
 // Parse url controls
-console.log(urlquery)
 for(let i=0; i<urlquery.length; i++) {
     if(urlquery[i].includes("password="))
         password_override = urlquery[i].substr(urlquery[i].indexOf("=") + 1);
