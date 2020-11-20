@@ -10,10 +10,6 @@
         "destination": "/horiz-ootrr-tracker.html"
       },
       {
-        "source": "/new/**",
-        "destination": "/new-tracker.html"
-      },
-      {
         "source": "/**",
         "destination": "/ootrr-tracker.html"
       }
