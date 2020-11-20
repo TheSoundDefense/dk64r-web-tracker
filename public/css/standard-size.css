@@ -63,8 +63,3 @@
 .tracker {
   flex: 0 0 356px;
 }
-
-.horiz-container {
-  display: flex;
-  align-items: flex-end;
-}

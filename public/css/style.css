@@ -63,6 +63,11 @@ body {
   display: inline-block;
 }
 
+.horiz-container {
+  display: flex;
+  align-items: flex-end;
+}
+
 .box1 {
   order: 1;
 }
