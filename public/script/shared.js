@@ -39,13 +39,22 @@ function init(callback) {
 function init_tracker() {
     var initialized = null;
     rootRef.child('items').on('child_added', function (data) {
-        setItemState(data.key, data.val());
+        set_item_state(data.key, data.val());
     });
     rootRef.child('items').on('child_changed', function (data) {
-        setItemState(data.key, data.val());
+        set_item_state(data.key, data.val());
     });
     rootRef.child('items').on('child_removed', function (data) {
-        setItemState(data.key, false);
+        set_item_state(data.key, false);
+    });
+    rootRef.child('config').on('child_added', function (data) {
+        set_setting_state(data.key, data.val());
+    });
+    rootRef.child('config').on('child_changed', function (data) {
+        set_setting_state(data.key, data.val());
+    });
+    rootRef.child('config').on('child_removed', function (data) {
+        set_setting_state(data.key, false);
     });
     rootRef.child('owner').on('value', function (data) {
         initialized = !!data.val();
@@ -79,4 +88,5 @@ function destroy_firebase() {
 // Reset the db but keep config and user info
 function reset_firebase() {
     rootRef.child('items').set({});
+    rootRef.child('config').set({});
 }

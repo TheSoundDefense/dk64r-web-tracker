@@ -117,11 +117,11 @@ function split(e, element, clicktype) {
 }
 
 // Function to update tracker state on db changes
-function setItemState(elementid, state) {
+function set_item_state(elementid, state) {
     var element = document.getElementById(elementid);
     if(element.classList.contains("cycle") || element.classList.contains("split")) {
         if(state === false) {
-            setItemState(elementid, 0);
+            set_item_state(elementid, 0);
             return;
         }
         element.classList.remove("false", ...items[elementid]["opts"]);
@@ -146,7 +146,7 @@ function setItemState(elementid, state) {
                 element.classList.add("false")
         }
         else if(state === false)
-            setItemState(elementid, 0);
+            set_item_state(elementid, 0);
         else
             element.innerHTML = state;
     }
