@@ -1,286 +1,46 @@
 <html>
-<!-- TODO
-1. Clean up divs that hold other dives by putting position-relative in the parents. Then I can just have a generic class for everything inside that sets h/w to 100%
- -->
 <head>
-  <title>OoTRR Item Tracker</title>
-  <script src="/__/firebase/4.2.0/firebase-app.js"></script>
-  <script src="/__/firebase/4.2.0/firebase-auth.js"></script>
-  <script src="/__/firebase/4.2.0/firebase-database.js"></script>
-  <script src="/__/firebase/init.js"></script>
-  <script src="/script/shared.js"></script>
-  <script src="/script/marking.js"></script>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/items.css">
-  <link rel="stylesheet" href="/css/standard-size.css">
+<title>OoTRR Item Tracker</title>
+<script src="/__/firebase/4.2.0/firebase-app.js"></script>
+<script src="/__/firebase/4.2.0/firebase-auth.js"></script>
+<script src="/__/firebase/4.2.0/firebase-database.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script src="/script/button_descriptions.js"></script>
+<script src="/script/shared.js"></script>
+<script src="/script/marking.js"></script>
+<script src="/script/settings.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/items.css">
+<link rel="stylesheet" href="/css/standard-size.css">
 </head>
 <body>
 
-  <div id="notInitialized"><h2>Room not initialized</h2></div>
+<div id="notInitialized"><h2>Room not initialized</h2></div>
 
+<div class="tracker" id="tracker1">
+    <script>
+        build_tracker("tracker1", [
+            ["forest_med_text", "fire_med_text", "water_med_text", "shadow_med_text", "spirit_med_text", "light_med_text"],
+            ["forestmed", "firemed", "watermed", "shadowmed", "spiritmed", "lightmed"],
+            ["atrade_full", "gst", "kokiri_emerald", "goron_ruby", "zora_sapphire", "bottle_letter", "scale"],
+            ["slingshot", "bombbag", "boomerang", "strength", "magic_lens", "spells"],
+            ["hooks", "bow", "magicarrows", "hammer", "boots", "mirrorshield"],
+            ["ctrade_full", "ocarina", "beans", "dungeonopeners", "tunics", "triforce"],
+            ["zlsong", "eponasong", "sariasong", "sunsong", "timesong", "stormssong"],
+            ["minuetsong", "bolerosong", "serenadesong", "nocturnesong", "requiemsong", "preludesong"],
+            ["foresttype", "forestsk", "forestbk", "shadowtype", "shadowsk", "shadowbk", "welltype", "wellsk"], 
+            ["firetype", "firesk", "firebk", "spirittype", "spiritsk", "spiritbk", "forttype", "fortsk"],
+            ["watertype", "watersk", "waterbk", "ganontype", "ganonsk", "ganonbk", "gtgtype", "gtgsk"],
+        ])
+    </script>
+</div>
 
-  <div class="tracker">
-    <!-- Next Row: Medallion Labels -->
-    <div class="row">
-      <div class="formedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-      <div class="firemedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-      <div class="watmedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-      <div class="shamedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-      <div class="spmedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-      <div class="limedlabel cycle">
-        <div class="unknowntext rewardtext true"></div>
-        <div class="dekutext rewardtext hidden"></div>
-        <div class="dctext rewardtext hidden"></div>
-        <div class="jabutext rewardtext hidden"></div>
-        <div class="foresttext rewardtext hidden"></div>
-        <div class="firetext rewardtext hidden"></div>
-        <div class="watertext rewardtext hidden"></div>
-        <div class="shadowtext rewardtext hidden"></div>
-        <div class="spirittext rewardtext hidden"></div>
-        <div class="freetext rewardtext hidden"></div>
-      </div>
-    </div>
-
-
-    <!-- Next Row: Medallions -->
-    <div class="row">
-      <div class="forestmed majoritem false toggle"></div>
-      <div class="firemed majoritem false toggle"></div>
-      <div class="watermed majoritem false toggle"></div>
-      <div class="shadowmed majoritem false toggle"></div>
-      <div class="spiritmed majoritem false toggle"></div>
-      <div class="lightmed majoritem false toggle"></div>
-    </div>
-
-    <!-- Next Row: Atrade, Skulls, Stones, Bottle, Scale -->
-    <div class="row">
-      <div class="atrade cycle noloop">
-        <div class="atrade0 majoritem false"></div>
-        <div class="atrade1 majoritem hidden"></div>
-        <div class="atrade2 majoritem hidden"></div>
-        <div class="atrade3 majoritem hidden"></div>
-        <div class="atrade4 majoritem hidden"></div>
-        <div class="atrade5 majoritem hidden"></div>
-        <div class="atrade6 majoritem hidden"></div>
-        <div class="atrade7 majoritem hidden"></div>
-        <div class="atrade8 majoritem hidden"></div>
-        <div class="atrade9 majoritem hidden"></div>
-        <div class="atrade10 majoritem hidden"></div>
-      </div>
-      <div class="gst majoritem counters false">
-        <div class="counter_text big_counter_font">0</div>
-      </div>
-      <div class="emerald stones false toggle"></div>
-      <div class="ruby stones false toggle"></div>
-      <div class="sapphire stones false toggle"></div>
-      <div class="bottlebundle majoritem badge"><div class="bottle badge-item false"></div><div class="ruto badge-item hidden"></div></div>
-      <div class="scalecycle cycle noloop">
-        <div class="scale0 majoritem false"></div>
-        <div class="scale1 majoritem hidden"></div>
-        <div class="scale2 majoritem hidden"></div>
-      </div>
-    </div>
-
-    <!-- Next Row: Slingshot, Bombs, Rang, Str, Lens, Spells -->
-    <div class="row">
-      <div class="slingshot majoritem false toggle"></div>
-      <div class="bombbag majoritem false toggle"></div>
-      <div class="boomerang majoritem false toggle"></div>
-      <div class="strcycle cycle noloop">
-        <div class="str0 majoritem false"></div>
-        <div class="str1 majoritem hidden"></div>
-        <div class="str2 majoritem hidden"></div>
-        <div class="str3 majoritem hidden"></div>
-      </div>
-      <div class="magiclens majoritem badge"><div class="magic badge-item false"></div><div class="lensbadge badge-item hidden"></div></div>
-      <div class="spellcycle splititem">
-        <div class="nospells majoritem false"></div>
-        <div class="dins majoritem hidden"></div>
-        <div class="farores majoritem hidden"></div>
-        <div class="dinsfarores majoritem hidden"></div>
-      </div>
-    </div>
-
-    <!-- Next Row: Hookshot, Bow, Arrows, Hammer, Boots, Mirror Shield -->
-    <div class="row">
-      <div class="hslscycle cycle noloop">
-        <div class="nohook majoritem false"></div>
-        <div class="hookshot majoritem hidden"></div>
-        <div class="longshot majoritem hidden"></div>
-      </div>
-      <div class="bow majoritem false toggle"></div>
-      <div class="compositearrows splititem">
-        <div class="nomagicarrows majoritem false"></div>
-        <div class="firearrows majoritem hidden"></div>
-        <div class="lightarrows majoritem hidden"></div>
-        <div class="magicarrows majoritem hidden"></div>
-      </div>
-      <div class="hammer majoritem false toggle"></div>
-      <div class="bootcycle splititem">
-        <div class="noboots majoritem false"></div>
-        <div class="ironboots majoritem hidden"></div>
-        <div class="hoverboots majoritem hidden"></div>
-        <div class="boots majoritem hidden"></div>
-      </div>
-      <div class="mirrorshield majoritem false toggle"></div>
-    </div>
-
-    <!-- Next Row: Child Trade, Ocarina, Beans, Ksword/Gcard, Tunics, Triforce -->
-    <div class="row">
-      <div class="ctrade cycle noloop">
-        <div class="ctrade0 majoritem false"></div>
-        <div class="ctrade1 majoritem hidden"></div>
-        <div class="ctrade2 majoritem hidden"></div>
-        <div class="ctrade3 majoritem hidden"></div>
-        <div class="ctrade4 majoritem hidden"></div>
-        <div class="ctrade5 majoritem hidden"></div>
-        <div class="ctrade6 majoritem hidden"></div>
-        <div class="ctrade7 majoritem hidden"></div>
-      </div>
-      <div class="ocarina majoritem false toggle"></div>
-      <div class="beans majoritem false toggle"></div>
-      <div class="dungeonopeners splititem">
-        <div class="noswordcard majoritem false"></div>
-        <div class="koksword majoritem hidden"></div>
-        <div class="gerudocard majoritem hidden"></div>
-        <div class="swordcard majoritem hidden"></div>
-      </div>
-      <div class="tuniccycle splititem">
-        <div class="notunics majoritem false"></div>
-        <div class="gorontunic majoritem hidden"></div>
-        <div class="zoratunic majoritem hidden"></div>
-        <div class="tunics majoritem hidden"></div>
-      </div>
-      <div class="triforce majoritem counters false">
-        <div class="counter_text big_counter_font">0</div>
-      </div>
-    </div>
-
-    <!-- Next Row: Child song tracking -->
-    <div class="row">
-      <div class="zlbundle majoritem badge"><div class="zl badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="eponabundle majoritem badge"><div class="epona badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="sariabundle majoritem badge"><div class="saria badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="sunsongbundle majoritem badge"><div class="sunsong badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="songoftimebundle majoritem badge"><div class="songoftime badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="stormsbundle majoritem badge"><div class="storms badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-    </div>
-
-    <!-- Next Row: Warp Songs -->
-    <div class="row">
-      <div class="minuetbundle majoritem badge"><div class="minuet badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="bolerobundle majoritem badge"><div class="bolero badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="serenadebundle majoritem badge"><div class="serenade badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="nocturnebundle majoritem badge"><div class="nocturne badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="requiembundle majoritem badge"><div class="requiem badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-      <div class="preludebundle majoritem badge"><div class="prelude badge-item false"></div><div class="checkmark badge-item hidden"></div></div>
-    </div>
-
-    <!-- First Row of Keys: Forest, Shadow, Well -->
-    <div class="row">
-      <div class="forestcycle cycle"><div class="forestn dungname-col1 true"></div><div class="forestmq dungname-col1 hidden"></div></div>
-      <div class="forestsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="forestbk keys toggle false"></div>
-
-      <div class="shadowcycle cycle"><div class="shadown dungname-col2 true"></div><div class="shadowmq dungname-col2 hidden"></div></div>
-      <div class="shadowsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="shadowbk keys toggle false"></div>
-
-      <div class="wellcycle cycle"><div class="welln dungname-col3 true"></div><div class="wellmq dungname-col3 hidden"></div></div>
-      <div class="wellsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-    </div>
-
-    <!-- Second Row of Keys: Fire, Spirit, Fort -->
-    <div class="row">
-      <div class="firecycle cycle"><div class="firen dungname-col1 true"></div><div class="firemq dungname-col1 hidden"></div></div>
-      <div class="firesk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="firebk keys toggle false"></div>
-
-      <div class="spiritcycle cycle"><div class="spiritn dungname-col2 true"></div><div class="spiritmq dungname-col2 hidden"></div></div>
-      <div class="spiritsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="spiritbk keys toggle false"></div>
-
-      <div class="fortcycle cycle"><div class="fort1 dungname-col3 true"></div><div class="fort4 dungname-col3 hidden"></div></div>
-      <div class="fortsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-    </div>
-
-    <!-- Last Row of Keys: Water, Ganon, GTG -->
-    <div class="row">
-      <div class="watercycle cycle"><div class="watern dungname-col1 true"></div><div class="watermq dungname-col1 hidden"></div></div>
-      <div class="watersk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="waterbk keys toggle false"></div>
-
-      <div class="ganoncycle cycle"><div class="ganonn dungname-col2 true"></div><div class="ganonmq dungname-col2 hidden"></div></div>
-      <div class="ganonsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-      <div class="ganonbk keys toggle false"></div>
-
-      <div class="gtgcycle cycle"><div class="gtgn dungname-col3 true"></div><div class="gtgmq dungname-col3 hidden"></div></div>
-      <div class="gtgsk keys counters false"><div class="counter_text small_counter_font">0</div></div>
-    </div>
-
-
-  </div>
-  <div class="room-controls">
+<div class="room-controls" id="roomcontrols">
     <input id="passcode" type="text" placeholder="Passcode" />
-    <button id="setPasscode">Initialize room w/passcode</button>
-    <button id="resetRoom">Reset room</button>
-    <div id="ownerControls"><button id="destroyRoom">Destroy room</button></div>
-  </div>
+    <button id="setPasscode" onclick="set_password()">Initialize room w/passcode</button>
+    <button id="resetRoom" onclick="reset_firebase()">Reset room</button>
+    <div id="ownerControls"><button id="destroyRoom" onclick="destroy_firebase()">Destroy room</button></div>
+</div>
 
 </body>
 </html>
