@@ -1,26 +1,27 @@
+// Valid things through url
+// password=, hidecontrols=true
 
+// Setting some global variables for user authentication
 var uid = undefined;
-var roomid = location.pathname.replace(/\/$/, "").split("/").pop().toLowerCase();
-var g_password = location.search.replace(/\/$/, "").split("?").pop().toLowerCase();
-
-if (g_password && g_password.length > 4 && g_password.includes("password=")) {
-    g_password = g_password.substr(g_password.indexOf('=') + 1);
-    console.log("Password override: ", g_password);
-} else 
-    g_password = "";
-
+var password_override = "";
+var hidecontrols = false;
 var authAttempted = false;
 var rootRef = {};
+var roomid = location.pathname.replace(/\/$/, "").split("/").pop().toLowerCase();
+var urlquery = location.search.replace(/\/$/, "").split("?").pop().toLowerCase().split("&");
 
-function destroyFirebase() {
-    rootRef.set({});
+// Parse url controls
+for(let i=0; i<urlquery.length; i++) {
+    if(urlquery[i].includes("password="))
+        password_override = urlquery[i].substr(urlquery[i].indexOf("=") + 1);
+    else if(urlquery[i].toLowerCase().includes("hidecontrols=true"))
+        hidecontrols = true;
 }
 
+// Log the user in and do an initial db sync
 function init(callback) {
     firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        // User is signed in.
-        // console.log(user);
+    if(user) {
         uid = user.uid;
         rootRef = firebase.database().ref('games/' + roomid);
         callback();
@@ -32,4 +33,60 @@ function init(callback) {
             console.log(error);
         });
     }});
+}
+
+// Initialize tracker elements using db on sync
+function init_tracker() {
+    var initialized = null;
+    rootRef.child('items').on('child_added', function (data) {
+        set_item_state(data.key, data.val());
+    });
+    rootRef.child('items').on('child_changed', function (data) {
+        set_item_state(data.key, data.val());
+    });
+    rootRef.child('items').on('child_removed', function (data) {
+        set_item_state(data.key, false);
+    });
+    rootRef.child('config').on('child_added', function (data) {
+        set_setting_state(data.key, data.val());
+    });
+    rootRef.child('config').on('child_changed', function (data) {
+        set_setting_state(data.key, data.val());
+    });
+    rootRef.child('config').on('child_removed', function (data) {
+        set_setting_state(data.key, false);
+    });
+    rootRef.child('owner').on('value', function (data) {
+        initialized = !!data.val();
+        document.getElementById('notInitialized').hidden = initialized;
+        document.getElementById('setPasscode').innerText = initialized ? 'Enter passcode' : 'Initialize room w/passcode';
+        document.getElementById('ownerControls').hidden = !(initialized && (data.val() === uid));
+    });
+}
+
+// Set up room via password
+function set_password() {
+    var passcode = document.getElementById("passcode").value;
+    if (document.getElementById('notInitialized').hidden) {
+        rootRef.child('editors').child(uid).set(passcode);
+    } else {
+        var editors = {};
+        editors[uid] = true;
+        rootRef.set({
+            owner: uid,
+            passcode: passcode,
+            editors: editors
+        });
+    }
+}
+
+// Destroy the db entry
+function destroy_firebase() {
+    rootRef.set({});
+}
+
+// Reset the db but keep config and user info
+function reset_firebase() {
+    rootRef.child('items').set({});
+    rootRef.child('config').set({});
 }

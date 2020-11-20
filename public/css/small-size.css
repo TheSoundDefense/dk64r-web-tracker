@@ -1,0 +1,61 @@
+#gst, #triforce {
+  font: 18px Impact, sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.rewardtext {
+  display: inline-block;
+  background-size: contain;
+  width: 32px;
+  height: 12px;
+  margin: 1px;
+}
+
+.stones {
+  display: inline-block;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
+  margin: 0px 0px 6px 0px;
+}
+
+.majoritem {
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  margin: 1px;
+}
+
+.dungname-col1 {
+  display: inline-block;
+  background-size: contain;
+  width: 40px;
+  height: 10px;
+  margin-left: 5px;
+}
+
+.dungname-col2 {
+  display: inline-block;
+  background-size: contain;
+  width: 50px;
+  height: 10px;
+  margin-left: 4px;
+}
+
+.dungname-col3 {
+  display: inline-block;
+  background-size: contain;
+  width: 30px;
+  height: 10px;
+  margin-left: 2px;
+}
+
+.keys {
+  display: inline-block;
+  background-size: contain;
+  width: 13.3px;
+  height: 13.3px;
+  font: 12px Impact, sans-serif;
+}
