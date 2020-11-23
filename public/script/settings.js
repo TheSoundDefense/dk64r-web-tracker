@@ -1,7 +1,12 @@
 function set_setting_state(elementid, state) {
+    if(elementid === "hide_tutorial") {
+        toggle_state(document.getElementById("instructions"), !state, "hidden");
+    }
+
+    // Settings for the horizontal tracker only
     if(!(window.location.pathname.split("/")[1] === "horiz"))
         return;
-    if(elementid === "invert_layout") {
+    else if(elementid === "invert_layout") {
         var ele1 = document.getElementById("tracker_items_songs");
         var ele2 = document.getElementById("tracker_rewards_keys");
         [ele1, ele2].forEach(function (item, idx) { item.classList.remove("box1", "box2"); });
@@ -35,4 +40,10 @@ function swap_size_css() {
     var curfile = document.getElementById("size-css").href.split("/").slice(-1)[0];
     var is_small = curfile === "standard-size.css" ? false : true;
     rootRef.child("config").child("is_small").set(!is_small);
+}
+
+// Hide the tutorial text
+function hide_tutorial() {
+    var ishidden = document.getElementById("instructions").classList.contains("hidden");
+    rootRef.child("config").child("hide_tutorial").set(!ishidden);
 }

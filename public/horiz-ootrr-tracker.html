@@ -30,9 +30,9 @@
 
     <div class="tracker box2" id="tracker_rewards_keys"><script>
         build_tracker("tracker_rewards_keys", [
-            ["forest_med_text", "fire_med_text", "water_med_text", "shadow_med_text", "spirit_med_text", "light_med_text"],
-            ["forestmed", "firemed", "watermed", "shadowmed", "spiritmed", "lightmed"],
-            ["atrade_full", "gst", "kokiri_emerald", "goron_ruby", "zora_sapphire", "bottle_letter", "scale"],
+            ["forestmed_compact", "firemed_compact", "watermed_compact", "shadowmed_compact", "spiritmed_compact", "lightmed_compact"],
+            ["atrade_full", "gst", "kokiri_emerald_compact", "goron_ruby_compact", "zora_sapphire_compact", "bottle_letter", "scale"],
+            ["dekutype", "dctype", "jabutype"],
             ["foresttype", "forestsk", "forestbk", "shadowtype", "shadowsk", "shadowbk", "welltype", "wellsk"], 
             ["firetype", "firesk", "firebk", "spirittype", "spiritsk", "spiritbk", "forttype", "fortsk"],
             ["watertype", "watersk", "waterbk", "ganontype", "ganonsk", "ganonbk", "gtgtype", "gtgsk"],
@@ -45,6 +45,16 @@
     <button id="invertHoriz" onclick="swap_layout_orientation()">Invert Layout</button>
     <button id="toggleCSS" onclick="swap_size_css()">Shrink Icons</button>
 </div>
+
+<ul class="bodytext" id="instructions">
+    <li>Toggle: Left or right click</li>
+    <li>Cycle: Left click forward, Right click reverse</li>
+    <li>Counter: Left click +1, Right click -1, Shift+click +/-10</li>
+    <li>Badge: Left click toggle base, Right click toggle badge</li>
+    <li>Split: Left click toggle left item, Right click toggle right item</li>
+    <li>Medallions/Stones: Left/Right click cycle, Shift+click toggle</li>
+    <li><button id="hideTutorial" onclick="hide_tutorial()">Hide Instructions</button></li>
+</ul>
 
 <!-- Room controls -->
 <div id="room-controls-id", class="room-controls">

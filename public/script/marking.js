@@ -24,6 +24,10 @@ window.onload = function() {
             elemlist[i].addEventListener("click", function(e) { split(e, this, "left"); });
             elemlist[i].addEventListener("contextmenu", function(e) { split(e, this, "right"); });
         }
+        if(cllist.contains("cycletoggle")) {
+            elemlist[i].addEventListener("click", function(e) { cycletoggle(e, this); });
+            elemlist[i].addEventListener("contextmenu", function(e) { cycletoggle(e, this); });
+        }
     }
     init(init_tracker);
     if(hidecontrols)
@@ -116,10 +120,22 @@ function split(e, element, clicktype) {
     rootRef.child("items").child(element.id).set(newstate);
 }
 
+// CT object handler
+function cycletoggle(e, element) {
+    e.preventDefault();
+    if(e.shiftKey) {
+        var toggle_element = document.getElementById(items[element.id]["toggle_obj"]);
+        toggle(e, toggle_element);
+    } else {
+        var cycle_element = document.getElementById(items[element.id]["cycle_obj"]);
+        cycle(e, cycle_element, !(e.button === 0), cycle_element.classList.contains("noloop"));
+    }
+}
+
 // Function to update tracker state on db changes
 function set_item_state(elementid, state) {
     var element = document.getElementById(elementid);
-    if(element.classList.contains("cycle") || element.classList.contains("split")) {
+    if(element.classList.contains("cycle") || element.classList.contains("split") || element.classList.contains("ct_cycle")) {
         if(state === false) {
             set_item_state(elementid, 0);
             return;
@@ -129,7 +145,7 @@ function set_item_state(elementid, state) {
         if(state === 0 && items[elementid]["disable_zero"])
             element.classList.add("false");
     }
-    else if(element.classList.contains("toggle")) {
+    else if(element.classList.contains("toggle") || element.classList.contains("ct_toggle")) {
         toggle_state(element, state, "false");
     }
     else if(element.classList.contains("badge-item")) {
@@ -165,23 +181,23 @@ function toggle_state(element, state, target) {
 
 // ===============================================================
 // Build the cycle objects
-function build_cycle(itemid) {
+function build_cycle(itemid, advcycle) {
     var loop = items[itemid]["loop"] ? "" : " noloop";
     var disable_zero = items[itemid]["disable_zero"] ? " false" : ""
-    var classes = `cycle ${items[itemid]["size"]}${loop} ${items[itemid]["opts"][0]}${disable_zero}`;
-    return `<div class="${classes}" id="${itemid}"></div> `;
+    var classes = `${advcycle}cycle ${items[itemid]["size"]}${loop} ${items[itemid]["opts"][0]}${disable_zero}`;
+    return `<div class="${classes}" id="${itemid}"></div>`;
 }
 
 // Build the toggle objects
-function build_toggle(itemid) {
-    var classes = `toggle ${items[itemid]["size"]} false`;
-    return `<div class="${classes}" id="${itemid}"></div> `;
+function build_toggle(itemid, advtoggle) {
+    var classes = `${advtoggle}toggle ${items[itemid]["size"]} false`;
+    return `<div class="${classes}" id="${itemid}"></div>`;
 }
 
 // Build the counter objects
 function build_counter(itemid) {
     var classes = `counter ${items[itemid]["size"]} false`;
-    return `<div class="${classes}" id="${itemid}"></div> `;
+    return `<div class="${classes}" id="${itemid}"></div>`;
 }
 
 // Build the badge objects
@@ -189,26 +205,35 @@ function build_badge(itemid) {
     return `<div class="badge ${items[itemid]["size"]}" id="${itemid}">
         <div class="badge-item ${items[itemid]["opts"][0]} false" id="${itemid.concat("_base")}"></div>
         <div class="badge-item ${items[itemid]["opts"][1]} hidden" id="${itemid.concat("_badge")}"></div>
-        </div> `;
+        </div>`;
 }
 
 // Build the split items
 function build_split(itemid) {
     var classes = `split ${items[itemid]["size"]} ${items[itemid]["opts"][0]} false`;
-    return `<div class="${classes}" id="${itemid}"></div> `;
+    return `<div class="${classes}" id="${itemid}"></div>`;
+}
+
+// Build the cycle toggle advanced object
+function build_cycletoggle(itemid) {
+    var cycleobj = build_cycle(items[itemid]["cycle_obj"], "ct_");
+    var toggleobj = build_toggle(items[itemid]["toggle_obj"], "ct_");
+    return `<div class="cycletoggle ${items[itemid]["size"]}" id="${itemid}">${cycleobj}${toggleobj}</div>`;
 }
 
 function build_item(itemid) {
     if(items[itemid]["type"] === "cycle")
-        return build_cycle(itemid);
+        return build_cycle(itemid, "");
     else if(items[itemid]["type"] === "toggle")
-        return build_toggle(itemid);
+        return build_toggle(itemid, "");
     else if(items[itemid]["type"] === "counter")
         return build_counter(itemid);
     else if(items[itemid]["type"] === "badge")
         return build_badge(itemid);
     else if(items[itemid]["type"] === "split")
         return build_split(itemid);
+    else if(items[itemid]["type"] === "cycletoggle")
+        return build_cycletoggle(itemid);
     else
         console.log("Couldn't build itemid: ", itemid);
 }
@@ -219,7 +244,7 @@ function build_tracker(trackerid, itemgrid) {
     for(let i=0; i<itemgrid.length; i++) {
         trackerhtml += `<div class="row">`;
         for(let j=0; j<itemgrid[i].length; j++) {
-            trackerhtml += build_item(itemgrid[i][j]);
+            trackerhtml += build_item(itemgrid[i][j]).concat(" ");
         }
         trackerhtml += "</div>";
     }

@@ -3,16 +3,27 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-.rewardtext {
+.med_rewardtext, .stone_rewardtext {
   display: inline-block;
   background-size: contain;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.med_rewardtext {
   width: 32px;
   height: 12px;
   margin: 1px;
 }
 
+.stone_rewardtext {
+  width: 22px;
+  height: 8.25px;
+  /* margin: 6px 1.5px 11.5px 1.5px; */
+}
+
 .stones {
   display: inline-block;
+  position: relative;
   background-size: contain;
   width: 22px;
   height: 22px;
@@ -26,6 +37,21 @@
   width: 32px;
   height: 32px;
   margin: 1px;
+}
+
+.ct_cycle {
+  top: 20px;
+}
+
+.medallion {
+  /* background-size: 85px; */
+}
+
+.simpletype {
+  display: inline-block;
+  background-size: contain;
+  width: 77px;
+  height: 10px;
 }
 
 .dungname-col1 {

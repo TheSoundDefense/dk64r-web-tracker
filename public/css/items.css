@@ -101,6 +101,12 @@
 .prelude { background-image: url(/images/prelude.png) }
 
 /* Dungeon names for keys */
+.dekun { background-image: url(/images/deku_normal.png) }
+.dekumq { background-image: url(/images/deku_mq.png) }
+.dcn { background-image: url(/images/dc_normal.png) }
+.dcmq { background-image: url(/images/dc_mq.png) }
+.jabun { background-image: url(/images/jabu_normal.png) }
+.jabumq { background-image: url(/images/jabu_mq.png) }
 .forestn { background-image: url(/images/forest_normal.png) }
 .forestmq { background-image: url(/images/forest_mq.png) }
 .firen { background-image: url(/images/fire_normal.png) }
