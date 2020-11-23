@@ -334,6 +334,27 @@ var items = {
         "size": "majoritem",
         "opts": ["prelude", "checkmark"]
     },
+    "dekutype": {
+        "type": "cycle",
+        "size": "simpletype",
+        "opts": ["dekun", "dekumq"],
+        "loop": false,
+        "disable_zero": false,
+    },
+    "dctype": {
+        "type": "cycle",
+        "size": "simpletype",
+        "opts": ["dcn", "dcmq"],
+        "loop": false,
+        "disable_zero": false,
+    },
+    "jabutype": {
+        "type": "cycle",
+        "size": "simpletype",
+        "opts": ["jabun", "jabumq"],
+        "loop": false,
+        "disable_zero": false,
+    },
     "foresttype": {
         "type": "cycle",
         "size": "dungname-col1",

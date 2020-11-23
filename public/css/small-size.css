@@ -47,6 +47,13 @@
   /* background-size: 85px; */
 }
 
+.simpletype {
+  display: inline-block;
+  background-size: contain;
+  width: 77px;
+  height: 10px;
+}
+
 .dungname-col1 {
   display: inline-block;
   background-size: contain;
