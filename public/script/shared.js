@@ -88,5 +88,5 @@ function destroy_firebase() {
 // Reset the db but keep config and user info
 function reset_firebase() {
     rootRef.child('items').set({});
-    rootRef.child('config').set({});
+    // rootRef.child('config').set({});
 }
