@@ -50,6 +50,13 @@ var items = {
         "loop": true,
         "disable_zero": true,
     },
+    "kokiri_emerald_text_full": {
+        "type": "cycle",
+        "size": "med_rewardtext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
     "goron_ruby_text": {
         "type": "cycle",
         "size": "stone_rewardtext",
@@ -57,9 +64,23 @@ var items = {
         "loop": true,
         "disable_zero": true,
     },
+    "goron_ruby_text_full": {
+        "type": "cycle",
+        "size": "med_rewardtext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
     "zora_sapphire_text": {
         "type": "cycle",
         "size": "stone_rewardtext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "zora_sapphire_text_full": {
+        "type": "cycle",
+        "size": "med_rewardtext",
         "opts": dungeon_text,
         "loop": true,
         "disable_zero": true,
@@ -141,15 +162,29 @@ var items = {
         "type": "toggle",
         "size": "stones",
     },
+    "kokiri_emerald_full": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     "kokiri_emerald_compact": {
         "type": "cycletoggle",
         "size": "block-element",
         "cycle_obj": "kokiri_emerald_text",
         "toggle_obj": "kokiri_emerald",
     },
+    "kokiri_emerald_compact_full": {
+        "type": "cycletoggle",
+        "size": "block-element",
+        "cycle_obj": "kokiri_emerald_text_full",
+        "toggle_obj": "kokiri_emerald_full",
+    },
     "goron_ruby": {
         "type": "toggle",
         "size": "stones",
+    },
+    "goron_ruby_full": {
+        "type": "toggle",
+        "size": "majoritem",
     },
     "goron_ruby_compact": {
         "type": "cycletoggle",
@@ -157,15 +192,31 @@ var items = {
         "cycle_obj": "goron_ruby_text",
         "toggle_obj": "goron_ruby",
     },
+    "goron_ruby_compact_full": {
+        "type": "cycletoggle",
+        "size": "block-element",
+        "cycle_obj": "goron_ruby_text_full",
+        "toggle_obj": "goron_ruby_full",
+    },
     "zora_sapphire": {
         "type": "toggle",
         "size": "stones",
+    },
+    "zora_sapphire_full": {
+        "type": "toggle",
+        "size": "majoritem",
     },
     "zora_sapphire_compact": {
         "type": "cycletoggle",
         "size": "block-element",
         "cycle_obj": "zora_sapphire_text",
         "toggle_obj": "zora_sapphire",
+    },
+    "zora_sapphire_compact_full": {
+        "type": "cycletoggle",
+        "size": "block-element",
+        "cycle_obj": "zora_sapphire_text_full",
+        "toggle_obj": "zora_sapphire_full",
     },
     "bottle_letter": {
         "type": "badge",
@@ -183,9 +234,10 @@ var items = {
         "type": "toggle",
         "size": "majoritem",
     },
-    "bombbag": {
-        "type": "toggle",
+    "explosives": {
+        "type": "badge",
         "size": "majoritem",
+        "opts": ["bombbag", "chubadge"],
     },
     "boomerang": {
         "type": "toggle",
@@ -255,6 +307,10 @@ var items = {
     "beans": {
         "type": "toggle",
         "size": "majoritem",
+    },
+    "kokirisword": {
+        "type": "toggle",
+        "size": "majoritem"
     },
     "dungeonopeners": {
         "type": "split",
@@ -366,7 +422,7 @@ var items = {
         "type": "counter",
         "size": "keys",
         "minimum": 0,
-        "maximum": 5,
+        "maximum": 6,
     },
     "forestbk": {
         "type": "toggle",
@@ -383,7 +439,7 @@ var items = {
         "type": "counter",
         "size": "keys",
         "minimum": 0,
-        "maximum": 5,
+        "maximum": 6,
     },
     "shadowbk": {
         "type": "toggle",
@@ -430,7 +486,7 @@ var items = {
         "type": "counter",
         "size": "keys",
         "minimum": 0,
-        "maximum": 5,
+        "maximum": 7,
     },
     "spiritbk": {
         "type": "toggle",
@@ -477,7 +533,7 @@ var items = {
         "type": "counter",
         "size": "keys",
         "minimum": 0,
-        "maximum": 2,
+        "maximum": 3,
     },
     "ganonbk": {
         "type": "toggle",

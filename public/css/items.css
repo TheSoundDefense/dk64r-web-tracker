@@ -11,9 +11,9 @@
 .spirittext { background-image: url(/images/spirit_text.png) }
 
 /* Tracker Items */
-#kokiri_emerald { background-image: url(/images/kokiri_emerald.png) }
-#goron_ruby { background-image: url(/images/goron_ruby.png) }
-#zora_sapphire { background-image: url(/images/zora_sapphire.png) }
+#kokiri_emerald, #kokiri_emerald_full { background-image: url(/images/kokiri_emerald.png) }
+#goron_ruby, #goron_ruby_full { background-image: url(/images/goron_ruby.png) }
+#zora_sapphire, #zora_sapphire_full { background-image: url(/images/zora_sapphire.png) }
 #forestmed { background-image: url(/images/forest_medallion.png) }
 #firemed { background-image: url(/images/fire_medallion.png) }
 #watermed { background-image: url(/images/water_medallion.png) }
@@ -39,7 +39,7 @@
 .scale1 { background-image: url(/images/silver_scale.png) }
 .scale2 { background-image: url(/images/gold_scale.png) }
 #slingshot { background-image: url(/images/slingshot.png) }
-#bombbag { background-image: url(/images/bomb_bag.png) }
+.bombbag { background-image: url(/images/bomb_bag.png) }
 #boomerang { background-image: url(/images/boomerang.png) }
 .str0 { background-image: url(/images/goron_bracelet.png) }
 .str1 { background-image: url(/images/goron_bracelet.png) }
@@ -77,7 +77,7 @@
 #ocarina { background-image: url(/images/ocarina.png) }
 #beans { background-image: url(/images/beans.png) }
 .noswordcard { background-image: url(/images/composite_ksword_gcard.png) }
-.koksword { background-image: url(/images/kokiri_sword.png) }
+.koksword, #kokirisword { background-image: url(/images/kokiri_sword.png) }
 .gerudocard { background-image: url(/images/gerudo_card.png) }
 .swordcard { background-image: url(/images/composite_ksword_gcard.png) }
 .notunics { background-image: url(/images/composite_tunics.png) }
@@ -146,3 +146,4 @@
 /* Badges */
 .checkmark { background-image: url(/images/check.png) }
 .ruto { background-image: url(/images/ruto_letter.png) }
+.chubadge { background-image: url(/images/bombchu_badge.png) }

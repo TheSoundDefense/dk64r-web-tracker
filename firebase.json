@@ -10,6 +10,14 @@
         "destination": "/horiz-ootrr-tracker.html"
       },
       {
+        "source": "/tsgmain/**",
+        "destination": "/tsg-vertical.html"
+      },
+      {
+        "source": "/tsgmeds/**",
+        "destination": "/tsg-dungeon-rewards.html"
+      },
+      {
         "source": "/**",
         "destination": "/ootrr-tracker.html"
       }
