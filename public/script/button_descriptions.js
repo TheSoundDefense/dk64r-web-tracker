@@ -1,6 +1,10 @@
 var dungeon_text = ["unknowntext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext", "freetext"];
 
 var items = {
+    "gomode": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     "forest_med_text": {
         "type": "cycle",
         "size": "med_rewardtext",

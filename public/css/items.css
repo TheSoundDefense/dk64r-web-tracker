@@ -147,3 +147,6 @@
 .checkmark { background-image: url(/images/check.png) }
 .ruto { background-image: url(/images/ruto_letter.png) }
 .chubadge { background-image: url(/images/bombchu_badge.png) }
+
+/* Other */
+#gomode { background-image: url(/images/go_mode.png) }
