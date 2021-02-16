@@ -14,8 +14,20 @@
         "destination": "/tsg-vertical.html"
       },
       {
+        "source": "/tsgsquare/**",
+        "destination": "/tsg-square.html"
+      },
+      {
+        "source": "/tsg3player/**",
+        "destination": "/tsg-3player.html"
+      },
+      {
         "source": "/tsgmeds/**",
         "destination": "/tsg-dungeon-rewards.html"
+      },
+      {
+        "source": "/tsgmeds2/**",
+        "destination": "/tsg-square-dungeon-rewards.html"
       },
       {
         "source": "/**",
