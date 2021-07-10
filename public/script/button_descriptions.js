@@ -259,6 +259,11 @@ var items = {
         "size": "majoritem",
         "opts": ["magic", "lensbadge"],
     },
+    "kokirisword_shield": {
+        "type": "badge",
+        "size": "majoritem",
+        "opts": ["kokirisword", "dekushieldbadge"],
+    },
     "spells": {
         "type": "split",
         "size": "majoritem",
@@ -311,10 +316,6 @@ var items = {
     "beans": {
         "type": "toggle",
         "size": "majoritem",
-    },
-    "kokirisword": {
-        "type": "toggle",
-        "size": "majoritem"
     },
     "gerudocard": {
         "type": "toggle",

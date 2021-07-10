@@ -77,7 +77,7 @@
 #ocarina { background-image: url(/images/ocarina.png) }
 #beans { background-image: url(/images/beans.png) }
 .noswordcard { background-image: url(/images/composite_ksword_gcard.png) }
-.koksword, #kokirisword { background-image: url(/images/kokiri_sword.png) }
+.koksword, .kokirisword { background-image: url(/images/kokiri_sword.png) }
 .gerudocard { background-image: url(/images/gerudo_card.png) }
 .swordcard { background-image: url(/images/composite_ksword_gcard.png) }
 .notunics { background-image: url(/images/composite_tunics.png) }
@@ -85,6 +85,7 @@
 .zoratunic { background-image: url(/images/zora_tunic.png) }
 .tunics { background-image: url(/images/composite_tunics.png) }
 #triforce { background-image: url(/images/triforce.png) }
+.dekushieldbadge { background-image: url(/images/deku_shield_badge.png); }
 
 /* Song Tracking */
 .zl { background-image: url(/images/lullaby.png) }
