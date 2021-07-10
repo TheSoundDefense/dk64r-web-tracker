@@ -1,0 +1,35 @@
+.majoritem {
+    width: 50px;
+    height: 50px;
+    margin: 3px;
+}
+
+.spritemap {
+    background-image: url(/images/sprite_map.png);
+    background-size: 500px 350px;
+}
+
+.badge-item {
+  background-image: url(/images/sprite_map.png);
+  background-size: 500px 350px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+}
+
+.fit-4-in-3 {
+    width: 37px;
+    height: 37px;
+    margin: 2px;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bottle_counter {
+    font: 24px Impact, sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+}

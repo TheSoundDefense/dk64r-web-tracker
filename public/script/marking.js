@@ -190,13 +190,14 @@ function build_cycle(itemid, advcycle) {
 
 // Build the toggle objects
 function build_toggle(itemid, advtoggle) {
-    var classes = `${advtoggle}toggle ${items[itemid]["size"]} false`;
+    var classes = `${advtoggle}toggle ${items[itemid]["size"]} ${itemid} false`;
     return `<div class="${classes}" id="${itemid}"></div>`;
 }
 
 // Build the counter objects
 function build_counter(itemid) {
-    var classes = `counter ${items[itemid]["size"]} false`;
+    let baseclass = items[itemid].hasOwnProperty('baseclass') ? items[itemid].baseclass : "";
+    var classes = `counter ${baseclass} ${items[itemid]["size"]} false`;
     return `<div class="${classes}" id="${itemid}"></div>`;
 }
 

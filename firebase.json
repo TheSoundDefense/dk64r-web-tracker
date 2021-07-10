@@ -30,6 +30,10 @@
         "destination": "/tsg-square-dungeon-rewards.html"
       },
       {
+        "source": "/mmr/**",
+        "destination": "/mmr.html"
+      },
+      {
         "source": "/**",
         "destination": "/ootrr-tracker.html"
       }
