@@ -316,6 +316,10 @@ var items = {
         "type": "toggle",
         "size": "majoritem"
     },
+    "gerudocard": {
+        "type": "toggle",
+        "size": "majoritem"
+    },
     "dungeonopeners": {
         "type": "split",
         "size": "majoritem",
