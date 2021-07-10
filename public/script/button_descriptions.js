@@ -415,6 +415,13 @@ var items = {
         "loop": false,
         "disable_zero": false,
     },
+    "icetype": {
+        "type": "cycle",
+        "size": "simpletype",
+        "opts": ["icen", "icemq"],
+        "loop": false,
+        "disable_zero": false,
+    },
     "foresttype": {
         "type": "cycle",
         "size": "dungname-col1",

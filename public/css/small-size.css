@@ -50,8 +50,11 @@
 .simpletype {
   display: inline-block;
   background-size: contain;
-  width: 77px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
   height: 10px;
+  padding-left: 25px;
 }
 
 .dungname-col1 {
@@ -84,4 +87,13 @@
   width: 13.3px;
   height: 13.3px;
   font: 12px Impact, sans-serif;
+}
+
+.badge-item {
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
