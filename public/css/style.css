@@ -95,3 +95,27 @@ body {
 .box2 {
   order: 2;
 }
+
+.removeelement {
+  display:none;
+}
+
+.trackergap {
+  margin-top: 950px
+}
+
+.trackeraura-bottom {
+  background-image: linear-gradient(
+    0deg,
+    rgba(255,255,255, .3),
+    transparent
+  );
+}
+
+.trackeraura-top {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255,255,255, .3),
+    transparent
+  );
+}
