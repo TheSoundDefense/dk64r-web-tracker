@@ -28,6 +28,10 @@ window.onload = function() {
             elemlist[i].addEventListener("click", function(e) { cycletoggle(e, this); });
             elemlist[i].addEventListener("contextmenu", function(e) { cycletoggle(e, this); });
         }
+        if(cllist.contains("countertoggle")) {
+            elemlist[i].addEventListener("click", function(e) { countertoggle(e, this, "up"); });
+            elemlist[i].addEventListener("contextmenu", function(e) { countertoggle(e, this, "down"); });
+        }
     }
     init(init_tracker);
     if(hidecontrols)
@@ -132,6 +136,26 @@ function cycletoggle(e, element) {
     }
 }
 
+// Counter Toggle object handler
+function countertoggle(e, element, direction) {
+    e.preventDefault();
+    if(e.shiftKey) {
+        rootRef.child("items").child(element.id).set("Found");
+    } else {
+        var curstate = !isNaN(element.innerHTML) ? parseInt(element.innerHTML, 10) : -1;
+        var mincount = items[element.id]["minimum"];
+        var maxcount = items[element.id]["maximum"];
+        if(direction === "up") {
+            var newstate = (curstate+1 > maxcount) ? maxcount : curstate + 1;
+        } else if(direction === "down") {
+            var newstate = (curstate-1 < mincount) ? mincount : curstate - 1;
+        } else {
+            console.log(`Direction of count, ${direction}, must be up or down.`)
+        }
+        rootRef.child("items").child(element.id).set(newstate);
+    }
+}
+
 // Function to update tracker state on db changes
 function set_item_state(elementid, state) {
     var element = document.getElementById(elementid);
@@ -165,6 +189,20 @@ function set_item_state(elementid, state) {
             set_item_state(elementid, 0);
         else
             element.innerHTML = state;
+    }
+    else if(element.classList.contains("countertoggle")) {
+        element.classList.remove("tblitz-text-found");
+        element.classList.remove("tblitz-text");
+        if(state === false) {
+            element.classList.add("tblitz-text");
+            element.innerHTML = "?";
+        } else if(state === "Found") {
+            element.classList.add("tblitz-text-found");
+            element.innerHTML = state;
+        } else {
+            element.classList.add("tblitz-text");
+            element.innerHTML = state;
+        }
     }
 }
 
@@ -222,6 +260,19 @@ function build_cycletoggle(itemid) {
     return `<div class="cycletoggle ${items[itemid]["size"]}" id="${itemid}">${cycleobj}${toggleobj}</div>`;
 }
 
+// Build the empty objects
+function build_empty(itemid) {
+    var classes = `${items[itemid]["size"]}`;
+    return `<div class="${classes}" id="${itemid}"></div>`;
+}
+
+// Build counter toggle
+function build_countertoggle(itemid) {
+    let baseclass = items[itemid].hasOwnProperty('baseclass') ? items[itemid].baseclass : "";
+    var classes = `countertoggle ${baseclass} ${items[itemid]["size"]}`;
+    return `<div class="${classes}" id="${itemid}">?</div>`;
+}
+
 function build_item(itemid) {
     if(items[itemid]["type"] === "cycle")
         return build_cycle(itemid, "");
@@ -235,6 +286,10 @@ function build_item(itemid) {
         return build_split(itemid);
     else if(items[itemid]["type"] === "cycletoggle")
         return build_cycletoggle(itemid);
+    else if(items[itemid]["type"] === "empty")
+        return build_empty(itemid);
+    else if(items[itemid]["type"] === "countertoggle")
+        return build_countertoggle(itemid);
     else
         console.log("Couldn't build itemid: ", itemid);
 }

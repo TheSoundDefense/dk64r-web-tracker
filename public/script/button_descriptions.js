@@ -156,6 +156,10 @@ var items = {
         "loop": false,
         "disable_zero": true,
     },
+    "claim_check": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     "gst": {
         "type": "counter",
         "size": "majoritem",
@@ -288,6 +292,10 @@ var items = {
         "opts": ["nomagicarrows", "firearrows", "lightarrows", "magicarrows"],
         "disable_zero": true,
     },
+    "firearrows": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     "hammer": {
         "type": "toggle",
         "size": "majoritem",
@@ -308,6 +316,13 @@ var items = {
         "opts": ["ctrade0", "ctrade1", "ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
         "loop": false,
         "disable_zero": true,
+    },
+    "ctrade_scz": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
+        "loop": false,
+        "disable_zero": false,
     },
     "ocarina": {
         "type": "toggle",
@@ -568,4 +583,33 @@ var items = {
         "minimum": 0,
         "maximum": 9,
     },
+    "triforce_power": {
+        "type": "countertoggle",
+        "size": "majoritem",
+        "baseclass": "tblitz-text",
+        "minimum": 0,
+        "maximum": 999,
+    },
+    "triforce_wisdom": {
+        "type": "countertoggle",
+        "size": "majoritem",
+        "baseclass": "tblitz-text",
+        "minimum": 0,
+        "maximum": 999,
+    },
+    "triforce_courage": {
+        "type": "countertoggle",
+        "size": "majoritem",
+        "baseclass": "tblitz-text",
+        "minimum": 0,
+        "maximum": 999,
+    },
+    "spacer_full": {
+        "type": "empty",
+        "size": "majoritem"
+    },
+    "spacer_half": {
+        "type": "empty",
+        "size": "halfmajoritem"
+    }
 }

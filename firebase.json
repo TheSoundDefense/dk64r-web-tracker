@@ -46,6 +46,10 @@
         "destination": "/bqdisplay.html"
       },
       {
+        "source": "/tblitz/**",
+        "destination": "/triforce-blitz.html"
+      },
+      {
         "source": "/**",
         "destination": "/ootrr-tracker.html"
       }

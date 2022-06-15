@@ -36,7 +36,7 @@ body {
 }
 
 /* Mark an item as a counter */
-.counter {
+.counter, .countertoggle {
   display: inline-block;
   overflow: hidden;
   display: inline-block;

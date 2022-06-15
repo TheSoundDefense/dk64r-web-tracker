@@ -31,6 +31,7 @@
 .atrade8 { background-image: url(/images/eyeball_frog.png) }
 .atrade9 { background-image: url(/images/eye_drops.png) }
 .atrade10 { background-image: url(/images/claim_check.png) }
+#claim_check { background-image: url(/images/claim_check.png) }
 #gst { background-image: url(/images/golden_skulltula.png) }
 .nobottle { background-image: url(/images/bottle.png) }
 .bottle { background-image: url(/images/bottle.png) }
@@ -86,6 +87,11 @@
 .tunics { background-image: url(/images/composite_tunics.png) }
 #triforce { background-image: url(/images/triforce.png) }
 .dekushieldbadge { background-image: url(/images/deku_shield_badge.png); }
+
+/* Triforce Blitz */
+#triforce_power { background-image: url(/images/power.png) }
+#triforce_wisdom { background-image: url(/images/wisdom.png) }
+#triforce_courage { background-image: url(/images/courage.png) }
 
 /* Song Tracking */
 .zl { background-image: url(/images/lullaby.png) }
