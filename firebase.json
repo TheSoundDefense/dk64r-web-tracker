@@ -34,10 +34,6 @@
         "destination": "/tsg-square-dungeon-rewards.html"
       },
       {
-        "source": "/mmr/**",
-        "destination": "/mmr.html"
-      },
-      {
         "source": "/bqtrack/**",
         "destination": "/bqtracker.html"
       },
@@ -48,6 +44,10 @@
       {
         "source": "/tblitz/**",
         "destination": "/triforce-blitz.html"
+      },
+      {
+        "source": "/ootmm/**",
+        "destination": "/ootmm.html"
       },
       {
         "source": "/**",

@@ -9,6 +9,10 @@
 .watertext { background-image: url(/images/water_text.png) }
 .shadowtext { background-image: url(/images/shadow_text.png) }
 .spirittext { background-image: url(/images/spirit_text.png) }
+.woodtext { background-image: url(/images/woodfall_text.png) }
+.snowtext { background-image: url(/images/snowhead_text.png) }
+.gbttext { background-image: url(/images/greatbay_text.png) }
+.stttext { background-image: url(/images/stonetower_text.png) }
 
 /* Tracker Items */
 #kokiri_emerald, #kokiri_emerald_full { background-image: url(/images/kokiri_emerald.png) }
@@ -20,6 +24,7 @@
 #shadowmed { background-image: url(/images/shadow_medallion.png) }
 #spiritmed { background-image: url(/images/spirit_medallion.png) }
 #lightmed { background-image: url(/images/light_medallion.png) }
+.atrade0b { background-image: url(/images/white_egg.png) }
 .atrade0 { background-image: url(/images/blue_egg.png) }
 .atrade1 { background-image: url(/images/blue_egg.png) }
 .atrade2 { background-image: url(/images/cojiro.png) }
@@ -36,11 +41,10 @@
 .nobottle { background-image: url(/images/bottle.png) }
 .bottle { background-image: url(/images/bottle.png) }
 .bottleletter { background-image: url(/images/bottle_letter.png) }
-.scale0 { background-image: url(/images/silver_scale.png) }
-.scale1 { background-image: url(/images/silver_scale.png) }
+.scale0, .scale1 { background-image: url(/images/silver_scale.png) }
 .scale2 { background-image: url(/images/gold_scale.png) }
 #slingshot { background-image: url(/images/slingshot.png) }
-.bombbag { background-image: url(/images/bomb_bag.png) }
+.bombbag, .bombbag_mm { background-image: url(/images/bomb_bag.png) }
 #boomerang { background-image: url(/images/boomerang.png) }
 .str0 { background-image: url(/images/goron_bracelet.png) }
 .str1 { background-image: url(/images/goron_bracelet.png) }
@@ -75,10 +79,11 @@
 .ctrade5 { background-image: url(/images/spooky_mask.png) }
 .ctrade6 { background-image: url(/images/bunny_hood.png) }
 .ctrade7 { background-image: url(/images/mask_of_truth.png) }
-#ocarina { background-image: url(/images/ocarina.png) }
+#ocarina, #ocarina_mm { background-image: url(/images/ocarina.png) }
 #beans { background-image: url(/images/beans.png) }
 .noswordcard { background-image: url(/images/composite_ksword_gcard.png) }
-.koksword, .kokirisword { background-image: url(/images/kokiri_sword.png) }
+.nosword, .koksword, .kokirisword { background-image: url(/images/kokiri_sword.png) }
+.mastersword { background-image: url(/images/master_sword.png) }
 .gerudocard { background-image: url(/images/gerudo_card.png) }
 .swordcard { background-image: url(/images/composite_ksword_gcard.png) }
 .notunics { background-image: url(/images/composite_tunics.png) }
@@ -87,6 +92,56 @@
 .tunics { background-image: url(/images/composite_tunics.png) }
 #triforce { background-image: url(/images/triforce.png) }
 .dekushieldbadge { background-image: url(/images/deku_shield_badge.png); }
+
+/* MM Items */
+#bow_mm { background-image: url(/images/bow_mm.png); }
+.hookshot_mm { background-image: url(/images/hookshot_mm.png); }
+#firearrows_mm { background-image: url(/images/fire_arrows.png); }
+#icearrows_mm { background-image: url(/images/ice_arrows.png); }
+#lightarrows_mm { background-image: url(/images/light_arrows.png); }
+#pictobox { background-image: url(/images/pictobox.png); }
+#mirror_shield_mm { background-image: url(/images/mirror_shield_mm.png); }
+.gold_dust { background-image: url(/images/gold_dust.png); }
+.moontear { background-image: url(/images/moon_tear.png); }
+.landtd { background-image: url(/images/land_title.png); }
+.swamptd { background-image: url(/images/swamp_title.png); }
+.mountaintd { background-image: url(/images/mountain_title.png); }
+.oceantd { background-image: url(/images/ocean_title.png); }
+.roomkey { background-image: url(/images/room_key.png); }
+.kafeiletter { background-image: url(/images/letter_to_kafei.png); }
+.pendant_mm { background-image: url(/images/pendant_mm.png); }
+.expressmail { background-image: url(/images/mail_to_mama.png); }
+
+/* MM Masks */
+.postmans_hat { background-image: url(/images/postmans_hat.png); }
+.all_nights_mask { background-image: url(/images/all_nights_mask.png); }
+#stone_mask { background-image: url(/images/stone_mask.png); }
+#blast_mask { background-image: url(/images/blast_mask.png); }
+#great_fairy_mask { background-image: url(/images/mmr/great_fairy_mask.png); }
+#deku_mask { background-image: url(/images/deku_mask.png); }
+.keaton_mask { background-image: url(/images/keaton_mask.png); }
+.bremen_mask { background-image: url(/images/bremen_mask.png); }
+.bunny_hood_mm { background-image: url(/images/bunny_hood.png); }
+#mask_of_scents { background-image: url(/images/mask_of_scents.png); }
+.don_gero_mask { background-image: url(/images/don_gero_mask.png); }
+#goron_mask { background-image: url(/images/goron_mask.png); }
+.romani_mask { background-image: url(/images/romani_mask.png); }
+.kafei_mask { background-image: url(/images/kafei_mask.png); }
+.couples_mask { background-image: url(/images/couples_mask.png); }
+.mask_of_truth_mm { background-image: url(/images/mask_of_truth.png); }
+#zora_mask { background-image: url(/images/zora_mask.png); }
+.kamaro_mask { background-image: url(/images/kamaro_mask.png); }
+#gibdo_mask { background-image: url(/images/gibdo_mask.png); }
+#garo_mask { background-image: url(/images/garo_mask.png); }
+#captains_hat { background-image: url(/images/captains_hat.png); }
+#giants_mask { background-image: url(/images/giants_mask.png); }
+#fierce_deity_mask { background-image: url(/images/fierce_deity_mask.png); }
+
+/* MM Remains */
+#odolwa_remains { background-image: url(/images/odolwa.png); }
+#goht_remains { background-image: url(/images/goht.png); }
+#gyorg_remains { background-image: url(/images/gyorg.png); }
+#twinmold_remains { background-image: url(/images/twinmold.png); }
 
 /* Triforce Blitz */
 #triforce_power { background-image: url(/images/power.png) }
@@ -106,6 +161,14 @@
 .nocturne { background-image: url(/images/nocturne.png) }
 .requiem { background-image: url(/images/requiem.png) }
 .prelude { background-image: url(/images/prelude.png) }
+.healing { background-image: url(/images/healing.png) }
+.soaring { background-image: url(/images/soaring.png) }
+.sonata { background-image: url(/images/sonata.png) }
+.glullaby { background-image: url(/images/lullaby_mm.png) }
+.bossanova { background-image: url(/images/bossa_nova.png) }
+.elegy { background-image: url(/images/elegy.png) }
+.oath { background-image: url(/images/oath.png) }
+
 
 /* Dungeon names for keys */
 .dekun { background-image: url(/images/deku_short_normal.png) }
@@ -135,27 +198,48 @@
 .gtgn { background-image: url(/images/gtg_normal.png) }
 .gtgmq { background-image: url(/images/gtg_mq.png) }
 
+/* Short, uniform dungeon names for keys */
+.forestkl { background-image: url(/images/keylabels/keylabel_forest.png) }
+.firekl { background-image: url(/images/keylabels/keylabel_fire.png) }
+.waterkl { background-image: url(/images/keylabels/keylabel_water.png) }
+.shadowkl { background-image: url(/images/keylabels/keylabel_shadow.png) }
+.spiritkl { background-image: url(/images/keylabels/keylabel_spirit.png) }
+.ganonkl { background-image: url(/images/keylabels/keylabel_ganon.png) }
+.wellkl { background-image: url(/images/keylabels/keylabel_well.png) }
+.fortkl { background-image: url(/images/keylabels/keylabel_fort.png) }
+.gtgkl { background-image: url(/images/keylabels/keylabel_gtg.png) }
+.woodfallkl { background-image: url(/images/keylabels/keylabel_woodfall.png) }
+.snowheadkl { background-image: url(/images/keylabels/keylabel_snowhead.png) }
+.gbtkl { background-image: url(/images/keylabels/keylabel_gbt.png) }
+.sttkl { background-image: url(/images/keylabels/keylabel_stt.png) }
+.sshkl { background-image: url(/images/keylabels/keylabel_ssh.png) }
+.oshkl { background-image: url(/images/keylabels/keylabel_osh.png) }
+
 /* Dungeon Keys */
-#forestsk { background-image: url(/images/smallkey.png) }
-#forestbk { background-image: url(/images/bosskey.png) }
-#firesk { background-image: url(/images/smallkey.png) }
-#firebk { background-image: url(/images/bosskey.png) }
-#watersk { background-image: url(/images/smallkey.png) }
-#waterbk { background-image: url(/images/bosskey.png) }
-#shadowsk { background-image: url(/images/smallkey.png) }
-#shadowbk { background-image: url(/images/bosskey.png) }
-#spiritsk { background-image: url(/images/smallkey.png) }
-#spiritbk { background-image: url(/images/bosskey.png) }
-#ganonsk { background-image: url(/images/smallkey.png) }
-#ganonbk { background-image: url(/images/bosskey.png) }
-#wellsk { background-image: url(/images/smallkey.png) }
-#fortsk { background-image: url(/images/smallkey.png) }
-#gtgsk { background-image: url(/images/smallkey.png) }
+#forestsk, #firesk, #watersk, #shadowsk, #spiritsk, #ganonsk, #wellsk,
+#fortsk, #gtgsk, #woodfallsk, #snowheadsk, #gbtsk, #sttsk
+{ background-image: url(/images/keys/smallkey.png); }
+#forestbk, #firebk, #waterbk, #shadowbk, #spiritbk, #ganonbk, #woodfallbk,
+#snowheadbk, #gbtbk, #sttbk
+{ background-image: url(/images/keys/bosskey.png) }
+#forestskc { background-image: url(/images/keys/smallkey_forest.png); }
+#fireskc { background-image: url(/images/keys/smallkey_fire.png); }
+#waterskc { background-image: url(/images/keys/smallkey_water.png); }
+#shadowskc { background-image: url(/images/keys/smallkey_shadow.png); }
+#spiritskc { background-image: url(/images/keys/smallkey_spirit.png); }
+#strayfairy_clocktown { background-image: url(/images/mmr/strayfairy_clocktown.png) }
+#woodfallsf  { background-image: url(/images/mmr/strayfairy_woodfall.png) }
+#snowheadsf  { background-image: url(/images/mmr/strayfairy_snowhead.png) }
+#gbtsf { background-image: url(/images/mmr/strayfairy_greatbay.png) }
+#sttsf { background-image: url(/images/mmr/strayfairy_stonetower.png) }
+#ssh_count { background-image: url(/images/mmr/ssh_skulltula.png) }
+#osh_count { background-image: url(/images/mmr/osh_skulltula.png) }
 
 /* Badges */
 .checkmark { background-image: url(/images/check.png) }
 .ruto { background-image: url(/images/ruto_letter.png) }
 .chubadge { background-image: url(/images/bombchu_badge.png) }
+.keg_badge { background-image: url(/images/mmr/powder_keg_badge.png); }
 
 /* Other */
 #gomode { background-image: url(/images/go_mode.png) }

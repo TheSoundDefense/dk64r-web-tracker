@@ -1,0 +1,132 @@
+hr {
+  margin: 5px 0;
+}
+
+#gst, #triforce, #bottle_counter_mm, #osh_count, #ssh_count
+{
+  font: 24px Impact, sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.med_rewardtext, .stone_rewardtext {
+  display: inline-block;
+  background-size: contain;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+.med_rewardtext, .stone_rewardtext {
+  width: 39px;
+  height: 14px;
+  margin: 2px;
+}
+
+.stones, .majoritem.medallion {
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+}
+
+.majoritem {
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+}
+
+.majoritem_9r {
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  margin: 3px;
+}
+
+.squish3b3in2b2 {
+  display: inline-block;
+  position: relative;
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+  margin: 1px;
+}
+
+.ct_cycle {
+  top: 32px;
+}
+
+.simpletype {
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 45px;
+  height: 15px;
+  padding-left: 40px;
+}
+
+.keylabel {
+  display: inline-block;
+  background-size: contain;
+  width: 44px;
+  height: 24px;
+  margin: -1px -2px 2px 17px;
+}
+
+.keys {
+  display: inline-block;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  margin: -1px 0 4px 0;
+  font: 13px Impact, sans-serif;
+}
+
+.badge-item {
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.tracker.absolute {
+  position: absolute;
+}
+
+/* Specific tracker block styles */
+#fulltracker {
+  width: 464px;
+  height: 761px;
+  /* margin: -1px; */
+  /* border: 1px solid red; */
+}
+
+#ootdungeonrewards, #mmbaseitems, #keytracker
+{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+#ootadulttrade {
+  left: 346px;
+  top: 223px;
+}
+
+#mmtrades {
+  left: 346px;
+  top: 554px;
+}
+
+#ectfairy {
+  left: 302px;
+  top: 739px;
+}
