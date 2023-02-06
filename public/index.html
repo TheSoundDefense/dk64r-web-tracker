@@ -1,23 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>OoTR Networked Item Tracker</title>
+    <meta charset="utf-8">
+    <title>Xopar Tracker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="/script/tracker_selection.js"></script>
+    <link rel="stylesheet" href="/css/tracker_selection.css">
 </head>
+<body class="bodytext">
 
-<body>
-    <h1>OoTR Networked Item Tracker</h1>
-    <p style="font-size: 1.4em;">Go to <span id="loc"></span>/[NAME] to view a tracker. If the name does not
-        already exist, you will be able to create the tracker. If it does exist, you will be able to watch the
-        tracker and, if the room creator gives you the passcode, update the tracker as well.</p>
-    <p>If you have been given a passcode, you can enter it in the "Settings" panel by clicking the button in the
-        lower-right hand side. There is no indication when you've entered the correct passcode, but you'll be
-        able to update the tracker successfully if you did.</p>
-    <p>Remember the passcode when you create a tracker. If your cookies clear, you will not be able to update
-        the tracker without putting in the passcode.</p>
-    <script>
-        document.getElementById('loc').innerText = location.origin;
-        document.getElementById('loc2').innerText = location.origin;
-    </script>
+<!-- Buttons and input box -->
+<h2>Setup a Xopar Tracker</h2>
+<a id="init_url"><button id="init_button" class="notready">Initialize Tracker</button></a>
+<br /><br />
+Room Name: <input id="room_id" type="text"> <br /><br />
+
+<!-- Error Messages -->
+<div id="error_box" class="error_text">
+    <div id="error_length">Room name must be at least 5 character long.</div>
+    <div id="error_layout">Select a layout below.</div>
+</div>
+<br /><br />
+
+<!-- Layout List -->
+Select a layout.
+<div class="buttongroup">
+    <button id="ootr_rsl">OoTR Random Settings League</button>
+    <button id="ootmm">OoTR/MMR Combo Randomizer</button>
+    <button id="tblitz">Triforce Blitz</button>
+
+    <div class="specbuttongroup_title" id="spec_title">&#9655 Show Specialized Layouts</div>
+    <div class="buttongroup" id="specbuttongroup" style="display: none">
+        <button id="beta_quest">Beta Quest Item Tracker</button>
+        <button id="ootr_rsl_horiz">OoTR Random Settings League (Horizontal)</button>
+        <button id="tsg_main">TSG Vertical Item Tracker</button>
+        <button id="tsg_mw">TSG Multiworld Item Tracker</button>
+        <button id="tsg_square">TSG Square Item Tracker</button>
+        <button id="tsg_3p">TSG 3 Player Layout Item Tracker</button>
+        <button id="tsg_meds">TSG Horizontal Medallion Tracker</button>
+        <button id="tsg_meds2">TSG Square Medallion Tracker</button>
+    </div>
+</div>
+
+
+
+
+
 </body>
 </html>

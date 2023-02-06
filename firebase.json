@@ -50,8 +50,12 @@
         "destination": "/ootmm.html"
       },
       {
-        "source": "/**",
+        "source": "/rsl/**",
         "destination": "/ootrr-tracker.html"
+      },
+      {
+        "source": "/**",
+        "destination": "/"
       }
     ],
     "ignore": [
