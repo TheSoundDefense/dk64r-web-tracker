@@ -54,6 +54,10 @@
         "destination": "/ootrr-tracker.html"
       },
       {
+        "source": "/zsr-ootmm-items/**",
+        "destination": "/layouts/zsr/zsr-ootmm-items.html"
+      },
+      {
         "source": "/**",
         "destination": "/"
       }

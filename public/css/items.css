@@ -44,7 +44,7 @@
 .scale0, .scale1 { background-image: url(/images/silver_scale.png) }
 .scale2 { background-image: url(/images/gold_scale.png) }
 #slingshot { background-image: url(/images/slingshot.png) }
-.bombbag, .bombbag_mm { background-image: url(/images/bomb_bag.png) }
+.bombbag, .bombbag_mm, .bombbag_off { background-image: url(/images/bomb_bag.png) }
 #boomerang { background-image: url(/images/boomerang.png) }
 .str0 { background-image: url(/images/goron_bracelet.png) }
 .str1 { background-image: url(/images/goron_bracelet.png) }
@@ -116,7 +116,7 @@
 .postmans_hat { background-image: url(/images/postmans_hat.png); }
 .all_nights_mask { background-image: url(/images/all_nights_mask.png); }
 #stone_mask { background-image: url(/images/stone_mask.png); }
-#blast_mask { background-image: url(/images/blast_mask.png); }
+.blast_mask { background-image: url(/images/mmr/blast_mask.png); }
 #great_fairy_mask { background-image: url(/images/mmr/great_fairy_mask.png); }
 #deku_mask { background-image: url(/images/deku_mask.png); }
 .keaton_mask { background-image: url(/images/keaton_mask.png); }
@@ -136,12 +136,13 @@
 #captains_hat { background-image: url(/images/captains_hat.png); }
 #giants_mask { background-image: url(/images/giants_mask.png); }
 #fierce_deity_mask { background-image: url(/images/fierce_deity_mask.png); }
+.garo_gibdo_split { background-image: url(/images/mmr/garo_gibdo_split.png); }
 
 /* MM Remains */
-#odolwa_remains { background-image: url(/images/odolwa.png); }
-#goht_remains { background-image: url(/images/goht.png); }
-#gyorg_remains { background-image: url(/images/gyorg.png); }
-#twinmold_remains { background-image: url(/images/twinmold.png); }
+#odolwa_remains { background-image: url(/images/mmr/remains/odolwa.png); }
+#goht_remains { background-image: url(/images/mmr/remains/goht.png); }
+#gyorg_remains { background-image: url(/images/mmr/remains/gyorg.png); }
+#twinmold_remains { background-image: url(/images/mmr/remains/twinmold.png); }
 
 /* Triforce Blitz */
 #triforce_power { background-image: url(/images/power.png) }
@@ -243,3 +244,5 @@
 
 /* Other */
 #gomode { background-image: url(/images/go_mode.png) }
+.gomode_oot { background-image: url(/images/go_mode.png) }
+.gomode_mm { background-image: url(/images/go_mode.png) }

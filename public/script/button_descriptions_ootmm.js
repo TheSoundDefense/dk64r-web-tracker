@@ -5,6 +5,14 @@ var items = {
         "type": "toggle",
         "size": "majoritem",
     },
+    "gomode_oot": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "gomode_mm": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     // ========================================================================================================================
     // Medallions and Stones
     // ========================================================================================================================
@@ -835,6 +843,13 @@ var items = {
         "size": "majoritem_9r",
         "opts": ["bombbag", "keg_badge"]
     },
+    "explosives_mm": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["bombbag_off", "bombbag", "blast_mask"],
+        "loop": false,
+        "disable_zero": true
+    },
     "hookshot_mm": {
         "type": "toggle",
         "size": "majoritem_9r",
@@ -1036,6 +1051,14 @@ var items = {
         "type": "toggle",
         "size": "majoritem_9r",
     },
+    "fierce_deity_mask": {
+        "type": "toggle",
+        "size": "majoritem_9r"
+    },
+    "garo_gibdo_split": {
+        "type": "toggle",
+        "size": "majoritem"
+    },
 
 
     // ========================================================================================================
@@ -1164,16 +1187,6 @@ var items = {
         "cycle_obj": "twinmold_text",
         "toggle_obj": "twinmold_remains",
     },
-
-
-
-
-
-
-
-
-
-
 
 
 }

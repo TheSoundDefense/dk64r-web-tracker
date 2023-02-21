@@ -273,7 +273,44 @@ function build_countertoggle(itemid) {
     return `<div class="${classes}" id="${itemid}">?</div>`;
 }
 
+// Build a sub grid of 2x2 items in one majoritem square
+// These elements are not able to be properly placed in the tracker grid at the moment
+function build_subgrid_2item(itemlist) {
+    const html = `
+        <div class="majoritem griditem">
+            <div class="toggle subgrid_2x2_item1 ${itemlist[0]}" id="${itemlist[0]}"></div>
+            <div class="toggle subgrid_2x2_item2 ${itemlist[1]}" id="${itemlist[1]}"></div>
+        </div>`;
+    return html;
+}
+
+function build_subgrid_3item(itemlist) { return ""; }
+
+
 function build_item(itemid) {
+    // Check for multiple items in one square
+    if(Array.isArray(itemid)) {
+        console.log(`${itemid} is an array`);
+
+        if(itemid.length === 2)
+            return build_subgrid_2item(itemid);
+        else if(itemid.length === 3)
+            return build_subgrid_3item(itemid);
+        else
+            return '<div class="majoritem"></div>';
+    }
+
+    // Check for blank majoritem square
+    if(itemid === "blank")
+        return '<div class="majoritem"></div>';
+
+    // Check for objects that are not defined
+    if(!(itemid in items)) {
+        console.log("Couldn't build itemid: ", itemid);
+        return '<div class="majoritem"></div>';
+    }
+
+    // Build all of the normal types
     if(items[itemid]["type"] === "cycle")
         return build_cycle(itemid, "");
     else if(items[itemid]["type"] === "toggle")
