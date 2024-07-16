@@ -1,608 +1,434 @@
-var dungeon_text = ["unknowntext", "dekutext", "dctext", "jabutext", "foresttext", "firetext", "watertext", "shadowtext", "spirittext", "freetext"];
+var dungeon_text = ["unknowntext", "japestext", "aztectext", "factorytext", "galleontext", "foresttext", "cavestext", "castletext", "helmtext"];
 
 var items = {
-    "gomode": {
+    "donkey": {
         "type": "toggle",
         "size": "majoritem",
     },
-    "forest_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "fire_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "water_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "shadow_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "spirit_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "light_med_text": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "kokiri_emerald_text": {
-        "type": "cycle",
-        "size": "stone_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "kokiri_emerald_text_full": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "goron_ruby_text": {
-        "type": "cycle",
-        "size": "stone_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "goron_ruby_text_full": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "zora_sapphire_text": {
-        "type": "cycle",
-        "size": "stone_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "zora_sapphire_text_full": {
-        "type": "cycle",
-        "size": "med_rewardtext",
-        "opts": dungeon_text,
-        "loop": true,
-        "disable_zero": true,
-    },
-    "forestmed": {
+    "diddy": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "forestmed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "forest_med_text",
-        "toggle_obj": "forestmed",
-    },
-    "firemed": {
+    "lanky": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "firemed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "fire_med_text",
-        "toggle_obj": "firemed",
-    },
-    "watermed": {
+    "tiny": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "watermed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "water_med_text",
-        "toggle_obj": "watermed",
-    },
-    "shadowmed": {
+    "chunky": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "shadowmed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "shadow_med_text",
-        "toggle_obj": "shadowmed",
-    },
-    "spiritmed": {
+    "coconut": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "spiritmed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "spirit_med_text",
-        "toggle_obj": "spiritmed",
-    },
-    "lightmed": {
+    "peanut": {
         "type": "toggle",
-        "size": "majoritem medallion",
+        "size": "majoritem",
     },
-    "lightmed_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "light_med_text",
-        "toggle_obj": "lightmed",
+    "grape": {
+        "type": "toggle",
+        "size": "majoritem",
     },
-    "atrade_full": {
+    "feather": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "pineapple": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "bongos": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "guitar": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "trombone": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "sax": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "triangle": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "grab": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "charge": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "orangstand": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "twirl": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "punch": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "strong": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "rocketbarrel": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "sprint": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "mini_monkey": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "hunky": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "barrel_blast": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "spring": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "balloon": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "monkeyport": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "gone": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "slam": {
         "type": "cycle",
         "size": "majoritem",
-        "opts": ["atrade0", "atrade1", "atrade2", "atrade3", "atrade4", "atrade5", "atrade6", "atrade7", "atrade8", "atrade9", "atrade10"],
+        "opts": ["slam0", "slam1", "slam2", "slam3"],
         "loop": false,
         "disable_zero": true,
     },
-    "claim_check": {
+    "diving": {
         "type": "toggle",
         "size": "majoritem",
     },
-    "gst": {
-        "type": "counter",
-        "size": "majoritem",
-        "minimum": 0,
-        "maximum": 100,
-    },
-    "kokiri_emerald": {
-        "type": "toggle",
-        "size": "stones",
-    },
-    "kokiri_emerald_full": {
+    "oranges": {
         "type": "toggle",
         "size": "majoritem",
     },
-    "kokiri_emerald_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "kokiri_emerald_text",
-        "toggle_obj": "kokiri_emerald",
-    },
-    "kokiri_emerald_compact_full": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "kokiri_emerald_text_full",
-        "toggle_obj": "kokiri_emerald_full",
-    },
-    "goron_ruby": {
-        "type": "toggle",
-        "size": "stones",
-    },
-    "goron_ruby_full": {
+    "barrels": {
         "type": "toggle",
         "size": "majoritem",
     },
-    "goron_ruby_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "goron_ruby_text",
-        "toggle_obj": "goron_ruby",
-    },
-    "goron_ruby_compact_full": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "goron_ruby_text_full",
-        "toggle_obj": "goron_ruby_full",
-    },
-    "zora_sapphire": {
-        "type": "toggle",
-        "size": "stones",
-    },
-    "zora_sapphire_full": {
+    "vines": {
         "type": "toggle",
         "size": "majoritem",
     },
-    "zora_sapphire_compact": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "zora_sapphire_text",
-        "toggle_obj": "zora_sapphire",
-    },
-    "zora_sapphire_compact_full": {
-        "type": "cycletoggle",
-        "size": "block-element",
-        "cycle_obj": "zora_sapphire_text_full",
-        "toggle_obj": "zora_sapphire_full",
-    },
-    "bottle_letter": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["bottle", "ruto"],
-    },
-    "scale": {
-        "type": "cycle",
-        "size": "majoritem",
-        "opts": ["scale0", "scale1", "scale2"],
-        "loop": false,
-        "disable_zero": true,
-    },
-    "slingshot": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "explosives": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["bombbag", "chubadge"],
-    },
-    "boomerang": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "strength": {
-        "type": "cycle",
-        "size": "majoritem",
-        "opts": ["str0", "str1", "str2", "str3"],
-        "loop": false,
-        "disable_zero": true,
-    },
-    "magic_lens": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["magic", "lensbadge"],
-    },
-    "kokirisword_shield": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["kokirisword", "dekushieldbadge"],
-    },
-    "spells": {
+    "camera_shockwave": {
         "type": "split",
         "size": "majoritem",
-        "opts": ["nospells", "dins", "farores", "dinsfarores"],
+        "opts": ["nocamshock", "camera", "shockwave", "camshock"],
         "disable_zero": true,
         "loop": false,
     },
-    "hooks": {
-        "type": "cycle",
-        "size": "majoritem",
-        "opts": ["nohook", "hookshot", "longshot"],
-        "loop": false,
-        "disable_zero": true,
-    },
-    "bow": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "magicarrows": {
+    "homing_sniper": {
         "type": "split",
         "size": "majoritem",
-        "opts": ["nomagicarrows", "firearrows", "lightarrows", "magicarrows"],
+        "opts": ["noammo", "homing", "sniper", "homingsniper"],
         "disable_zero": true,
-    },
-    "firearrows": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "hammer": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "boots": {
-        "type": "split",
-        "size": "majoritem",
-        "opts": ["noboots", "ironboots", "hoverboots", "boots"],
-        "disable_zero": true,
-    },
-    "mirrorshield": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "ctrade_full": {
-        "type": "cycle",
-        "size": "majoritem",
-        "opts": ["ctrade0", "ctrade1", "ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
         "loop": false,
-        "disable_zero": true,
     },
-    "ctrade_scz": {
-        "type": "cycle",
-        "size": "majoritem",
-        "opts": ["ctrade2", "ctrade3", "ctrade4", "ctrade5", "ctrade6", "ctrade7"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "ocarina": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "beans": {
-        "type": "toggle",
-        "size": "majoritem",
-    },
-    "gerudocard": {
-        "type": "toggle",
-        "size": "majoritem"
-    },
-    "dungeonopeners": {
-        "type": "split",
-        "size": "majoritem",
-        "opts": ["noswordcard", "koksword", "gerudocard", "swordcard"],
-        "disable_zero": true,
-    },
-    "tunics": {
-        "type": "split",
-        "size": "majoritem",
-        "opts": ["notunics", "gorontunic", "zoratunic", "tunics"],
-        "disable_zero": true,
-    },
-    "triforce": {
+    "donkey_blueprint": {
         "type": "counter",
         "size": "majoritem",
-        "minimum": 0,
-        "maximum": 999,
-    },
-    "zlsong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["zl", "checkmark"]
-    },
-    "sariasong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["saria", "checkmark"]
-    },
-    "eponasong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["epona", "checkmark"]
-    },
-    "sunsong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["sunsong", "checkmark"]
-    },
-    "timesong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["songoftime", "checkmark"]
-    },
-    "stormssong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["storms", "checkmark"]
-    },
-    "minuetsong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["minuet", "checkmark"]
-    },
-    "bolerosong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["bolero", "checkmark"]
-    },
-    "serenadesong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["serenade", "checkmark"]
-    },
-    "nocturnesong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["nocturne", "checkmark"]
-    },
-    "requiemsong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["requiem", "checkmark"]
-    },
-    "preludesong": {
-        "type": "badge",
-        "size": "majoritem",
-        "opts": ["prelude", "checkmark"]
-    },
-    "dekutype": {
-        "type": "cycle",
-        "size": "simpletype",
-        "opts": ["dekun", "dekumq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "dctype": {
-        "type": "cycle",
-        "size": "simpletype",
-        "opts": ["dcn", "dcmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "jabutype": {
-        "type": "cycle",
-        "size": "simpletype",
-        "opts": ["jabun", "jabumq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "icetype": {
-        "type": "cycle",
-        "size": "simpletype",
-        "opts": ["icen", "icemq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "foresttype": {
-        "type": "cycle",
-        "size": "dungname-col1",
-        "opts": ["forestn", "forestmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "forestsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 6,
-    },
-    "forestbk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "shadowtype": {
-        "type": "cycle",
-        "size": "dungname-col2",
-        "opts": ["shadown", "shadowmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "shadowsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 6,
-    },
-    "shadowbk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "welltype": {
-        "type": "cycle",
-        "size": "dungname-col3",
-        "opts": ["welln", "wellmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "wellsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 3,
-    },
-    "firetype": {
-        "type": "cycle",
-        "size": "dungname-col1",
-        "opts": ["firen", "firemq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "firesk": {
-        "type": "counter",
-        "size": "keys",
         "minimum": 0,
         "maximum": 8,
     },
-    "firebk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "spirittype": {
-        "type": "cycle",
-        "size": "dungname-col2",
-        "opts": ["spiritn", "spiritmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "spiritsk": {
+    "diddy_blueprint": {
         "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 7,
-    },
-    "spiritbk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "forttype": {
-        "type": "cycle",
-        "size": "dungname-col3",
-        "opts": ["fort1", "fort4"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "fortsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 4,
-    },
-    "watertype": {
-        "type": "cycle",
-        "size": "dungname-col1",
-        "opts": ["watern", "watermq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "watersk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 6,
-    },
-    "waterbk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "ganontype": {
-        "type": "cycle",
-        "size": "dungname-col2",
-        "opts": ["ganonn", "ganonmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "ganonsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 3,
-    },
-    "ganonbk": {
-        "type": "toggle",
-        "size": "keys",
-    },
-    "gtgtype": {
-        "type": "cycle",
-        "size": "dungname-col3",
-        "opts": ["gtgn", "gtgmq"],
-        "loop": false,
-        "disable_zero": false,
-    },
-    "gtgsk": {
-        "type": "counter",
-        "size": "keys",
-        "minimum": 0,
-        "maximum": 9,
-    },
-    "triforce_power": {
-        "type": "countertoggle",
         "size": "majoritem",
-        "baseclass": "tblitz-text",
         "minimum": 0,
-        "maximum": 999,
+        "maximum": 8,
     },
-    "triforce_wisdom": {
-        "type": "countertoggle",
+    "lanky_blueprint": {
+        "type": "counter",
         "size": "majoritem",
-        "baseclass": "tblitz-text",
         "minimum": 0,
-        "maximum": 999,
+        "maximum": 8,
     },
-    "triforce_courage": {
-        "type": "countertoggle",
+    "tiny_blueprint": {
+        "type": "counter",
         "size": "majoritem",
-        "baseclass": "tblitz-text",
         "minimum": 0,
-        "maximum": 999,
+        "maximum": 8,
+    },
+    "chunky_blueprint": {
+        "type": "counter",
+        "size": "majoritem",
+        "minimum": 0,
+        "maximum": 8,
+    },
+    "pearl": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 5,
+    },
+    "bean": {
+        "type": "toggle",
+        "size": "collectible",
+    },
+    "company_coin": {
+        "type": "split",
+        "size": "collectible",
+        "opts": ["nocoin", "n64coin", "rwcoin", "n64rwcoin"],
+        "disable_zero": true,
+        "loop": false,
+    },
+    "rainbow_coin": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 16,
+    },
+    "crown": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 10,
+    },
+    "fairy": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 20,
+    },
+    "medal": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 40,
+    },
+    "gb": {
+        "type": "counter",
+        "size": "collectible",
+        "minimum": 0,
+        "maximum": 201,
+    },
+    "level_1_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_2_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_3_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_4_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_5_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_6_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_7_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_8_icon": {
+        "type": "static",
+        "size": "bosskey",
+    },
+    "level_1_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_2_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_3_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_4_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_5_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_6_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_7_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "level_8_text": {
+        "type": "cycle",
+        "size": "leveltext",
+        "opts": dungeon_text,
+        "loop": true,
+        "disable_zero": true,
+    },
+    "key_1": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_2": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_3": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_4": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_5": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_6": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_7": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "key_8": {
+        "type": "badge",
+        "size": "bosskey",
+        "opts": ["key", "checkmark"],
+    },
+    "k1_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k2_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k3_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k4_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k5_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k6_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k7_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "k8_toggle": {
+        "type": "toggle",
+        "size": "bosskey"
+    },
+    "kong_cycle_1": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "kong_cycle_2": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "kong_cycle_3": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "kong_cycle_4": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "kong_cycle_5": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
     },
     "spacer_full": {
         "type": "empty",

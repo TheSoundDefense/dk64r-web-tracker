@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>DK64R Season 3 Tracker</title>
+<script src="/__/firebase/4.2.0/firebase-app.js"></script>
+<script src="/__/firebase/4.2.0/firebase-auth.js"></script>
+<script src="/__/firebase/4.2.0/firebase-database.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script src="/script/button_descriptions.js"></script>
+<script src="/script/shared.js"></script>
+<script src="/script/marking.js"></script>
+<script src="/script/settings.js"></script>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/items.css">
+<link rel="stylesheet" href="/css/standard-size.css">
+</head>
+<body>
+
+<div id="notInitialized"><h2>Room not initialized</h2></div>
+
+<div class="tracker" id="tracker1">
+    <script>
+        build_tracker("tracker1", [
+            ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast", "donkey_blueprint"],
+            ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "diddy_blueprint"],
+            ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "lanky_blueprint"],
+            ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "tiny_blueprint"],
+            ["chunky", "pineapple", "triangle", "punch", "hunky", "gone", "chunky_blueprint"],
+            ["slam", "diving", "oranges", "barrels", "vines", "camera_shockwave", "homing_sniper"],
+            ["pearl", "bean", "company_coin", "rainbow_coin", "crown", "fairy", "medal", "gb"],
+            ["level_1_icon", "level_1_text", "key_1", "level_4_icon", "level_4_text", "key_4", "level_7_icon", "level_7_text", "key_7"],
+            ["level_2_icon", "level_2_text", "key_2", "level_5_icon", "level_5_text", "key_5", "level_8_icon", "level_8_text", "key_8"],
+            ["level_3_icon", "level_3_text", "key_3", "level_6_icon", "level_6_text", "key_6"],
+        ])
+    </script>
+</div>
+
+<ul class="bodytext" id="instructions">
+    <li>Toggle: Left or right click</li>
+    <li>Cycle: Left click forward, Right click reverse</li>
+    <li>Counter: Left click +1, Right click -1, Shift+click +/-10</li>
+    <li>Badge: Left click toggle base, Right click toggle badge</li>
+    <li>Split: Left click toggle left item, Right click toggle right item</li>
+    <li><button id="hideTutorial" onclick="hide_tutorial()">Hide Instructions</button></li>
+</ul>
+
+<div class="room-controls" id="roomcontrols">
+    <input id="passcode" type="text" placeholder="Passcode" />
+    <button id="setPasscode" onclick="set_password()">Initialize room w/passcode</button>
+    <button id="resetRoom" onclick="reset_firebase()">Reset room</button>
+    <div id="ownerControls"><button id="destroyRoom" onclick="destroy_firebase()">Destroy room</button></div>
+</div>
+
+</body>
+</html>

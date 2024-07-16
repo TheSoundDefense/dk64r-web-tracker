@@ -1,100 +1,58 @@
-#gst, #triforce {
-  font: 24px Impact, sans-serif;
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.med_rewardtext, .stone_rewardtext {
-  display: inline-block;
-  background-size: contain;
+.leveltext {
   background-color: rgba(0, 0, 0, .6);
-}
-
-.med_rewardtext {
-  width: 50px;
-  height: 18px;
-  margin: 3px;
-}
-
-.stone_rewardtext {
-  width: 33px;
-  height: 12px;
-  margin: 6px 1.5px 11.5px 1.5px;
-}
-
-.stones {
-  display: inline-block;
-  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: contain;
-  width: 33px;
-  height: 33px;
-  margin: 11.5px 1.5px 11.5px 1.5px;
+  display: inline-block;
+  height: 27px;
+  margin: 3px;
+  width: 54px;
 }
 
 .majoritem {
-  display: inline-block;
-  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: contain;
-  width: 50px;
+  display: inline-block;
   height: 50px;
   margin: 3px;
+  position: relative;
+  width: 50px;
+}
+
+.bosskey {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 27px;
+  margin: 3px;
+  position: relative;
+  width: 27px;
+}
+
+.collectible {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 40px;
+  margin: 4px;
+  position: relative;
+  width: 40px;
 }
 
 .halfmajoritem {
-  display: inline-block;
-  position: relative;
   background-size: contain;
-  width: 25px;
+  display: inline-block;
   height: 50px;
   margin: 0 1px 0 0;
+  position: relative;
+  width: 25px;
 }
 
 .ct_cycle {
   top: 32px;
-}
-
-/* .medallion {
-} */
-
-.simpletype {
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 45px;
-  height: 15px;
-  padding-left: 40px;
-}
-
-.dungname-col1 {
-  display: inline-block;
-  background-size: contain;
-  width: 60px;
-  height: 15px;
-  margin-left: 15px;
-}
-
-.dungname-col2 {
-  display: inline-block;
-  background-size: contain;
-  width: 75px;
-  height: 15px;
-  margin-left: 15px;
-}
-
-.dungname-col3 {
-  display: inline-block;
-  background-size: contain;
-  width: 45px;
-  height: 15px;
-  margin-left: 15px;
-}
-
-.keys {
-  display: inline-block;
-  background-size: contain;
-  width: 20px;
-  height: 20px;
-  font: 16px Impact, sans-serif;
 }
 
 .tracker {
@@ -102,6 +60,8 @@
 }
 
 .badge-item {
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
   width: 100%;

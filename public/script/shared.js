@@ -51,7 +51,11 @@ function init_tracker() {
         set_item_state(data.key, data.val());
     });
     rootRef.child('items').on('child_removed', function (data) {
-        set_item_state(data.key, false);
+        stateobj = data.val();
+        set_item_state(data.key, {
+            "player": stateobj["player"],
+            "state": false,
+        });
     });
     rootRef.child('config').on('child_added', function (data) {
         set_setting_state(data.key, data.val());

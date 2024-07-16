@@ -6,65 +6,16 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/horiz/**",
-        "destination": "/horiz-ootrr-tracker.html"
+        "source": "/s3/**",
+        "destination": "/dk64r-tracker.html"
       },
       {
-        "source": "/tsgmain/**",
-        "destination": "/tsg-vertical.html"
-      },
-      {
-        "source": "/tsgmw/**",
-        "destination": "/tsg-mw.html"
-      },
-      {
-        "source": "/tsgsquare/**",
-        "destination": "/tsg-square.html"
-      },
-      {
-        "source": "/tsg3player/**",
-        "destination": "/tsg-3player.html"
-      },
-      {
-        "source": "/tsgmeds/**",
-        "destination": "/tsg-dungeon-rewards.html"
-      },
-      {
-        "source": "/tsgmeds2/**",
-        "destination": "/tsg-square-dungeon-rewards.html"
-      },
-      {
-        "source": "/bqtrack/**",
-        "destination": "/bqtracker.html"
-      },
-      {
-        "source": "/bqdisplay/**",
-        "destination": "/bqdisplay.html"
-      },
-      {
-        "source": "/tblitz/**",
-        "destination": "/triforce-blitz.html"
-      },
-      {
-        "source": "/ootmm/**",
-        "destination": "/ootmm.html"
-      },
-      {
-        "source": "/rsl/**",
-        "destination": "/ootrr-tracker.html"
-      },
-      {
-        "source": "/zsr-ootmm-items/**",
-        "destination": "/layouts/zsr/zsr-ootmm-items.html"
-      },
-      {
-        "source": "/**",
-        "destination": "/"
+        "source": "/s3-race/**",
+        "destination": "/dk64r-race-tracker.html"
       }
     ],
     "ignore": [
       "firebase.json",
-      ".idea/*",
       "**/.*",
       "**/node_modules/**"
     ]

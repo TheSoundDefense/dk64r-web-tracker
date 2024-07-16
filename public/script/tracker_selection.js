@@ -1,33 +1,14 @@
 const basic_tracker_names = {
-    'ootr_rsl': 'OoTR Random Settings League',
-    'ootmm': 'OoTR/MMR Combo Randomizer',
-    'tblitz': 'Triforce Blitz'
+    's3': 'Season 3 (Standard)',
+    's3-race': 'Season 3 (Race Tracker)'
 };
 
-const adv_tracker_names = {
-    'beta_quest': 'Beta Quest Item Tracker',
-    'ootr_rsl_horiz': 'OoTR Random Settings League (Horizontal)',
-    'tsg_main': 'TSG Vertical Item Tracker',
-    'tsg_mw': 'TSG Multiworld Item Tracker',
-    'tsg_square': 'TSG Square Item Tracker',
-    'tsg_3p': 'TSG 3 Player Layout Item Tracker',
-    'tsg_meds': 'TSG Horizontal Medallion Tracker',
-    'tsg_meds2': 'TSG Square Medallion Tracker'
-};
+const adv_tracker_names = {};
 
 const tracker_names = {...basic_tracker_names, ...adv_tracker_names};
 const tracker_urls = {
-    'ootr_rsl': 'rsl',
-    'ootmm': 'ootmm',
-    'tblitz': 'tblitz',
-    'beta_quest': 'bqtrack',
-    'ootr_rsl_horiz': 'horiz',
-    'tsg_main': 'tsgmain',
-    'tsg_mw': 'tsgmw',
-    'tsg_square': 'tsgsquare',
-    'tsg_3p': 'tsg3player',
-    'tsg_meds': 'tsgmeds',
-    'tsg_meds2': 'tsgmeds2'
+    's3': 's3',
+    's3-race': 's3-race'
 }
 
 let selected_tracker = null;

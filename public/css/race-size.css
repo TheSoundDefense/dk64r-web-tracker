@@ -1,0 +1,85 @@
+.leveltext {
+    background-color: rgba(0, 0, 0, .6);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 25px;
+    margin: 3px;
+    width: 50px;
+}
+
+.majoritem {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 50px;
+    margin: 3px;
+    position: relative;
+    width: 50px;
+}
+
+.bosskey {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 25px;
+    margin: 3px;
+    position: relative;
+    width: 25px;
+  }
+
+.collectible {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 40px;
+    margin: 4px;
+    position: relative;
+    width: 40px;
+}
+
+.halfmajoritem {
+    background-size: contain;
+    display: inline-block;
+    height: 50px;
+    margin: 0 1px 0 0;
+    position: relative;
+    width: 25px;
+}
+
+.ct_cycle {
+    top: 32px;
+}
+
+.tracker {
+    flex: 0 0 356px;
+}
+
+.badge-item {
+    background-size: contain;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.tblitz-text {
+    font: 24px Impact, sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding-top: 18px;
+    box-sizing: border-box;
+}
+
+.tblitz-text-found {
+    font: 17px Impact, sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+    padding-top: 23px;
+    box-sizing: border-box;
+}
