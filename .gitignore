@@ -8,5 +8,6 @@
 
 .firebaserc
 .firebase
+fb.js
 firebase-debug.log
 package-lock.json

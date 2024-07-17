@@ -1,12 +1,12 @@
 .leveltext {
-    background-color: rgba(0, 0, 0, .6);
+    background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
-    height: 25px;
+    height: 28px;
     margin: 3px;
-    width: 50px;
+    width: 112px;
 }
 
 .majoritem {
@@ -14,10 +14,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
-    height: 50px;
+    height: 62px;
     margin: 3px;
     position: relative;
-    width: 50px;
+    width: 62px;
 }
 
 .bosskey {
@@ -25,10 +25,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     display: inline-block;
-    height: 25px;
+    height: 28px;
     margin: 3px;
     position: relative;
-    width: 25px;
+    width: 28px;
   }
 
 .collectible {

@@ -27,8 +27,8 @@
             margin-right: 40px;
         }
         .kongcycler .majoritem {
-            width: 30px;
-            height: 30px;
+            height: 50px;
+            width: 50px;
         }
     </style>
 
@@ -39,11 +39,10 @@
         <script>
             build_tracker("tracker1", [
                 ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast"],
-                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring"],
-                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon"],
-                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport"],
+                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "slam", "barrels"],
+                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "vines"],
+                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "homing_sniper"],
                 ["chunky", "pineapple", "triangle", "punch", "hunky", "gone"],
-                ["slam", "diving", "oranges", "barrels", "vines", "homing_sniper"],
             ], "p1");
         </script>
     </div>
@@ -56,11 +55,10 @@
         <script>
             build_tracker("tracker2", [
                 ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast"],
-                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring"],
-                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon"],
-                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport"],
+                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "slam", "barrels"],
+                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "vines"],
+                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "homing_sniper"],
                 ["chunky", "pineapple", "triangle", "punch", "hunky", "gone"],
-                ["slam", "diving", "oranges", "barrels", "vines", "homing_sniper"],
             ], "p2");
         </script>
     </div>
@@ -71,7 +69,7 @@
         <div class="kongcycler" id="helmtracker">
             <script>
                 build_tracker("helmtracker", [
-                    ["kong_cycle_1", "kong_cycle_2", "kong_cycle_3"]
+                    ["kong_cycle_1", "kong_cycle_2"]
                 ], "helm");
             </script>
         </div>
@@ -101,6 +99,39 @@
     <button id="resetRoom" onclick="reset_firebase()">Reset room</button>
     <div id="ownerControls"><button id="destroyRoom" onclick="destroy_firebase()">Destroy room</button></div>
 </div>
+
+<script>
+    preset_values = {
+        "slam_p1": {
+            "player": "p1",
+            "state": 1,
+        },
+        "slam_p2": {
+            "player": "p2",
+            "state": 1,
+        },
+        "k1_toggle_p1": {
+            "player": "p1",
+            "state": true,
+        },
+        "k1_toggle_p2": {
+            "player": "p2",
+            "state": true,
+        },
+        "k3_toggle_p1": {
+            "player": "p1",
+            "state": true,
+        },
+        "k3_toggle_p2": {
+            "player": "p2",
+            "state": true,
+        },
+        "level_8_text_": {
+            "player": "",
+            "state": 8,
+        },
+    };
+</script>
 
 </body>
 </html>

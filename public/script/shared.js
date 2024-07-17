@@ -113,6 +113,7 @@ function set_password(presetPW = null) { //if preset password is provided, allow
             passcode: passcode,
             editors: editors
         });
+        apply_presets();
     }
 }
 
@@ -125,4 +126,5 @@ function destroy_firebase() {
 function reset_firebase() {
     rootRef.child('items').set({});
     // rootRef.child('config').set({});
+    apply_presets();
 }

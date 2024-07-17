@@ -1,3 +1,6 @@
+// A global variable for storing preset values.
+var preset_values = {};
+
 // When the page loads, attach functions to each tag and initialize some icons
 window.onload = function() {
     var elemlist = document.body.getElementsByTagName("*");
@@ -460,4 +463,12 @@ function build_key_tracker(trackerid) {
         trackerhtml += "</div>";
     }
     document.getElementById(trackerid).innerHTML = trackerhtml;
+}
+
+// Apply preset values.
+function apply_presets() {
+    for (let elementid in preset_values) {
+        let value = preset_values[elementid];
+        set_item_state(elementid, value);
+    }
 }
