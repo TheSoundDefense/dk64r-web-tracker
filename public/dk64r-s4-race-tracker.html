@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>DK64R Season 3 Race Tracker</title>
+<title>DK64R Season 4 Race Tracker</title>
 <script src="/__/firebase/4.2.0/firebase-app.js"></script>
 <script src="/__/firebase/4.2.0/firebase-auth.js"></script>
 <script src="/__/firebase/4.2.0/firebase-database.js"></script>
@@ -38,11 +38,11 @@
     <div class="tracker multiplayer" id="tracker1">
         <script>
             build_tracker("tracker1", [
-                ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast"],
-                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "slam", "barrels"],
-                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "vines"],
-                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "homing_sniper"],
-                ["chunky", "pineapple", "triangle", "punch", "hunky", "gone"],
+                ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast", "slam", "camera_shockwave"],
+                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "barrels", "candy"],
+                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "cranky"],
+                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "funky"],
+                ["chunky", "pineapple", "triangle", "punch", "hunky", "gone", "vines", "homing_sniper"],
             ], "p1");
         </script>
     </div>
@@ -54,11 +54,11 @@
     <div class="tracker multiplayer" id="tracker2">
         <script>
             build_tracker("tracker2", [
-                ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast"],
-                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "slam", "barrels"],
-                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "vines"],
-                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "homing_sniper"],
-                ["chunky", "pineapple", "triangle", "punch", "hunky", "gone"],
+                ["donkey", "coconut", "bongos", "grab", "strong", "barrel_blast", "slam", "camera_shockwave"],
+                ["diddy", "peanut", "guitar", "charge", "rocketbarrel", "spring", "barrels", "candy"],
+                ["lanky", "grape", "trombone", "orangstand", "sprint", "balloon", "diving", "cranky"],
+                ["tiny", "feather", "sax", "twirl", "mini_monkey", "monkeyport", "oranges", "funky"],
+                ["chunky", "pineapple", "triangle", "punch", "hunky", "gone", "vines", "homing_sniper"],
             ], "p2");
         </script>
     </div>
@@ -101,36 +101,7 @@
 </div>
 
 <script>
-    preset_values = {
-        "slam_p1": {
-            "player": "p1",
-            "state": 1,
-        },
-        "slam_p2": {
-            "player": "p2",
-            "state": 1,
-        },
-        "k1_toggle_p1": {
-            "player": "p1",
-            "state": true,
-        },
-        "k1_toggle_p2": {
-            "player": "p2",
-            "state": true,
-        },
-        "k3_toggle_p1": {
-            "player": "p1",
-            "state": true,
-        },
-        "k3_toggle_p2": {
-            "player": "p2",
-            "state": true,
-        },
-        "level_8_text_": {
-            "player": "",
-            "state": 8,
-        },
-    };
+    preset_values = {};
 </script>
 
 </body>

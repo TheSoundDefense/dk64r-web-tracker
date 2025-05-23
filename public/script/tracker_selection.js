@@ -1,6 +1,8 @@
 const basic_tracker_names = {
     's3': 'Season 3 (Standard)',
-    's3-race': 'Season 3 (Race Tracker)'
+    's3-race': 'Season 3 (Race Tracker)',
+    'kevin-4-race': 'Kevin 4.0 (Race Tracker)',
+    's4-race': 'Season 4 (Race Tracker)',
 };
 
 const adv_tracker_names = {};
@@ -8,7 +10,9 @@ const adv_tracker_names = {};
 const tracker_names = {...basic_tracker_names, ...adv_tracker_names};
 const tracker_urls = {
     's3': 's3',
-    's3-race': 's3-race'
+    's3-race': 's3-race',
+    'kevin-4-race': 'kevin-4-race',
+    's4-race': 's4-race',
 }
 
 let selected_tracker = null;

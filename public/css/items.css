@@ -47,6 +47,7 @@
 .oranges { background-image: url(/images/orange.png) }
 .barrels { background-image: url(/images/barrel2.png) }
 .vines { background-image: url(/images/vine.png) }
+.climb { background-image: url(/images/climb.png) }
 .nocamshock { background-image: url(/images/filmwave.png) }
 .camera { background-image: url(/images/filmwave1.png) }
 .shockwave { background-image: url(/images/filmwave2.png) }
@@ -71,6 +72,9 @@
 .fairy { background-image: url(/images/fairy.png) }
 .medal { background-image: url(/images/bananamedal.gif) }
 .gb { background-image: url(/images/GBcompact.png) }
+.candy { background-image: url(/images/candy.png) }
+.cranky { background-image: url(/images/cranky.png) }
+.funky { background-image: url(/images/funky.png) }
 .level_1_icon { background-image: url(/images/1.png) }
 .level_2_icon { background-image: url(/images/2.png) }
 .level_3_icon { background-image: url(/images/3.png) }
@@ -89,3 +93,15 @@
 .k6_toggle { background-image: url(/images/k6.png) }
 .k7_toggle { background-image: url(/images/k7.png) }
 .k8_toggle { background-image: url(/images/k8.png) }
+.army1, .noboss { background-image: url(/images/army1.png) }
+.doga1 { background-image: url(/images/doga1.png) }
+.madjack { background-image: url(/images/madjack.png) }
+.pufftoss { background-image: url(/images/pufftoss.png) }
+.doga2 { background-image: url(/images/doga2.png) }
+.army2 { background-image: url(/images/army2.png) }
+.kutout { background-image: url(/images/kutout.png) }
+.krool_dk { background-image: url(/images/krool_dk.png) }
+.krool_diddy { background-image: url(/images/krool_diddy.png) }
+.krool_lanky { background-image: url(/images/krool_lanky.png) }
+.krool_tiny { background-image: url(/images/krool_tiny.png) }
+.krool_chunky { background-image: url(/images/krool_chunky.png) }

@@ -144,6 +144,10 @@ var items = {
         "type": "toggle",
         "size": "majoritem",
     },
+    "climb": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
     "camera_shockwave": {
         "type": "split",
         "size": "majoritem",
@@ -234,6 +238,18 @@ var items = {
         "size": "collectible",
         "minimum": 0,
         "maximum": 201,
+    },
+    "candy": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "cranky": {
+        "type": "toggle",
+        "size": "majoritem",
+    },
+    "funky": {
+        "type": "toggle",
+        "size": "majoritem",
     },
     "level_1_icon": {
         "type": "static",
@@ -424,6 +440,48 @@ var items = {
         "disable_zero": true,
     },
     "kong_cycle_5": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "boss_cycle_1": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["noboss", "army1", "doga1", "madjack", "pufftoss", "doga2", "army2", "kutout", "krool_dk", "krool_diddy", "krool_lanky", "krool_tiny", "krool_chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "boss_cycle_2": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["noboss", "army1", "doga1", "madjack", "pufftoss", "doga2", "army2", "kutout", "krool_dk", "krool_diddy", "krool_lanky", "krool_tiny", "krool_chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "boss_cycle_3": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["noboss", "army1", "doga1", "madjack", "pufftoss", "doga2", "army2", "kutout", "krool_dk", "krool_diddy", "krool_lanky", "krool_tiny", "krool_chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "krool_cycle_1": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "krool_cycle_2": {
+        "type": "cycle",
+        "size": "majoritem",
+        "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],
+        "loop": true,
+        "disable_zero": true,
+    },
+    "krool_cycle_3": {
         "type": "cycle",
         "size": "majoritem",
         "opts": ["nokong", "donkey", "diddy", "lanky", "tiny", "chunky"],

@@ -42,6 +42,17 @@
     width: 40px;
 }
 
+.collectible.bean {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 62px;
+    margin: 3px;
+    position: relative;
+    width: 62px;
+}
+
 .halfmajoritem {
     background-size: contain;
     display: inline-block;
